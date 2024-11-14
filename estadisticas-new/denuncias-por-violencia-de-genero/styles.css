@@ -100,3 +100,61 @@ body {
     margin-left: 0;
     width: 100%;
 }
+
+/* Estilo para la sección de botones */
+.buttonSection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Estilo para cada devisión de botón dentro de la sección */
+.buttonDiv {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para cada botón */
+.buttonLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center;     /* Centra los elementos horizontalmente */
+    width: 100%; /* Mantiene el botón con el ancho completo de su contenedor */
+    height: 175px; /* Asegura que el botón sea cuadrado (igual en alto y ancho) */
+    padding: 15px;
+    background-color: #3A1D51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+}
+
+.buttonLink:hover {
+    background-color: #4A2B6A;
+}
+
+/* Estilo para el ícono */
+.buttonIcon {
+    width: 80px;  /* Tamaño del ícono dentro del botón */
+    height: 80px; /* Mantiene el ícono proporcional */
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para el texto dentro del botón */
+.buttonText {
+    font-size: 16px; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 10px; /* Margen de 5px abajo del texto */;
+    text-align: center;
+}
