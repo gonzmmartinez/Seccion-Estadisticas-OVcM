@@ -1,7 +1,8 @@
 /* Estilos generales */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
     display: flex;
 }
 
@@ -20,7 +21,7 @@ body {
 /* Estilo inicial del botón para mostrar/ocultar la barra lateral */
 #toggleSidebar {
     position: fixed;
-    top: 10px;
+    top: 5px;
     left: 15%; /* Posición inicial con la barra visible */
     font-size: 24px;
     background: none;
@@ -35,6 +36,7 @@ body {
 #sidebar ul {
     list-style-type: none;
     padding: 0;
+    font-family: 'Barlow', sans-serif;
 }
 
 #sidebar ul li a {
@@ -42,18 +44,21 @@ body {
     text-decoration: none;
     display: block;
     padding: 10px 0;
+    font-family: 'Barlow', sans-serif;
 }
 
 #sidebar ul li a:hover {
     background-color: #4a2b6a;
+    font-family: 'Barlow', sans-serif;
 }
 
 /* Estilo del contenido principal */
 #mainContent {
-    margin-left: 15%;
+    margin-left: 17.5%;
     padding: 20px;
     width: 85%;
     transition: margin-left 0.3s ease, width 0.3s ease;
+    font-family: 'Barlow', sans-serif;
 }
 
 /* Estilo para ocultar la barra lateral */
@@ -65,4 +70,61 @@ body {
 #mainContent.expanded {
     margin-left: 0;
     width: 100%;
+}
+
+/* Estilo para la sección de botones */
+.buttonSection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Estilo para cada devisión de botón dentro de la sección */
+.buttonDiv {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para cada botón */
+.buttonLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center;     /* Centra los elementos horizontalmente */
+    width: 100%; /* Mantiene el botón con el ancho completo de su contenedor */
+    height: 175px; /* Asegura que el botón sea cuadrado (igual en alto y ancho) */
+    padding: 15px;
+    background-color: #3A1D51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+}
+
+.buttonLink:hover {
+    background-color: #4A2B6A;
+}
+
+/* Estilo para el ícono */
+.buttonIcon {
+    width: 80px;  /* Tamaño del ícono dentro del botón */
+    height: 80px; /* Mantiene el ícono proporcional */
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para el texto dentro del botón */
+.buttonText {
+    font-size: 16px; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 10px; /* Margen de 5px abajo del texto */;
 }
