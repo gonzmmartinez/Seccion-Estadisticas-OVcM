@@ -16,4 +16,3 @@ function toggleSidebar() {
         toggleButton.style.color = '#fafafa'; // Color del botón cuando la barra está visible
     }
 }
-
