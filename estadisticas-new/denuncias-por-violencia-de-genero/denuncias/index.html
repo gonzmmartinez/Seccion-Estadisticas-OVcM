@@ -7,9 +7,7 @@
     <title>Denuncias registradas por OVFG | Denuncias por Violencia de Género | Estadísticas | OVcM</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Paquete Chart.js -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
@@ -40,9 +38,9 @@
         <p>Texto.</p>
        
         <!-- Sección de gráficos -->
-        <div class="chartSection">
+        <div>
             <!-- Gráfico 1 -->
-            <div id="grafico1Content">
+            <div id="grafico1Content"">
                 <h2>Título del contenido incluido</h2>
                 
                 <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
@@ -59,11 +57,11 @@
                     </div>
                 
                     <!-- Canvas para el chart -->
-                    <div id="grafico1" style="width: 100%; height: 70vh;"></div> 
+                    <div id="grafico1" style="width: 100%;"></div> 
                 
                     <!-- Fuente del gráfico -->
                     <div style="text-align: right; font-size: 12px; color: gray">
-                        <p>
+                        <p style="margin-top: 0;">
                             <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
                             <br>
                             <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
@@ -73,7 +71,7 @@
                     <!-- Listas desplegables -->
                     <div class="select-container">
                         <div class="select-group">
-                            <div >
+                            <div style="margin-bottom: 5%;">
                                 Distrito:
                             </div>
                             <select id="Distrito" onchange="changeDistritos()">
@@ -82,28 +80,6 @@
                                 <option value="Norte-Tartagal">Norte-Tartagal</option>
                                 <option value="Sur-Anta">Sur-Anta</option>
                                 <option value="Sur-Metán">Sur-Metán</option>
-                            </select>
-                        </div>
-                        <div class="select-group">
-                            <div >
-                                Lugar:
-                            </div>
-                            <select id="Lugar" onchange="changeDistritos()">
-                                <option value="OVFG">OVFG</option>
-                                <option value="Comisarias">Comisarias</option>
-                                <option value="Otros organismos">Otros organismos</option>
-                                <option value="No corresponde">No corresponde</option>
-                            </select>
-                        </div>
-                        <div class="select-group">
-                            <div>
-                                Año:
-                            </div>
-                            <select id="Year" onchange="changeDistritos()">
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
                             </select>
                         </div>
                     </div>

@@ -122,14 +122,12 @@ body {
 
 /* Estilo del contenido del gráfico */
 .chartContent {
+    background-color: #fafafa;
     width: 70%;
     height: auto;
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-
-.chartDiv{
-    width: 100%;
-    height: 50%;
+    padding: 2%;
+    border-radius: 10px;
 }
