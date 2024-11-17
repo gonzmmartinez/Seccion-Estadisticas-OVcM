@@ -158,3 +158,32 @@ body {
     margin-bottom: 10px; /* Margen de 5px abajo del texto */;
     text-align: center;
 }
+
+.select-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: flex-start; /* Asegura que los textos y selects estén alineados */
+    gap: 20px;
+    margin-bottom: 20px;
+    font-family: 'Barlow';
+    font-size: 12px;
+}
+.select-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el texto y el select dentro del contenedor */
+}
+
+
+/* Estilo del contenido del gráfico */
+.chartContent {
+    background-color: #fafafa;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 2%;
+    border-radius: 10px;
+}

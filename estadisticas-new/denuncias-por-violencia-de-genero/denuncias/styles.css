@@ -30,14 +30,14 @@ body {
 
 /* Estilo para el ícono */
 .logoIcon {
-    width: 150px;  /* Tamaño del ícono dentro del botón */
-    height: 150px; /* Mantiene el ícono proporcional */
+    width: 100px;  /* Tamaño del ícono dentro del botón */
+    height: 100px; /* Mantiene el ícono proporcional */
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
 }
 
 /* Estilo para el texto dentro del botón */
 .logoText {
-    font-size: 16px; /* Ajuste del tamaño del texto */
+    font-size: 15px; /* Ajuste del tamaño del texto */
     color: white;
     font-family: 'Barlow', sans-serif;
     margin-bottom: 10px; /* Margen de 5px abajo del texto */;
@@ -69,8 +69,13 @@ body {
 #sidebar ul li a {
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    padding: 0;
+    margin-bottom: 5px;
     padding-left: 10px;
     font-family: 'Barlow', sans-serif;
     font-size: 14px;
@@ -79,6 +84,13 @@ body {
 #sidebar ul li a:hover {
     background-color: #4a2b6a;
     font-family: 'Barlow', sans-serif;
+}
+
+.sidebarIcon {
+    width: 30px;  /* Tamaño del ícono dentro del botón */
+    height: 30px; /* Mantiene el ícono proporcional */
+    margin-right: 10px;
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
 }
 
 /* Estilo del contenido principal */
@@ -101,7 +113,63 @@ body {
     width: 100%;
 }
 
+/* Estilo para la sección de botones */
+.buttonSection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
+/* Estilo para cada devisión de botón dentro de la sección */
+.buttonDiv {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para cada botón */
+.buttonLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center;     /* Centra los elementos horizontalmente */
+    width: 100%; /* Mantiene el botón con el ancho completo de su contenedor */
+    height: 175px; /* Asegura que el botón sea cuadrado (igual en alto y ancho) */
+    padding: 15px;
+    background-color: #3A1D51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+}
+
+.buttonLink:hover {
+    background-color: #4A2B6A;
+}
+
+/* Estilo para el ícono */
+.buttonIcon {
+    width: 80px;  /* Tamaño del ícono dentro del botón */
+    height: 80px; /* Mantiene el ícono proporcional */
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para el texto dentro del botón */
+.buttonText {
+    font-size: 16px; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 10px; /* Margen de 5px abajo del texto */;
+    text-align: center;
+}
 
 .select-container {
     display: flex;
@@ -130,4 +198,102 @@ body {
     margin: auto;
     padding: 2%;
     border-radius: 10px;
+}
+
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 800px) {
+    /* Barra lateral en móviles */
+    /* Estilo del contenido principal */
+    #mainContent {
+        margin-left: 0%;
+        padding: 20px;
+        width: 100%;
+        transition: margin-left 0.3s ease, width 0.3s ease;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    /* Estilo para ocultar la barra lateral */
+    #sidebar.hidden {
+        transform: translateY(-100%);
+    }
+
+    /* Estilo de la barra lateral */
+    #sidebar {
+        width: 100%;
+        height: auto;
+        background-color: #3A1D51;
+        color: white;
+        position: fixed;
+        transition: transform 0.3s ease;
+        z-index: 1;
+    }
+
+    /* Enlaces dentro de la barra lateral */
+    #sidebar ul {
+        display: block;
+        width: 80%;
+        list-style-type: none;
+        padding-left: 10px;
+        font-family: 'Barlow', sans-serif;
+        left:5px;
+        margin-bottom: 10%;
+    }
+
+    #sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: left; 
+        justify-content: left; 
+        padding: 2px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        font-family: 'Barlow', sans-serif;
+        font-size: 12px;
+    }
+
+    #sidebar ul li a:hover {
+        background-color: #4a2b6a;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    hr {
+        width: 80%;
+        margin: auto;
+        left: 0;
+    }
+
+    /* Estilo para el ícono */
+    .logoIcon {
+        margin-top: 2%;
+        width: 15vh;  /* Tamaño del ícono dentro del botón */
+        height: 15vh; /* Mantiene el ícono proporcional */
+        object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    }
+
+    /* Estilo para el texto dentro del botón */
+    .logoText {
+        font-size: 2vh; /* Ajuste del tamaño del texto */
+        color: white;
+        font-family: 'Barlow', sans-serif;
+        margin-bottom: 15px; /* Margen de 5px abajo del texto */;
+        text-align: center;
+    }
+
+    /* Estilo inicial del botón para mostrar/ocultar la barra lateral */
+    #toggleSidebar {
+        position: fixed;
+        top: 5px;
+        left: 5%; /* Posición inicial con la barra visible */
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #fafafa;
+        cursor: pointer;
+        z-index: 2;
+        transition: left 0.3s ease;
+    }
+    
 }
