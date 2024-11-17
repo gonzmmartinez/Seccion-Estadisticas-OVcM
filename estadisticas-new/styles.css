@@ -30,14 +30,14 @@ body {
 
 /* Estilo para el ícono */
 .logoIcon {
-    width: 150px;  /* Tamaño del ícono dentro del botón */
-    height: 150px; /* Mantiene el ícono proporcional */
+    width: 100px;  /* Tamaño del ícono dentro del botón */
+    height: 100px; /* Mantiene el ícono proporcional */
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
 }
 
 /* Estilo para el texto dentro del botón */
 .logoText {
-    font-size: 16px; /* Ajuste del tamaño del texto */
+    font-size: 15px; /* Ajuste del tamaño del texto */
     color: white;
     font-family: 'Barlow', sans-serif;
     margin-bottom: 10px; /* Margen de 5px abajo del texto */;
@@ -69,8 +69,13 @@ body {
 #sidebar ul li a {
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: left; /* Centra horizontalmente el contenido */
+    padding: 0;
+    margin-bottom: 5px;
     padding-left: 10px;
     font-family: 'Barlow', sans-serif;
     font-size: 14px;
@@ -81,13 +86,11 @@ body {
     font-family: 'Barlow', sans-serif;
 }
 
-/* Estilo del contenido principal */
-#mainContent {
-    margin-left: 17.5%;
-    padding: 20px;
-    width: 85%;
-    transition: margin-left 0.3s ease, width 0.3s ease;
-    font-family: 'Barlow', sans-serif;
+.sidebarIcon {
+    width: 30px;  /* Tamaño del ícono dentro del botón */
+    height: 30px; /* Mantiene el ícono proporcional */
+    margin-right: 10px;
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
 }
 
 /* Estilo para ocultar la barra lateral */
@@ -99,6 +102,37 @@ body {
 #mainContent.expanded {
     margin-left: 0;
     width: 100%;
+}
+
+/* Estilo del contenido principal */
+#mainContent {
+    margin-left: 17.5%;
+    padding: 20px;
+    width: 85%;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    font-family: 'Barlow', sans-serif;
+}
+
+/* Contenedor del título y el ícono */
+.titleContainer {
+    display: flex; /* Para alinear los elementos horizontalmente */
+    align-items: center; /* Alinea verticalmente el ícono con el texto */
+    gap: 10px; /* Espacio entre el texto y el ícono */
+}
+
+/* Estilo del título */
+.pageTitle {
+    font-size: 24px; /* Tamaño del texto */
+    color: black; /* Color del texto */
+    font-family: 'Barlow', sans-serif;
+    margin: 0; /* Quita los márgenes */
+}
+
+/* Estilo del ícono */
+.titleIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 3em; /* El ícono tendrá la misma altura que la línea del texto */
+    filter: invert(100%)
 }
 
 /* Estilo para la sección de botones */
@@ -187,3 +221,144 @@ body {
     padding: 2%;
     border-radius: 10px;
 }
+
+/* ###################################### */
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 800px) {
+    /* Barra lateral en móviles */
+    /* Estilo del contenido principal */
+    #mainContent {
+        margin-top: 3vh;
+        margin-left: 0%;
+        padding: 20px;
+        width: 100%;
+        transition: margin-left 0.3s ease, width 0.3s ease;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    /* Estilo para ocultar la barra lateral */
+    #sidebar.hidden {
+        transform: translateY(-100%);
+    }
+
+    /* Estilo de la barra lateral */
+    #sidebar {
+        width: 100%;
+        height: auto;
+        background-color: #3A1D51;
+        color: white;
+        position: fixed;
+        padding: 0;
+        transition: transform 0.3s ease;
+        z-index: 100;
+    }
+
+    /* Enlaces dentro de la barra lateral */
+    #sidebar ul {
+        display: block;
+        width: 80%;
+        list-style-type: none;
+        margin: 0 auto;
+        font-family: 'Barlow', sans-serif;
+        left:5px;
+        margin-bottom: 10%;
+    }
+
+    #sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: left; 
+        justify-content: left; 
+        padding: 2px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        font-family: 'Barlow', sans-serif;
+        font-size: 15px;
+    }
+
+    #sidebar ul li a:hover {
+        background-color: #4a2b6a;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    hr {
+        width: 80%;
+        margin: auto;
+        left: 0;
+    }
+
+    /* Estilo para el ícono */
+    .logoIcon {
+        margin-top: 2%;
+        width: 15vh;  /* Tamaño del ícono dentro del botón */
+        height: 15vh; /* Mantiene el ícono proporcional */
+        object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    }
+
+    /* Estilo para el texto dentro del botón */
+    .logoText {
+        font-size: 2vh; /* Ajuste del tamaño del texto */
+        color: white;
+        font-family: 'Barlow', sans-serif;
+        margin-bottom: 15px; /* Margen de 5px abajo del texto */;
+        text-align: center;
+    }
+
+    /* Estilo inicial del botón para mostrar/ocultar la barra lateral */
+    #toggleSidebar {
+        position: fixed;
+        top: 2vh;
+        left: 5%; /* Posición inicial con la barra visible */
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #fafafa;
+        cursor: pointer;
+        z-index: 101;
+        transition: left 0.3s ease;
+    }
+    
+}
+
+/* ###################################### */
+/* Breadcrumbs */
+
+#breadcrumbs {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.5vh;
+    margin-top: 2%;
+}
+
+/* Style the list */
+ul.breadcrumb {
+padding: 10px 16px;
+list-style: none;
+background-color: #fafafa;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+padding: 8px;
+color: black;
+content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+color: #0275d8;
+text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+color: #01447e;
+text-decoration: underline;
+} 
