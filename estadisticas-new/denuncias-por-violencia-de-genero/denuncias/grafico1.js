@@ -27,7 +27,11 @@ function parsearDatos(data1) {
 
 // 3. Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {
+  if (distrito == "TODOS") {
+    return data
+  } else {
     return data.filter(item => item.Distrito === distrito);
+  }
 }
 
 // 4. Función para procesar los datos y agruparlos por Año-Trimestre
@@ -56,11 +60,27 @@ function procesarDatos(data1) {
         values1.push(item.Cantidad);            // Añadir Cantidad al eje Y
     });
 
-    return { categories1, values1 };
+    // Contar ocurrencias de cada Año en groupedData1
+      const yearCounts = groupedData1.reduce((acc, item) => {
+        const year = `20${item.year_trimestre.split('-')[1]}`; // Extraer el año completo
+        if (!acc[year]) {
+            acc[year] = 0;
+        }
+        acc[year] += 1; // Contar cuántas veces aparece este año
+        return acc;
+    }, {});
+
+    // Crear el array de grupos para años y sus columnas (trimestres)
+      const groups1 = Object.entries(yearCounts).map(([year, count]) => ({
+        title: year,
+        cols: count
+    }));
+
+    return { categories1, values1, groups1 };
 }
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico(categories1, values1) {
+function crearGrafico(categories, values, groups) {
     return new ApexCharts(document.querySelector("#grafico1"), {
         chart: {
             type: 'bar', // Tipo de gráfico: barras
@@ -73,11 +93,11 @@ function crearGrafico(categories1, values1) {
         series: [{
             name: 'Cantidad',
             type: 'column',
-            data: values1
+            data: values
         },{
           name: 'Cantidad',
           type: 'line',
-          data: values1
+          data: values
         }],
         colors: ["#C93131", "#6e3169"],
         title: {},
@@ -85,7 +105,7 @@ function crearGrafico(categories1, values1) {
           title: {
             text: 'Trimestre-Año'
           },
-          categories: categories1, // Valores para el eje X
+          categories: categories, // Valores para el eje X
           labels: {
             formatter: function(val) {
               return val[0]
@@ -96,13 +116,7 @@ function crearGrafico(categories1, values1) {
               fontSize: '12px',
               fontWeight: 700
             },
-            groups: [
-              {title: '2020', cols: 4},
-              {title: '2021', cols: 4},
-              {title: '2022', cols: 4},
-              {title: '2023', cols: 4},
-              {title: '2024', cols: 3}
-            ]
+            groups: groups
           }
         },
         yaxis: {
@@ -140,38 +154,39 @@ function iniciar() {
             // Parsear los datos
             const parsedData = parsearDatos(data1);
 
-            // Filtrar por distrito seleccionado
-            const distritoSeleccionado = document.getElementById("Distrito").value;
-            const datosFiltrados = filtrarPorDistrito(parsedData, distritoSeleccionado);
-
             // Procesar los datos filtrados
-            const { categories1, values1 } = procesarDatos(datosFiltrados);
+            const { categories1, values1, groups1 } = procesarDatos(parsedData);
 
-            // Si el gráfico aún no está creado, lo creamos
-            if (!window.chart1) {
-                window.chart1 = crearGrafico(categories1, values1);
-                window.chart1.render();
-            } else {
-                // Si el gráfico ya está creado, solo actualizamos las series y las categorías
-                window.chart1.updateSeries([{
-                    data: values1
-                }]);
-                window.chart1.updateOptions({
-                    xaxis: {
-                        categories: categories1
-                    }
-                });
-            }
+            // Crear y renderizar el gráfico
+            window.chart1 = crearGrafico(categories1, values1, groups1);
+            window.chart1.render();
         })
         .catch(error1 => {
             document.getElementById("grafico1").textContent = `Error: ${error1.message}`;
         });
 }
 
-// 7. Función para actualizar el gráfico cuando se cambie el distrito
 function changeDistritos() {
-    // Al cambiar el distrito, volvemos a cargar los datos y actualizar el gráfico
-    iniciar();
+  cargarDatos()
+      .then(data1 => {
+          const parsedData = parsearDatos(data1);
+
+          // Filtrar por el distrito seleccionado
+          const distritoSeleccionado = document.getElementById("Distrito").value;
+          const datosFiltrados = filtrarPorDistrito(parsedData, distritoSeleccionado);
+
+          // Procesar datos
+          const { categories1, values1, groups1 } = procesarDatos(datosFiltrados);
+
+          console.log(groups1)
+
+          // Actualizar las series y categorías con animación
+          window.chart1.updateSeries([{ data: values1 }, { data: values1 }], true); // Animación en la actualización
+          window.chart1.updateOptions({ xaxis: { categories: categories1, group: {groups: groups1} } }, true); // Animación en opciones
+      })
+      .catch(error => {
+          document.getElementById("grafico1").textContent = `Error: ${error.message}`;
+      });
 }
 
 // 8. Llamar la función principal al cargar la página
