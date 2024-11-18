@@ -100,15 +100,16 @@ body {
 
 /* Ajuste del contenido principal cuando la barra lateral está oculta */
 #mainContent.expanded {
-    margin-left: 0;
+    margin-left: 5%;
     width: 100%;
 }
 
 /* Estilo del contenido principal */
 #mainContent {
-    margin-left: 17.5%;
+    margin-left: 20%;
     padding: 20px;
-    width: 85%;
+    padding-top: 0px;
+    width: 80%;
     transition: margin-left 0.3s ease, width 0.3s ease;
     font-family: 'Barlow', sans-serif;
 }
@@ -222,6 +223,13 @@ body {
     border-radius: 10px;
 }
 
+.chartSection {
+    display: none;
+}
+.chartSection.active {
+    display: block;
+}
+
 /* ###################################### */
 /* PARA DISPOSITIVOS MÓVILES */
 @media (max-width: 800px) {
@@ -229,11 +237,31 @@ body {
     /* Estilo del contenido principal */
     #mainContent {
         margin-top: 3vh;
-        margin-left: 0%;
-        padding: 20px;
-        width: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 0;
+        width: 90%;
         transition: margin-left 0.3s ease, width 0.3s ease;
         font-family: 'Barlow', sans-serif;
+    }
+
+    /* Ajuste del contenido principal cuando la barra lateral está oculta */
+    #mainContent.expanded {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+
+    /* Estilo del contenido del gráfico */
+    .chartContent {
+        background-color: #fafafa;
+        width: 95%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 2%;
+        border-radius: 10px;
     }
 
     /* Estilo para ocultar la barra lateral */
@@ -320,6 +348,13 @@ body {
         z-index: 101;
         transition: left 0.3s ease;
     }
+
+    /* Add a color to all links inside the list */
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 8px;
+    }
+
     
 }
 
@@ -328,37 +363,43 @@ body {
 
 #breadcrumbs {
     font-family: 'Barlow', sans-serif;
-    font-size: 1.5vh;
+    font-size: 12px;
     margin-top: 2%;
 }
 
 /* Style the list */
 ul.breadcrumb {
-padding: 10px 16px;
-list-style: none;
-background-color: #fafafa;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Display list items side by side */
 ul.breadcrumb li {
-display: inline;
+    display: inline;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
 ul.breadcrumb li+li:before {
-padding: 8px;
-color: black;
-content: "/\00a0";
+    padding: 8px;
+    color: #8c8c8c;
+    content: "/\00a0";
 }
 
 /* Add a color to all links inside the list */
 ul.breadcrumb li a {
-color: #0275d8;
-text-decoration: none;
+    color: #8c8c8c;
+    text-decoration: none;
 }
 
 /* Add a color on mouse-over */
 ul.breadcrumb li a:hover {
-color: #01447e;
-text-decoration: underline;
+    color: #454545;
+    text-decoration: underline;
 } 
+
+ul.breadcrumb .active {
+    color: black;
+}

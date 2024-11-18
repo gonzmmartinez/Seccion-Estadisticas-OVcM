@@ -39,9 +39,10 @@
         <!-- Contenido principal -->
         <nav id="breadcrumbs">
             <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="#">Estadísticas</a></li>
                 <li><a href="#">Denuncias por violencia de género</a></li>
-                <li>Denuncias</li>
+                <li class="active">Denuncias</li>
             </ul> 
         </nav>
         
@@ -49,69 +50,116 @@
             <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">DENUNCIAS POR VIOLENCIA DE GÉNERO REGISTRADAS POR LA OVFG</h1>
         </div>
-        
+
         <p>Texto.</p>
+
+        <!-- Contenedor de botones -->
+        <div class="button-container">
+            <button id="cargarGrafico1" onclick="showChart('chart1')">Gráfico 1</button>
+            <button id="cargarGrafico2" onclick="showChart('chart2')">Gráfico 2</button>
+            <button id="cargarGrafico3" onclick="showChart('chart3')">Gráfico 3</button>
+        </div>
        
         <!-- Sección de gráficos -->
-        <div>
-            <!-- Gráfico 1 -->
-            <div id="grafico1Content"">
-                <h2>Título del contenido incluido</h2>
-                
-                <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
-                
-                <div class="chartContent">
+        <div id="chart1" class="chartSection active">
+            <h2>Título del contenido incluido</h2>
+            
+            <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
+            
+            <div class="chartContent">
 
-                    <!-- Titulo del gráfico -->
-                    <div style="text-align: left;">
-                        <p>
-                            <span style="font-size:20px"><strong>Denuncias ingresadas</strong></span>
-                            <br>
-                            <span style="font-size:15px"><i>Por tipo de denuncia, lugar, distrito, y año</i></span>
-                        </p>
-                    </div>
-                
-                    <!-- Canvas para el chart -->
-                    <div id="grafico1" style="width: 100%;"></div> 
-                
-                    <!-- Fuente del gráfico -->
-                    <div style="text-align: right; font-size: 12px; color: gray">
-                        <p style="margin-top: 0;">
-                            <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
-                            <br>
-                            <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
-                        </p>
-                    </div>
-                
-                    <!-- Listas desplegables -->
-                    <div class="select-container">
-                        <div class="select-group">
-                            <div style="margin-bottom: 5%;">
-                                Distrito:
-                            </div>
-                            <select id="Distrito" onchange="changeDistritos()">
-                                <option value="TODOS">TODOS</option>
-                                <option value="Centro">Centro</option>
-                                <option value="Norte-Orán">Norte-Orán</option>
-                                <option value="Norte-Tartagal">Norte-Tartagal</option>
-                                <option value="Sur-Anta">Sur-Anta</option>
-                                <option value="Sur-Metán">Sur-Metán</option>
-                            </select>
+                <!-- Titulo del gráfico -->
+                <div style="text-align: left;">
+                    <p>
+                        <span style="font-size:20px"><strong>Denuncias ingresadas</strong></span>
+                        <br>
+                        <span style="font-size:15px"><i>Por tipo de denuncia, lugar, distrito, y año</i></span>
+                    </p>
+                </div>
+            
+                <!-- Canvas para el chart -->
+                <div id="grafico1" style="width: 100%;"></div> 
+            
+                <!-- Fuente del gráfico -->
+                <div style="text-align: right; font-size: 12px; color: gray">
+                    <p style="margin-top: 0;">
+                        <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
+                        <br>
+                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
+                    </p>
+                </div>
+            
+                <!-- Listas desplegables -->
+                <div class="select-container">
+                    <div class="select-group">
+                        <div style="margin-bottom: 5%;">
+                            Distrito:
                         </div>
+                        <select id="Distrito" onchange="changeDistritos()">
+                            <option value="TODOS">TODOS</option>
+                            <option value="Centro">Centro</option>
+                            <option value="Norte-Orán">Norte-Orán</option>
+                            <option value="Norte-Tartagal">Norte-Tartagal</option>
+                            <option value="Sur-Anta">Sur-Anta</option>
+                            <option value="Sur-Metán">Sur-Metán</option>
+                        </select>
                     </div>
+                </div>
             </div>
+        </div>
 
-            <!-- Gráfico 2 -->
-            <div id="grafico2Content">
-                <h2>Título del contenido incluido</h2>
-                <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
+        <div id="chart2" class="chartSection">
+            <h2>Título del contenido incluido 2</h2>
+            
+            <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
+            
+            <div class="chartContent">
+
+                <!-- Titulo del gráfico -->
+                <div style="text-align: left;">
+                    <p>
+                        <span style="font-size:20px"><strong>Denuncias ingresadas</strong></span>
+                        <br>
+                        <span style="font-size:15px"><i>Por tipo de denuncia, lugar, distrito, y año</i></span>
+                    </p>
+                </div>
+            
+                <!-- Canvas para el chart -->
+                <div id="grafico2" style="width: 100%;"></div> 
+            
+                <!-- Fuente del gráfico -->
+                <div style="text-align: right; font-size: 12px; color: gray">
+                    <p style="margin-top: 0;">
+                        <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
+                        <br>
+                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
+                    </p>
+                </div>
+            
+                <!-- Listas desplegables -->
+                <div class="select-container">
+                    <div class="select-group">
+                        <div style="margin-bottom: 5%;">
+                            Distrito:
+                        </div>
+                        <select id="Distrito2" onchange="changeDistritos()">
+                            <option value="TODOS">TODOS</option>
+                            <option value="Centro">Centro</option>
+                            <option value="Norte-Orán">Norte-Orán</option>
+                            <option value="Norte-Tartagal">Norte-Tartagal</option>
+                            <option value="Sur-Anta">Sur-Anta</option>
+                            <option value="Sur-Metán">Sur-Metán</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
 
     <!-- Gráficos -->
     <script type="text/javascript" src="grafico1.js"></script>
+    <script type="text/javascript" src="grafico2.js"></script>
 </body>
 </html>

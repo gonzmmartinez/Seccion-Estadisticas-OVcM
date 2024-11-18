@@ -1,43 +1,10 @@
 // Datos
-const archivo1 = "datos/json/denuncias_ingresadas_og.json";
-
-// 1. Función para hacer el fetch y devolver los datos
-function cargarDatos() {
-    return fetch(archivo1) // Ruta al archivo JSON
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error al cargar JSON: ${response.status}`);
-            }
-            return response.json();
-        });
-}
-
-// 2. Función para parsear los datos, verificando si es necesario realizar un segundo parseo
-function parsearDatos(data1) {
-    let parsedData1;
-    if (Array.isArray(data1) && typeof data1[0] === "string") {
-        // Si es un array con un string JSON, realiza el segundo parseo
-        parsedData1 = JSON.parse(data1[0]);
-    } else {
-        // Si el JSON ya está bien estructurado, no es necesario el parseo adicional
-        parsedData1 = data1;
-    }
-    return parsedData1;
-}
-
-// 3. Función para filtrar los datos por distrito
-function filtrarPorDistrito(data, distrito) {
-  if (distrito == "TODOS") {
-    return data
-  } else {
-    return data.filter(item => item.Distrito === distrito);
-  }
-}
+const archivo2 = "datos/json/denuncias_ingresadas_og.json";
 
 // 4. Función para procesar los datos y agruparlos por Año-Trimestre
-function procesarDatos1(data1) {
-    const groupedData1 = Object.values(
-        data1.reduce((acc, curr) => {
+function procesarDatos2(data) {
+    const groupedData2 = Object.values(
+        data.reduce((acc, curr) => {
             const key = `${curr.Año}-${curr.Trimestre}`; // Agrupar por Año y Trimestre
             if (!acc[key]) {
                 acc[key] = { 
@@ -51,17 +18,17 @@ function procesarDatos1(data1) {
     );
 
     // Crear los arrays para las categorías y los valores de las barras
-    const categories1 = [];
-    const values1 = [];
+    const categories2 = [];
+    const values2 = [];
 
     // Procesar los datos de cada entrada
-    groupedData1.forEach(item => {
-        categories1.push(item.year_trimestre);  // Añadir year_trimestre al eje X
-        values1.push(item.Cantidad);            // Añadir Cantidad al eje Y
+    groupedData2.forEach(item => {
+        categories2.push(item.year_trimestre);  // Añadir year_trimestre al eje X
+        values2.push(item.Cantidad);            // Añadir Cantidad al eje Y
     });
 
     // Contar ocurrencias de cada Año en groupedData1
-      const yearCounts = groupedData1.reduce((acc, item) => {
+      const yearCounts = groupedData2.reduce((acc, item) => {
         const year = `20${item.year_trimestre.split('-')[1]}`; // Extraer el año completo
         if (!acc[year]) {
             acc[year] = 0;
@@ -71,17 +38,17 @@ function procesarDatos1(data1) {
     }, {});
 
     // Crear el array de grupos para años y sus columnas (trimestres)
-      const groups1 = Object.entries(yearCounts).map(([year, count]) => ({
+      const groups2 = Object.entries(yearCounts).map(([year, count]) => ({
         title: year,
         cols: count
     }));
 
-    return { categories1, values1, groups1 };
+    return { categories2, values2, groups2 };
 }
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico1(categories, values, groups) {
-    return new ApexCharts(document.querySelector("#grafico1"), {
+function crearGrafico2(categories, values, groups) {
+    return new ApexCharts(document.querySelector("#grafico2"), {
         chart: {
             type: 'bar', // Tipo de gráfico: barras
             height: 350
@@ -99,7 +66,7 @@ function crearGrafico1(categories, values, groups) {
           type: 'line',
           data: values
         }],
-        colors: ["#C93131", "#6e3169"],
+        colors: ["#6e3169", "#6e3169"],
         title: {},
         xaxis: {
           title: {
@@ -148,7 +115,7 @@ function crearGrafico1(categories, values, groups) {
 }
 
 // 6. Función principal que orquesta el proceso
-function iniciar1() {
+function iniciar2() {
   
   cargarDatos() // Cargar los datos del JSON
         .then(data1 => {
@@ -156,37 +123,35 @@ function iniciar1() {
             const parsedData = parsearDatos(data1);
 
             // Procesar los datos filtrados
-            const { categories1, values1, groups1 } = procesarDatos1(parsedData);
+            const { categories2, values2, groups2 } = procesarDatos2(parsedData);
 
             // Crear y renderizar el gráfico
-            window.chart1 = crearGrafico1(categories1, values1, groups1);
-            window.chart1.render();
+            window.chart2 = crearGrafico2(categories2, values2, groups2);
+            window.chart2.render();
         })
         .catch(error1 => {
-            document.getElementById("grafico1").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico2").textContent = `Error: ${error1.message}`;
         });
 }
 
 function changeDistritos() {
   cargarDatos()
-      .then(data1 => {
-          const parsedData = parsearDatos(data1);
+      .then(data2 => {
+          const parsedData = parsearDatos(data2);
 
           // Filtrar por el distrito seleccionado
           const distritoSeleccionado = document.getElementById("Distrito").value;
           const datosFiltrados = filtrarPorDistrito(parsedData, distritoSeleccionado);
 
           // Procesar datos
-          const { categories1, values1, groups1 } = procesarDatos1(datosFiltrados);
+          const { categories2, values2, groups2 } = procesarDatos2(datosFiltrados);
 
           // Actualizar las series y categorías con animación
-          window.chart1.updateSeries([{ data: values1 }, { data: values1 }], true); // Animación en la actualización
-          window.chart1.updateOptions({ xaxis: { categories: categories1, group: {groups: groups1} } }, true); // Animación en opciones
+          window.chart1.updateSeries([{ data: values2 }, { data: values2 }], true); // Animación en la actualización
+          window.chart1.updateOptions({ xaxis: { categories: categories2, group: {groups: groups2} } }, true); // Animación en opciones
       })
       .catch(error => {
-          document.getElementById("grafico1").textContent = `Error: ${error.message}`;
+          document.getElementById("grafico2").textContent = `Error: ${error.message}`;
       });
 }
 
-// 8. Llamar la función principal al cargar la página
-window.addEventListener("load", iniciar1);
