@@ -28,9 +28,9 @@ function parsearDatos(data1) {
 // 3. Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {
   if (distrito == "TODOS") {
-    return data
+    return dataFilt
   } else {
-    return data.filter(item => item.Distrito === distrito);
+    return dataFilt.filter(item => item.Distrito === distrito);
   }
 }
 
@@ -149,7 +149,6 @@ function crearGrafico1(categories, values, groups) {
 
 // 6. Función principal que orquesta el proceso
 function iniciar1() {
-  
   cargarDatos() // Cargar los datos del JSON
         .then(data1 => {
             // Parsear los datos

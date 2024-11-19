@@ -1,17 +1,25 @@
 # Limpiar todo
 rm(list = ls())
 
+# Funciones
+`%ni%` <- Negate(`%in%`)
+
 # Librerias
 library(jsonlite)
 library(dplyr)
 library(stringr)
+library(readr)
+library(googlesheets4)
 
 # Leer datos
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
-Raw <- read.csv(paste0(dir, "/csv/denuncias_ingresadas.csv"))
+
+Raw <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
+                   sheet = "Ingresadas")
 
 # Transformar datos
-Data0 <- Raw
+Data0 <- Raw %>%
+  filter(Tipo %ni% c("No configura VFG", "Consultas"))
 
 Data1 <- Raw %>%
   group_by(Año, Trimestre) %>%

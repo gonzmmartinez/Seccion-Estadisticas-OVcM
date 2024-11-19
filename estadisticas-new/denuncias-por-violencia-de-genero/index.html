@@ -4,9 +4,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denuncias por Violencia de Género | Estadísticas | OVcM</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Estadísticas | OVcM</title>
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
+
 <body>
 
     <!-- Botón para mostrar/ocultar la barra lateral -->
@@ -18,39 +22,53 @@
             <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
-        <h2>ESTADÍSTICAS</h2>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
         <ul>
-            <li><a href="#">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</a></li>
-            <li><a href="#">Denuncias por violencia de género</a></li>
-            <li><a href="#">Educación y mercado de trabajo</a></li>
-            <li><a href="#">Salud y libertad -no- reproductiva</a></li>
-            <li><a href="#">Participación en la toma de decisiones</a></li>
+            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
+            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_2.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
+            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_3.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
+            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_4.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
+            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
         </ul>
     </div>
 
-    <!-- Contenido principal -->
     <div id="mainContent">
-        <h1>Estadísticas</h1>
-        <p>Te damos la bienvenida a la sección de estadísticas del Observatorio de Violencia contra las Mujeres de Salta.</p>
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../">Estadísticas</a></li>
+                <li class="active">Denuncias por violencia de género</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <h1 class="pageTitle">DENUNCIAS POR VIOLENCIA DE GÉNERO</h1>
+        </div>
+
         <p>Este es el contenido principal de la página.</p>
 
         <!-- Botones -->
         <div class="buttonSection">
-            <div class="buttonDiv">
+            <a class="buttonDiv" href="./denuncias/">
                 <button class="buttonLink">
                     <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Icono 1" class="buttonIcon">
                     <span class="buttonText">DENUNCIAS REGISTRADAS POR LA OVFG</span>
                 </button>
-            </div>
-            <div class="buttonDiv">
+            </a>
+            <a class="buttonDiv" href="#">
                 <button class="buttonLink">
                     <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_2.svg" alt="Icono 2" class="buttonIcon">
                     <span class="buttonText">REQUERIMIENTOS AL S.E. 911</span>
                 </button>
+            </a>
             </div>
-        </div>       
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

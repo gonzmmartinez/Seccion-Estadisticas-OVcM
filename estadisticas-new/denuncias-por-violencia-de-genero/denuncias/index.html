@@ -40,8 +40,8 @@
         <nav id="breadcrumbs">
             <ul class="breadcrumb">
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
-                <li><a href="#">Estadísticas</a></li>
-                <li><a href="#">Denuncias por violencia de género</a></li>
+                <li><a href="../../">Estadísticas</a></li>
+                <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
                 <li class="active">Denuncias</li>
             </ul> 
         </nav>
@@ -54,11 +54,11 @@
         <p>Texto.</p>
 
         <!-- Contenedor de botones -->
-        <div class="button-container">
-            <button id="cargarGrafico1" onclick="showChart('chart1')">Gráfico 1</button>
-            <button id="cargarGrafico2" onclick="showChart('chart2')">Gráfico 2</button>
-            <button id="cargarGrafico3" onclick="showChart('chart3')">Gráfico 3</button>
-        </div>
+        <nav class="indicador-container">
+            <button id="cargarGrafico1" class="indicadorButton" onclick="showChart('chart1')">Gráfico 1</button>
+            <button id="cargarGrafico2" class="indicadorButton" onclick="showChart('chart2')">Gráfico 2</button>
+            <button id="cargarGrafico3" class="indicadorButton" onclick="showChart('chart3')">Gráfico 3</button>
+        </nav>
        
         <!-- Sección de gráficos -->
         <div id="chart1" class="chartSection active">

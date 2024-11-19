@@ -143,8 +143,9 @@ body {
     width: 100%;
 }
 
-/* Estilo para cada devisión de botón dentro de la sección */
+/* Estilo para cada división de botón dentro de la sección */
 .buttonDiv {
+    text-decoration: none;
     flex: 1;
     margin: 0 10px;
     display: flex;
@@ -192,6 +193,31 @@ body {
     font-family: 'Barlow', sans-serif;
     margin-bottom: 10px; /* Margen de 5px abajo del texto */;
     text-align: center;
+}
+
+/* INDICADORES */
+.indicador-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15%, 1fr));
+    width:100%;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.indicadorButton {
+    font-family: 'Barlow';
+    font-size: 15px;
+    padding: 5%;
+    border-radius: 5px;
+    background-color:white;
+    color:#3A1D51;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.indicadorButton:hover {
+    background-color:#3A1D51;
+    color: white;
 }
 
 .select-container {
@@ -374,6 +400,7 @@ ul.breadcrumb {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding-inline-start: 0px;
 }
 
 /* Display list items side by side */
@@ -402,4 +429,5 @@ ul.breadcrumb li a:hover {
 
 ul.breadcrumb .active {
     color: black;
+    font-weight: bold;
 }
