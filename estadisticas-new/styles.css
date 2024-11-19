@@ -139,8 +139,11 @@ body {
 /* Estilo para la sección de botones */
 .buttonSection {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width:100%;
+    gap: 10px;
+    text-decoration: none;
 }
 
 /* Estilo para cada división de botón dentro de la sección */
@@ -381,7 +384,10 @@ body {
         font-size: 8px;
     }
 
-    
+    /* Estilo para la sección de botones */
+    .buttonSection {
+        flex-direction: column;
+    }
 }
 
 /* ###################################### */

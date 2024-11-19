@@ -28,9 +28,9 @@ function parsearDatos(data1) {
 // 3. Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {
   if (distrito == "TODOS") {
-    return dataFilt
+    return data
   } else {
-    return dataFilt.filter(item => item.Distrito === distrito);
+    return data.filter(item => item.Distrito === distrito);
   }
 }
 
