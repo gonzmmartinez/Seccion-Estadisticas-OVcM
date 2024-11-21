@@ -1,41 +1,41 @@
 // Datos
-const archivo2 = "datos/json/denuncias_ovfg_modalidades.json";
+const archivo3 = "datos/json/denuncias_ovfg_tipos.json";
 
 // PROCESAMIENTO
-function procesarDatos2(data) {
+function procesarDatos3(data) {
     // Crear los arrays para las categorías y los valores de las barras
-    const categories2 = [];
-    const values2 = [];
+    const categories3 = [];
+    const values3 = [];
 
     // Procesar los datos de cada entrada
     data.forEach(item => {
-        categories2.push(item.Modalidad);
-        values2.push(item.Porcentaje);            
+        categories3.push(item.Tipo);
+        values3.push(item.Porcentaje);            
     });
 
-    return { categories2, values2 };
+    return { categories3, values3 };
 }
 
 // INICIALIZACIÓN
-function iniciar2() {
-  cargarDatos(archivo2) // Cargar los datos del JSON
-        .then(data2 => {
+function iniciar3() {
+  cargarDatos(archivo3) // Cargar los datos del JSON
+        .then(data3 => {
             // Parsear los datos
-            const parsedData2 = parsearDatos(data2);
+            const parsedData3 = parsearDatos(data3);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado2 = "TODOS";
-            const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
+            const anioSeleccionado3 = "TODOS";
+            const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
             // Procesar los datos filtrados
-            const { categories2, values2 } = procesarDatos2(datosFiltrados2);
+            const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
             // Crear y renderizar el gráfico
-            window.chart2 = crearGrafico2(categories2, values2);
-            window.chart2.render();
+            window.chart3 = crearGrafico3(categories3, values3);
+            window.chart3.render();
         })
         .catch(error1 => {
-            document.getElementById("grafico2").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico3").textContent = `Error: ${error1.message}`;
         });
 }
 
@@ -45,28 +45,28 @@ function filtrarPorAnio(data, year) {
 }
 
 function changeAnio() {
-  cargarDatos(archivo2)
-      .then(data2 => {
-          const parsedData2 = parsearDatos(data2);
+  cargarDatos(archivo3)
+      .then(data3 => {
+          const parsedData3 = parsearDatos(data3);
 
           // Filtrar por el distrito seleccionado
-          const anioSeleccionado2 = document.getElementById("Anio2").value;
-          const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
+          const anioSeleccionado3 = document.getElementById("Anio3").value;
+          const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
           // Procesar datos
-          const { categories2, values2 } = procesarDatos2(datosFiltrados2);
+          const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
           // Actualizar las series y categorías con animación
-          window.chart2.updateOptions({ series: values2, labels: categories2});
+          window.chart3.updateOptions({ series: values3, labels: categories3});
       })
       .catch(error => {
-          document.getElementById("grafico2").textContent = `Error: ${error.message}`;
+          document.getElementById("grafico3").textContent = `Error: ${error.message}`;
       });
 }
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico2(categories, values) {
-  return new ApexCharts(document.querySelector("#grafico2"), {
+function crearGrafico3(categories, values) {
+  return new ApexCharts(document.querySelector("#grafico3"), {
       chart: {
           type: 'donut',
           height: 350
