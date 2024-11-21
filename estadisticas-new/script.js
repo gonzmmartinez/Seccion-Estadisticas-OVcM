@@ -72,3 +72,28 @@ function showChart(chartId) {
         window[initFunction]();  // Llamamos dinámicamente la función
     }
 }
+
+// FUNCIÓN SOBRE LOS GRÁFICOS
+// Función para hacer el fetch
+function cargarDatos(archivo) {
+    return fetch(archivo) // Ruta al archivo JSON
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error al cargar JSON: ${response.status}`);
+            }
+            return response.json();
+        });
+}
+
+// Función para parsear
+function parsearDatos(data) {
+    let parsedData1;
+    if (Array.isArray(data) && typeof data[0] === "string") {
+        // Si es un array con un string JSON, realiza el segundo parseo
+        parsedData = JSON.parse(data[0]);
+    } else {
+        // Si el JSON ya está bien estructurado, no es necesario el parseo adicional
+        parsedData = data;
+    }
+    return parsedData;
+}

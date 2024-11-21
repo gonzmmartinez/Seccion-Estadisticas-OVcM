@@ -1,67 +1,25 @@
 // Datos
-const archivo1 = "datos/json/denuncias_ingresadas_og.json";
-
-// 1. Función para hacer el fetch y devolver los datos
-function cargarDatos(archivo) {
-    return fetch(archivo) // Ruta al archivo JSON
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error al cargar JSON: ${response.status}`);
-            }
-            return response.json();
-        });
-}
-
-// 2. Función para parsear los datos, verificando si es necesario realizar un segundo parseo
-function parsearDatos(data) {
-    let parsedData1;
-    if (Array.isArray(data) && typeof data[0] === "string") {
-        // Si es un array con un string JSON, realiza el segundo parseo
-        parsedData = JSON.parse(data[0]);
-    } else {
-        // Si el JSON ya está bien estructurado, no es necesario el parseo adicional
-        parsedData = data;
-    }
-    return parsedData;
-}
+const archivo1 = "datos/json/denuncias_ovfg_ingresadas.json";
 
 // 3. Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {
-  if (distrito == "TODOS") {
-    return data
-  } else {
-    return data.filter(item => item.Distrito === distrito);
-  }
+  return data.filter(item => item.Distrito === distrito);
 }
 
 // 4. Función para procesar los datos y agruparlos por Año-Trimestre
 function procesarDatos1(data1) {
-    const groupedData1 = Object.values(
-        data1.reduce((acc, curr) => {
-            const key = `${curr.Año}-${curr.Trimestre}`; // Agrupar por Año y Trimestre
-            if (!acc[key]) {
-                acc[key] = { 
-                    year_trimestre: `${curr.Trimestre}-${curr.Año.toString().slice(-2)}`, 
-                    Cantidad: 0 
-                };
-            }
-            acc[key].Cantidad += curr.Frecuencia;
-            return acc;
-        }, {})
-    );
-
     // Crear los arrays para las categorías y los valores de las barras
     const categories1 = [];
     const values1 = [];
 
     // Procesar los datos de cada entrada
-    groupedData1.forEach(item => {
+    data1.forEach(item => {
         categories1.push(item.year_trimestre);  // Añadir year_trimestre al eje X
         values1.push(item.Cantidad);            // Añadir Cantidad al eje Y
     });
 
     // Contar ocurrencias de cada Año en groupedData1
-      const yearCounts = groupedData1.reduce((acc, item) => {
+      const yearCounts = data1.reduce((acc, item) => {
         const year = `20${item.year_trimestre.split('-')[1]}`; // Extraer el año completo
         if (!acc[year]) {
             acc[year] = 0;
@@ -160,10 +118,14 @@ function iniciar1() {
   cargarDatos(archivo1) // Cargar los datos del JSON
         .then(data1 => {
             // Parsear los datos
-            const parsedData = parsearDatos(data1);
+            const parsedData1 = parsearDatos(data1);
+
+            // Filtrar por el distrito seleccionado
+            const distritoSeleccionado1 = "TODOS";
+            const datosFiltrados1 = filtrarPorDistrito(parsedData1, distritoSeleccionado1);
 
             // Procesar los datos filtrados
-            const { categories1, values1, groups1 } = procesarDatos1(parsedData);
+            const { categories1, values1, groups1 } = procesarDatos1(datosFiltrados1);
 
             // Crear y renderizar el gráfico
             window.chart1 = crearGrafico1(categories1, values1, groups1);
@@ -175,7 +137,7 @@ function iniciar1() {
 }
 
 function changeDistritos() {
-  cargarDatos()
+  cargarDatos(archivo1)
       .then(data1 => {
           const parsedData = parsearDatos(data1);
 
