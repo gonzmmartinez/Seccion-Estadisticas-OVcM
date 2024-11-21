@@ -223,20 +223,26 @@ body {
     color: white;
 }
 
-.select-container {
+
+/* CONTENEDOR DEL DROPDOWN */
+.selectContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
-    align-items: flex-start; /* Asegura que los textos y selects estén alineados */
-    gap: 20px;
-    margin-bottom: 20px;
+    align-items: center; /* Asegura que los textos y selects estén alineados */
     font-family: 'Barlow';
     font-size: 12px;
 }
-.select-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el texto y el select dentro del contenedor */
+
+select {
+    padding: 5px;
+    background-color: white;
+    font-family: 'Barlow';
+    font-size: 13px;
+    border-radius: 5px;
+    border-color: #3A1D51;
+    border-width: 2px;
 }
 
 
@@ -261,7 +267,7 @@ body {
 
 /* ###################################### */
 /* PARA DISPOSITIVOS MÓVILES */
-@media (max-width: 800px) {
+@media (max-width: 480px) {
     /* Barra lateral en móviles */
     /* Estilo del contenido principal */
     #mainContent {

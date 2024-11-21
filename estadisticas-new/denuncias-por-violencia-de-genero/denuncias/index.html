@@ -27,11 +27,11 @@
 
         <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
         <ul>
-            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
-            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_2.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
-            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_3.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
-            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_4.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
-            <li><a href="#"><img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
+            <li><a href="#"><img src="../../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
+            <li><a href="#"><img src="../../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
+            <li><a href="#"><img src="../../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
+            <li><a href="#"><img src="../../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
+            <li><a href="#"><img src="../../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
         </ul>
     </div>
 
@@ -47,7 +47,7 @@
         </nav>
         
         <div class="titleContainer">
-            <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Ícono" class="titleIcon">
+            <img src="../../svg/icono_01.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">DENUNCIAS POR VIOLENCIA DE GÉNERO REGISTRADAS POR LA OVFG</h1>
         </div>
 
@@ -62,18 +62,24 @@
        
         <!-- Sección de gráficos -->
         <div id="chart1" class="chartSection active">
-            <h2>Título del contenido incluido</h2>
+            <h2>Evolución de la cantidad de denuncias registradas por OVFG</h2>
+
+            <h3>Por trimestre</h3>
             
-            <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
+            <p>
+                Serie histórica evolutiva de las denuncias y legajos ingresados a la OVFG 
+                por situaciones de violencia de género y/o familiar. La difusión de los 
+                datos por parte del organismo responsable se realiza de forma trimestral.
+            </p>
             
             <div class="chartContent">
 
                 <!-- Titulo del gráfico -->
                 <div style="text-align: left;">
                     <p>
-                        <span style="font-size:20px"><strong>Denuncias ingresadas</strong></span>
+                        <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas por OVFG</strong></span>
                         <br>
-                        <span style="font-size:15px"><i>Por tipo de denuncia, lugar, distrito, y año</i></span>
+                        <span style="font-size:15px"><i>Por trimestre en cada año</i></span>
                     </p>
                 </div>
             
@@ -83,33 +89,31 @@
                 <!-- Fuente del gráfico -->
                 <div style="text-align: right; font-size: 12px; color: gray">
                     <p style="margin-top: 0;">
-                        <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
-                        <br>
-                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
+                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género. Corte de Justicia de Salta.
                     </p>
                 </div>
             
                 <!-- Listas desplegables -->
-                <div class="select-container">
-                    <div class="select-group">
-                        <div style="margin-bottom: 5%;">
-                            Distrito:
-                        </div>
-                        <select id="Distrito" onchange="changeDistritos()">
-                            <option value="TODOS">TODOS</option>
-                            <option value="Centro">Centro</option>
-                            <option value="Norte-Orán">Norte-Orán</option>
-                            <option value="Norte-Tartagal">Norte-Tartagal</option>
-                            <option value="Sur-Anta">Sur-Anta</option>
-                            <option value="Sur-Metán">Sur-Metán</option>
-                        </select>
-                    </div>
+                <div class="selectContainer">
+                    <p>
+                        Distrito:
+                    </p>
+                    <select id="Distrito" onchange="changeDistritos()">
+                        <option value="TODOS">TODOS</option>
+                        <option value="Centro">Centro</option>
+                        <option value="Norte-Orán">Norte-Orán</option>
+                        <option value="Norte-Tartagal">Norte-Tartagal</option>
+                        <option value="Sur-Anta">Sur-Anta</option>
+                        <option value="Sur-Metán">Sur-Metán</option>
+                    </select>
                 </div>
             </div>
         </div>
 
         <div id="chart2" class="chartSection">
-            <h2>Título del contenido incluido 2</h2>
+            <h2>Denuncias por violencia de género y/o familiar registradas en OVFG</h2>
+
+            <h3>Por modalidad de violencia</h3>
             
             <p>Este es el contenido que se ha cargado dinámicamente en el div.</p>
             
@@ -118,9 +122,9 @@
                 <!-- Titulo del gráfico -->
                 <div style="text-align: left;">
                     <p>
-                        <span style="font-size:20px"><strong>Denuncias ingresadas</strong></span>
+                        <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
                         <br>
-                        <span style="font-size:15px"><i>Por tipo de denuncia, lugar, distrito, y año</i></span>
+                        <span style="font-size:15px"><i>Por modalidad de violencia</i></span>
                     </p>
                 </div>
             
@@ -130,27 +134,23 @@
                 <!-- Fuente del gráfico -->
                 <div style="text-align: right; font-size: 12px; color: gray">
                     <p style="margin-top: 0;">
-                        <strong>NOTA</strong>: La fuente no registra de forma binaria el género de las personas.
-                        <br>
-                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género.
+                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género. Corte de Justicia de Salta.
                     </p>
                 </div>
-            
+
                 <!-- Listas desplegables -->
-                <div class="select-container">
-                    <div class="select-group">
-                        <div style="margin-bottom: 5%;">
-                            Distrito:
-                        </div>
-                        <select id="Distrito2" onchange="changeDistritos()">
-                            <option value="TODOS">TODOS</option>
-                            <option value="Centro">Centro</option>
-                            <option value="Norte-Orán">Norte-Orán</option>
-                            <option value="Norte-Tartagal">Norte-Tartagal</option>
-                            <option value="Sur-Anta">Sur-Anta</option>
-                            <option value="Sur-Metán">Sur-Metán</option>
-                        </select>
-                    </div>
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio" onchange="changeAnio()">
+                        <option value="TODOS">TODOS</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
                 </div>
             </div>
         </div>

@@ -2,8 +2,8 @@
 const archivo1 = "datos/json/denuncias_ingresadas_og.json";
 
 // 1. Función para hacer el fetch y devolver los datos
-function cargarDatos() {
-    return fetch(archivo1) // Ruta al archivo JSON
+function cargarDatos(archivo) {
+    return fetch(archivo) // Ruta al archivo JSON
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error al cargar JSON: ${response.status}`);
@@ -13,16 +13,16 @@ function cargarDatos() {
 }
 
 // 2. Función para parsear los datos, verificando si es necesario realizar un segundo parseo
-function parsearDatos(data1) {
+function parsearDatos(data) {
     let parsedData1;
-    if (Array.isArray(data1) && typeof data1[0] === "string") {
+    if (Array.isArray(data) && typeof data[0] === "string") {
         // Si es un array con un string JSON, realiza el segundo parseo
-        parsedData1 = JSON.parse(data1[0]);
+        parsedData = JSON.parse(data[0]);
     } else {
         // Si el JSON ya está bien estructurado, no es necesario el parseo adicional
-        parsedData1 = data1;
+        parsedData = data;
     }
-    return parsedData1;
+    return parsedData;
 }
 
 // 3. Función para filtrar los datos por distrito
@@ -99,7 +99,7 @@ function crearGrafico1(categories, values, groups) {
           type: 'line',
           data: values
         }],
-        colors: ["#C93131", "#6e3169"],
+        colors: ["#e3753d", "#6e3169"],
         title: {},
         xaxis: {
           title: {
@@ -125,9 +125,17 @@ function crearGrafico1(categories, values, groups) {
             }
         },
         dataLabels: {
-          enabled: false,
+          enabledOnSeries: [0],
           style: {
-            fontSize: '8px'
+            fontSize: '12px',
+            fontWeight: 'normal',
+          }
+        },
+        plotOptions : {
+          bar: {
+            dataLabels: {
+              orientation: 'vertical'
+            }
           }
         },
         tooltip: {
@@ -149,7 +157,7 @@ function crearGrafico1(categories, values, groups) {
 
 // 6. Función principal que orquesta el proceso
 function iniciar1() {
-  cargarDatos() // Cargar los datos del JSON
+  cargarDatos(archivo1) // Cargar los datos del JSON
         .then(data1 => {
             // Parsear los datos
             const parsedData = parsearDatos(data1);
