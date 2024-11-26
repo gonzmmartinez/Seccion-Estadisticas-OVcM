@@ -42,7 +42,10 @@ function crearGrafico1(categories, values, groups) {
     return new ApexCharts(document.querySelector("#grafico1"), {
         chart: {
             type: 'bar', // Tipo de gráfico: barras
-            height: 350
+            height: 350,
+            toolbar: {
+              show: true
+            }
         },
         stroke: {
           width: [0, 4],
@@ -136,7 +139,7 @@ function iniciar1() {
         });
 }
 
-function changeDistritos() {
+function actualizarGrafico1() {
   cargarDatos(archivo1)
       .then(data1 => {
           const parsedData = parsearDatos(data1);

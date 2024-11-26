@@ -12,17 +12,17 @@ library(readr)
 library(googlesheets4)
 library(janitor)
 
-# Leer datos
+######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
 Raw1 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
                    sheet = "Ingresadas")
-
 Raw2 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
                    sheet = "Modalidad")
-
 Raw3 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
                    sheet = "Tipo")
+Raw4 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
+                   sheet = "Vinculo")
 
 ######### TRANSFORMAR DATOS #########
 # Ingresadas
@@ -58,7 +58,7 @@ totalData2 <- Raw2 %>%
 Data2 <- rbind(Data2, totalData2) %>%
   arrange(Año, desc(Porcentaje))
 
-# Modalidad
+# Tipo
 Data3 <- Raw3 %>%
   filter(Tipo != "Sin especificar") %>%
   mutate(Año = as.character(Año)) %>%
@@ -74,11 +74,39 @@ totalData3 <- Raw3 %>%
   mutate(Año = "TODOS")
 Data3 <- rbind(Data3, totalData3) %>%
   arrange(Año, desc(Porcentaje))
-  
 
-# Escribir JSON
-write_json(toJSON(Data1), path=paste0(dir, "/json/denuncias_ovfg_ingresadas.json"))
+# Vinculo
+Data4 <- Raw4 %>%
+  filter(Vínculo != "Sin especificar") %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Vínculo) %>%
+  summarise(Cantidad = sum(Cantidad)) %>%
+  ungroup %>%
+  mutate(Vínculo = ifelse((100 * Cantidad / sum(Cantidad)) <= 1, "Otro", Vínculo)) %>%
+  group_by(Año, Vínculo) %>%
+  summarise(Cantidad = sum(Cantidad)) %>%
+  ungroup %>%
+  group_by(Año) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+totalData4 <- Raw4 %>%
+  filter(Vínculo != "Sin especificar") %>%
+  group_by(Vínculo) %>%
+  summarise(Cantidad = sum(Cantidad)) %>%
+  ungroup %>%
+  mutate(Vínculo = ifelse((100 * Cantidad / sum(Cantidad)) <= 1, "Otro", Vínculo)) %>%
+  group_by(Vínculo) %>%
+  summarise(Cantidad = sum(Cantidad)) %>%
+  ungroup %>%
+  mutate(Año = "TODOS") %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+Data4 <- rbind(Data4, totalData4) %>%
+  arrange(desc(Porcentaje))
+
+######### ESCRIBIR DATOS #########
+write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_ovfg_ingresadas.json"))
 
 write_json(toJSON(Data2), path = paste0(dir, "/json/denuncias_ovfg_modalidades.json"))
 
 write_json(toJSON(Data3), path = paste0(dir, "/json/denuncias_ovfg_tipos.json"))
+
+write_json(toJSON(Data4), path = paste0(dir, "/json/denuncias_ovfg_vinculo.json"))

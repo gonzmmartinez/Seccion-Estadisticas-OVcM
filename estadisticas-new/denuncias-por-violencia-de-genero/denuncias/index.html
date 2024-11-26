@@ -55,9 +55,14 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button id="cargarGrafico1" class="indicadorButton" onclick="showChart('chart1')">Evolución de las denuncias ingresadas</button>
-            <button id="cargarGrafico2" class="indicadorButton" onclick="showChart('chart2')">Modalidades de violencia</button>
-            <button id="cargarGrafico3" class="indicadorButton" onclick="showChart('chart3')">Tipos de violencia</button>
+            <button class="indicadorButton" onclick="showChart('chart1')">Evolución de las denuncias ingresadas</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Modalidades de violencia</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Tipos de violencia</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Vínculo con la persona que ejerció la agresión</button>
+            <button class="indicadorButton" onclick="showChart('chart5')">Proporción de género de las personas que realizaron las denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart6')">Proporción de género de las personas que resultaron denunciadas</button>
+            <button class="indicadorButton" onclick="showChart('chart7')">Edades de las personas que realizaron las denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart8')">Edades de las personas que resultaron denunciadas</button>
         </nav>
        
         <!-- Sección de gráficos -->
@@ -98,7 +103,7 @@
                     <p>
                         Distrito:
                     </p>
-                    <select id="Distrito" onchange="changeDistritos()">
+                    <select id="Distrito" onchange="actualizarGrafico1()">
                         <option value="TODOS">TODOS</option>
                         <option value="Centro">Centro</option>
                         <option value="Norte-Orán">Norte-Orán</option>
@@ -143,7 +148,7 @@
                     <p>
                         Año:
                     </p>
-                    <select id="Anio2" onchange="changeAnio()">
+                    <select id="Anio2" onchange="actualizarGrafico2()">
                         <option value="TODOS">TODOS</option>
                         <option value="2020">2020</option>
                         <option value="2021">2021</option>
@@ -188,7 +193,52 @@
                     <p>
                         Año:
                     </p>
-                    <select id="Anio3" onchange="changeAnio()">
+                    <select id="Anio3" onchange="actualizarGrafico3()">
+                        <option value="TODOS">TODOS</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="chart4" class="chartSection">
+            <h2>Denuncias por violencia de género y/o familiar registradas en OVFG</h2>
+
+            <h3>Por vínculo con la persona que ejerció la agresión.</h3>
+            
+            <p>Vínculo entre la persona que realizó la denuncia, y la persona que resultó denunciada.</p>
+            
+            <div class="chartContent">
+
+                <!-- Titulo del gráfico -->
+                <div style="text-align: left;">
+                    <p>
+                        <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                        <br>
+                        <span style="font-size:15px"><i>Por vínculo con la persona que realizó la agresión</i></span>
+                    </p>
+                </div>
+            
+                <!-- Canvas para el chart -->
+                <div id="grafico4" style="width: 100%;"></div> 
+            
+                <!-- Fuente del gráfico -->
+                <div style="text-align: right; font-size: 12px; color: gray">
+                    <p style="margin-top: 0;">
+                        <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género. Corte de Justicia de Salta.
+                    </p>
+                </div>
+
+                <!-- Listas desplegables -->
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio4" onchange="actualizarGrafico4()">
                         <option value="TODOS">TODOS</option>
                         <option value="2020">2020</option>
                         <option value="2021">2021</option>
@@ -207,5 +257,6 @@
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
     <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
 </body>
 </html>

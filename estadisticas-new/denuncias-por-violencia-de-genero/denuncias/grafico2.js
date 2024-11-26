@@ -44,7 +44,7 @@ function filtrarPorAnio(data, year) {
   return data.filter(item => item.Año === year);
 }
 
-function changeAnio() {
+function actualizarGrafico2() {
   cargarDatos(archivo2)
       .then(data2 => {
           const parsedData2 = parsearDatos(data2);
@@ -69,7 +69,10 @@ function crearGrafico2(categories, values) {
   return new ApexCharts(document.querySelector("#grafico2"), {
       chart: {
           type: 'donut',
-          height: 350
+          height: 350,
+          toolbar: {
+            show: true
+          }
       },
       series: values, // Los valores para el gráfico (arreglo de números)
       labels: categories, // Las etiquetas para cada segmento
