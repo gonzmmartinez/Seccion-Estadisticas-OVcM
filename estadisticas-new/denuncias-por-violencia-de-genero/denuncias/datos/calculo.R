@@ -15,14 +15,16 @@ library(janitor)
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
-Raw1 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
-                   sheet = "Ingresadas")
-Raw2 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
-                   sheet = "Modalidad")
-Raw3 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
-                   sheet = "Tipo")
-Raw4 <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing",
-                   sheet = "Vinculo")
+planilla <- "https://docs.google.com/spreadsheets/d/1Cfbecjc5DLo3uGsMEHscsfUC9YOtnKtFvt1bOZI_B4c/edit?usp=sharing"
+
+Raw1 <- read_sheet(ss = planilla, sheet = "Ingresadas")
+Raw2 <- read_sheet(ss = planilla, sheet = "Modalidad")
+Raw3 <- read_sheet(ss = planilla, sheet = "Tipo")
+Raw4 <- read_sheet(ss = planilla, sheet = "Vinculo")
+Raw5 <- read_sheet(ss = planilla, sheet = "Persona_que_denuncia")
+Raw6 <- read_sheet(ss = planilla, sheet = "Persona_denunciada")
+Raw7 <- read_sheet(ss = planilla, sheet = "Persona_que_denuncia")
+Raw8 <- read_sheet(ss = planilla, sheet = "Persona_denunciada")
 
 ######### TRANSFORMAR DATOS #########
 # Ingresadas
@@ -102,6 +104,63 @@ totalData4 <- Raw4 %>%
 Data4 <- rbind(Data4, totalData4) %>%
   arrange(desc(Porcentaje))
 
+# Persona que denuncia
+Data5 <- Raw5 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Género) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+totalData5 <- Raw5 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Género) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  ungroup %>%
+  mutate(Año = "TODOS")
+Data5 <- rbind(Data5, totalData5) %>%
+  arrange(desc(Porcentaje))
+
+# Persona denunciada
+Data6 <- Raw6 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Género) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+totalData6 <- Raw6 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Género) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  ungroup %>%
+  mutate(Año = "TODOS")
+Data6 <- rbind(Data6, totalData6) %>%
+  arrange(desc(Porcentaje))
+
+# Edades de las personas que denuncian
+Data7 <- Raw7 %>%
+  filter(Rango_etario != "Sin especificar") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Género, Rango_etario) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  ungroup %>%
+  group_by(Año) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+totalData7 <- Raw7 %>%
+  filter(Rango_etario != "Sin especificar") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  group_by(Género, Rango_etario) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  ungroup %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  mutate(Año = "TODOS")
+Data7 <- rbind(Data7, totalData7)
+Data7 <- Data7 %>%
+  mutate(Cantidad = ifelse(Género == "Varones", -1 * Cantidad, Cantidad)) %>%
+  mutate(Porcentaje = ifelse(Género == "Varones", -1 * Porcentaje, Porcentaje)) %>%
+  arrange(desc(Rango_etario))
+
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_ovfg_ingresadas.json"))
 
@@ -110,3 +169,9 @@ write_json(toJSON(Data2), path = paste0(dir, "/json/denuncias_ovfg_modalidades.j
 write_json(toJSON(Data3), path = paste0(dir, "/json/denuncias_ovfg_tipos.json"))
 
 write_json(toJSON(Data4), path = paste0(dir, "/json/denuncias_ovfg_vinculo.json"))
+
+write_json(toJSON(Data5), path = paste0(dir, "/json/denuncias_ovfg_genero_denunciante.json"))
+
+write_json(toJSON(Data6), path = paste0(dir, "/json/denuncias_ovfg_genero_denunciado.json"))
+
+write_json(toJSON(Data7), path = paste0(dir, "/json/denuncias_ovfg_edades_denunciante.json"))

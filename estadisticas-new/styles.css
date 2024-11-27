@@ -248,6 +248,11 @@ select {
 
 /* Estilo del contenido del gráfico */
 .chartContent {
+    display: none;
+}
+
+.chartContent.active {
+    display: block;
     background-color: #fafafa;
     width: 70%;
     height: auto;
@@ -256,13 +261,6 @@ select {
     margin: auto;
     padding: 2%;
     border-radius: 10px;
-}
-
-.chartSection {
-    display: none;
-}
-.chartSection.active {
-    display: block;
 }
 
 /* ###################################### */

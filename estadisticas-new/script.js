@@ -47,7 +47,7 @@ function toggleSidebar() {
 
 function showChart(chartId) {
     // Ocultar todos los gráficos
-    document.querySelectorAll(".chartSection").forEach(chart => {
+    document.querySelectorAll(".chartContent").forEach(chart => {
         chart.classList.remove("active");
     });
 

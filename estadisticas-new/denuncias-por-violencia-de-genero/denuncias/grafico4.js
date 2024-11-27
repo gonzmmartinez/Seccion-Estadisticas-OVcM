@@ -30,8 +30,6 @@ function iniciar4() {
             // Procesar los datos filtrados
             const { categories4, values4 } = procesarDatos4(datosFiltrados4);
 
-            console.log(categories4)
-
             // Crear y renderizar el gráfico
             window.chart4 = crearGrafico4(categories4, values4);
             window.chart4.render();
