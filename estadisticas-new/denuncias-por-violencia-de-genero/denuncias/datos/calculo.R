@@ -156,8 +156,32 @@ totalData7 <- Raw7 %>%
   mutate(Año = "TODOS")
 Data7 <- rbind(Data7, totalData7)
 Data7 <- Data7 %>%
-  mutate(Cantidad = ifelse(Género == "Varones", -1 * Cantidad, Cantidad)) %>%
-  mutate(Porcentaje = ifelse(Género == "Varones", -1 * Porcentaje, Porcentaje)) %>%
+  mutate(Cantidad = ifelse(Género == "Mujeres", -1 * Cantidad, Cantidad)) %>%
+  mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
+  arrange(desc(Rango_etario))
+
+# Edades de las personas denunciadas
+Data8 <- Raw8 %>%
+  filter(Rango_etario != "Sin especificar") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Género, Rango_etario) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  ungroup %>%
+  group_by(Año) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
+totalData8 <- Raw8 %>%
+  filter(Rango_etario != "Sin especificar") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  group_by(Género, Rango_etario) %>%
+  summarise(Cantidad = sum(Frecuencia)) %>%
+  ungroup %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  mutate(Año = "TODOS")
+Data8 <- rbind(Data8, totalData8)
+Data8 <- Data8 %>%
+  mutate(Cantidad = ifelse(Género == "Mujeres", -1 * Cantidad, Cantidad)) %>%
+  mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
   arrange(desc(Rango_etario))
 
 
@@ -175,3 +199,5 @@ write_json(toJSON(Data5), path = paste0(dir, "/json/denuncias_ovfg_genero_denunc
 write_json(toJSON(Data6), path = paste0(dir, "/json/denuncias_ovfg_genero_denunciado.json"))
 
 write_json(toJSON(Data7), path = paste0(dir, "/json/denuncias_ovfg_edades_denunciante.json"))
+
+write_json(toJSON(Data8), path = paste0(dir, "/json/denuncias_ovfg_edades_denunciado.json"))

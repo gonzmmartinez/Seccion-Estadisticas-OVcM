@@ -256,7 +256,7 @@
                 <p>
                     <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Proporción de género de las personas que realizaron las denuncias</i></span>
+                    <span style="font-size:15px"><i>Proporción de género de las personas que resultaron denunciadas</i></span>
                 </p>
             </div>
         
@@ -293,7 +293,7 @@
                 <p>
                     <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Proporción de género de las personas que realizaron las denuncias</i></span>
+                    <span style="font-size:15px"><i>Edades de las personas que realizaron las denuncias</i></span>
                 </p>
             </div>
         
@@ -322,6 +322,43 @@
                 </select>
             </div>
         </div>
+
+        <div id="chart8" class="chartContent">
+
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Edades de las personas que resultaron denunciadas</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico8" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género. Corte de Justicia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio8" onchange="actualizarGrafico8()">
+                    <option value="TODOS">TODOS</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <script src="../../script.js"></script>
@@ -334,5 +371,6 @@
     <script type="text/javascript" src="./grafico5.js"></script>
     <script type="text/javascript" src="./grafico6.js"></script>
     <script type="text/javascript" src="./grafico7.js"></script>
+    <script type="text/javascript" src="./grafico8.js"></script>
 </body>
 </html>

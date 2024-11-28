@@ -1,54 +1,54 @@
 // Datos
-const archivo7 = "datos/json/denuncias_ovfg_edades_denunciante.json";
+const archivo8 = "datos/json/denuncias_ovfg_edades_denunciado.json";
 
 // PROCESAMIENTO
-function procesarDatos7(data) {
+function procesarDatos8(data) {
     // Crear los arrays para las categorías y los valores de las barras
-    const categories_M_7 = [];
-    const values_M_7 = [];
-    const categories_V_7 = [];
-    const values_V_7 = [];
+    const categories_M_8 = [];
+    const values_M_8 = [];
+    const categories_V_8 = [];
+    const values_V_8 = [];
     
     const data_M = data.filter(item => item.Género === "Mujeres");
     const data_V = data.filter(item => item.Género === "Varones");
 
     // Procesar los datos de cada entrada para mujeres
     data_M.forEach(item => {
-        categories_M_7.push(item.Rango_etario);
-        values_M_7.push(item.Porcentaje);
+        categories_M_8.push(item.Rango_etario);
+        values_M_8.push(item.Porcentaje);
     });
 
     // Procesar los datos de cada entrada para varones
     data_V.forEach(item => {
-        categories_V_7.push(item.Rango_etario);
-        values_V_7.push(item.Porcentaje);
+        categories_V_8.push(item.Rango_etario);
+        values_V_8.push(item.Porcentaje);
     });
 
-    return { categories_M_7, values_M_7, categories_V_7, values_V_7 };
+    return { categories_M_8, values_M_8, categories_V_8, values_V_8 };
 }
 
 // INICIALIZACIÓN
-function iniciar7() {
-  cargarDatos(archivo7) // Cargar los datos del JSON
-        .then(data7 => {
+function iniciar8() {
+  cargarDatos(archivo8) // Cargar los datos del JSON
+        .then(data8 => {
             // Parsear los datos
-            const parsedData7 = parsearDatos(data7);
+            const parsedData8 = parsearDatos(data8);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado7 = "TODOS";
-            const datosFiltrados7 = filtrarPorAnio(parsedData7, anioSeleccionado7);
+            const anioSeleccionado8 = "TODOS";
+            const datosFiltrados8 = filtrarPorAnio(parsedData8, anioSeleccionado8);
 
             // Procesar los datos filtrados
-            const { categories_M_7, values_M_7, categories_V_7, values_V_7 } = procesarDatos7(datosFiltrados7);
+            const { categories_M_8, values_M_8, categories_V_8, values_V_8 } = procesarDatos8(datosFiltrados8);
 
-            console.log(datosFiltrados7);
+            console.log(datosFiltrados8);
 
             // Crear y renderizar el gráfico
-            window.chart7 = crearGrafico7(categories_M_7, values_M_7, categories_V_7, values_V_7);
-            window.chart7.render();
+            window.chart8 = crearGrafico8(categories_M_8, values_M_8, categories_V_8, values_V_8);
+            window.chart8.render();
         })
         .catch(error1 => {
-            document.getElementById("grafico7").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico8").textContent = `Error: ${error1.message}`;
         });
 }
 
@@ -57,29 +57,29 @@ function filtrarPorAnio(data, year) {
   return data.filter(item => item.Año === year);
 }
 
-function actualizarGrafico7() {
-  cargarDatos(archivo7)
-      .then(data7 => {
-          const parsedData7 = parsearDatos(data7);
+function actualizarGrafico8() {
+  cargarDatos(archivo8)
+      .then(data8 => {
+          const parsedData8 = parsearDatos(data8);
 
           // Filtrar por el distrito seleccionado
-          const anioSeleccionado7 = document.getElementById("Anio7").value;
-          const datosFiltrados7 = filtrarPorAnio(parsedData7, anioSeleccionado7);
+          const anioSeleccionado8 = document.getElementById("Anio8").value;
+          const datosFiltrados8 = filtrarPorAnio(parsedData8, anioSeleccionado8);
 
           // Procesar datos
-          const { categories_M_7, values_M_7, categories_V_7, values_V_7 } = procesarDatos7(datosFiltrados7);
+          const { categories_M_8, values_M_8, categories_V_8, values_V_8 } = procesarDatos8(datosFiltrados8);
 
           // Actualizar las series y categorías con animación
-          window.chart7.updateOptions({ series: [{data: values_M_7}, {data:values_V_7}]});
+          window.chart8.updateOptions({ series: [{data: values_M_8}, {data:values_V_8}]});
       })
       .catch(error => {
-          document.getElementById("grafico7").textContent = `Error: ${error.message}`;
+          document.getElementById("grafico8").textContent = `Error: ${error.message}`;
       });
 }
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico7(categories_M, values_M, categories_V, values_V) {
-    return new ApexCharts(document.querySelector("#grafico7"), {
+function crearGrafico8(categories_M, values_M, categories_V, values_V) {
+    return new ApexCharts(document.querySelector("#grafico8"), {
         chart: {
             type: 'bar',
             stacked: true,
