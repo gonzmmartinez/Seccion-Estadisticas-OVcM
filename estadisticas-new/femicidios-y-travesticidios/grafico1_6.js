@@ -90,7 +90,7 @@ function crearGrafico1_6(categories, values) {
         },
         xaxis: {
             title: {
-                text: "Rango etario"
+                text: "Lugar del hecho"
             },
             categories: categories
         },

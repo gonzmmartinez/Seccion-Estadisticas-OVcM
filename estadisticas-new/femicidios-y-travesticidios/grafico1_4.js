@@ -88,7 +88,7 @@ function crearGrafico1_4(categories, values) {
         },
         xaxis: {
             title: {
-                text: "Rango etario"
+                text: "Cantidad de hijas/os"
             },
             categories: categories
         },
