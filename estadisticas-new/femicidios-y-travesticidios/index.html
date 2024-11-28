@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link type="text/css" rel="stylesheet" href="../styles.css">
+    <link type="text/css" rel="stylesheet" href="./femicidios_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li><a href="#"><img src="../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
+            <li><a href="#"><img src="../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
+            <li><a href="#"><img src="../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
+            <li><a href="#"><img src="../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
+            <li><a href="#"><img src="../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../">Estadísticas</a></li>
+                <li class="active">Femicidios y travesticidios</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <img src="../svg/icono_01.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</h1>
+        </div>
+
+        <p style="text-align: center">Indicadores:</p>
+
+        <!-- Contenedor de botones -->
+        <nav class="indicador-container">
+            <button class="indicadorButton" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Evolución de la cantidad total de femicidios y muertes violentas</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de femicidios a nivel provincial</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
+        </nav>
+
+        <br>
+        
+        <!-- Sección de gráficos -->
+        <div id="chart1" class="chartContent active" style="width: 95%">
+            <!-- TITULO -->
+            <div style="text-align: center; height: auto;">
+                <p>
+                    <span style="font-size:20px"><strong>Muertes violentas, femicidios, travesticidios y transfemicidios</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Provincia de Salta</i></span>
+                    <br>
+                    <span style="font-size:12px"><i>Última actualización: noviembre de 2024</i></span>
+                </p>
+
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio1" onchange="actualizarGraficos()">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="divGrande">
+                <!-- MAPA -->
+                <div id="divSub1">
+                    <p>Mapa</p>
+                </div>
+
+                <!-- DIBUJITO -->
+                <div id="divSub2">
+                    <p>Dibujito</p>
+                </div>
+
+                <!-- EDADES AGRUPADAS -->
+                <div id="divSub3" style="justify-items: center;">
+                    <p>
+                        <strong>Por edades agrupadas</strong>
+                    </p>
+
+                    <div id="grafico1_3" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub4" style="justify-items: center; align-items: center;">
+                    <p>
+                        <strong>Por Cantidad de hijas/os de las víctimas</strong>
+                    </p>
+
+                    <div id="grafico1_4" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub5" style="justify-items: center;">
+                    <p>
+                        <strong>Medio utilizado</strong>
+                    </p>
+
+                    <div id="grafico1_5" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub6" style="justify-items: center;">
+                    <p>
+                        <strong>Lugar del hecho</strong>
+                    </p>
+
+                    <div id="grafico1_6" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub7" style="justify-items: center;">
+                    <p>
+                        <strong>Por vínculo con la persona que ejerció la agresión</strong>
+                    </p>
+
+                    <div id="grafico1_7" style="width: 85%;"></div>
+                </div>
+                <div id="divSub8"> </div>
+                <div id="divSub9"> </div>
+            </div>
+        </div>
+
+        <div id="chart2" class="chartContent">
+            <p>Prueba 2.</p>
+        </div>
+
+        <div id="chart3" class="chartContent">
+            <p>Prueba 3.</p>
+        </div>
+
+        <div id="chart4" class="chartContent">
+            <p>Prueba 4.</p>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="../script.js"></script>
+
+    <!-- Gráficos -->
+    <script type="text/javascript" src="./grafico1_3.js"></script>
+    <script type="text/javascript" src="./grafico1_4.js"></script>
+    <script type="text/javascript" src="./grafico1_5.js"></script>
+    <script type="text/javascript" src="./grafico1_6.js"></script>
+    <script type="text/javascript" src="./grafico1_7.js"></script>
+</body>
+</html>
