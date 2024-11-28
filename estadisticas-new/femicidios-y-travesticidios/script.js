@@ -43,3 +43,5 @@ function cortarTexto(texto, limite) {
     return resultado;
   }
   
+  // 8. Llamar la función principal al cargar la página
+window.addEventListener("load", iniciar1);
