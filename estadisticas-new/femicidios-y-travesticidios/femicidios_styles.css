@@ -46,3 +46,38 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
+/* LINEA DE MUERTES VIOLENTAS */
+.line {
+    height: 2px; /* Grosor de la línea */
+    background-color: #ff5733; /* Color específico */
+    width: 100%; /* Ancho completo para que la línea ocupe todo el espacio entre los otros elementos */
+    margin: 0px 0; /* Espaciado opcional arriba y abajo */
+}
+
+/* Contenedor principal para alinear elementos utilizando Grid */
+.grid-container {
+    display: grid; /* Usamos Grid para una disposición de filas y columnas */
+    grid-template-columns: 25% 10% 65%; /* Ajusta las proporciones de las columnas */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    justify-items: center;
+    gap: 10px; /* Espaciado entre los elementos */
+    width: 85%; /* Ajusta el ancho según tu preferencia */
+}
+
+/* Estilo para los elementos dentro del Grid */
+.grid-container .item {
+    text-align: center;
+    align-self: end;
+}
+
+/* Estilo para el número principal */
+#totalMuertes {
+    background-color: #ff5733;
+    padding: 25px;
+    border-radius: 100%;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif;
+}

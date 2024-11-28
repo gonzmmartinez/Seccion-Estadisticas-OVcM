@@ -19,6 +19,8 @@ planilla <- "https://docs.google.com/spreadsheets/d/1_n2tTaEXNYTv7fGRLLXt65W49wv
 
 Raw0 <- read_sheet(ss = planilla, sheet = "REGISTRO")
 
+Raw1 <- read_sheet(ss = planilla, sheet = "CAUSAS TOTALES" )
+
 ######### TRANSFORMAR DATOS #########
 
 # Rango etario
@@ -67,6 +69,14 @@ Data7 <- Raw0 %>%
   ungroup %>%
   arrange(Medio_utilizado)
 
+# Causas totales
+Data8 <- Raw1 %>%
+  mutate(Año = as.character(Año)) %>%
+  mutate(Estado = case_when(Estado == "Caratulado" ~ "Tienen la carátula provisoria de femicidio",
+                            Estado == "En etapa de investigación" ~ "Se encuentran en etapa de investigación",
+                            .default = Estado)) %>%
+  arrange(Cantidad)
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 
@@ -77,3 +87,5 @@ write_json(toJSON(Data5), path = paste0(dir, "/json/femicidios_hijos.json"))
 write_json(toJSON(Data6), path = paste0(dir, "/json/femicidios_lugar_del_hecho.json"))
 
 write_json(toJSON(Data7), path = paste0(dir, "/json/femicidios_medio_utilizado.json"))
+
+write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json"))
