@@ -87,7 +87,7 @@ function cargarDatos(archivo) {
 
 // Función para parsear
 function parsearDatos(data) {
-    let parsedData1;
+    let parsedData;
     if (Array.isArray(data) && typeof data[0] === "string") {
         // Si es un array con un string JSON, realiza el segundo parseo
         parsedData = JSON.parse(data[0]);

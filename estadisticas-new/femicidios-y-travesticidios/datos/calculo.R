@@ -21,6 +21,8 @@ Raw0 <- read_sheet(ss = planilla, sheet = "REGISTRO")
 
 Raw1 <- read_sheet(ss = planilla, sheet = "CAUSAS TOTALES" )
 
+Raw2 <- read_sheet(ss = planilla, sheet = "CAUSAS JUDICIALES" )
+
 ######### TRANSFORMAR DATOS #########
 
 # Rango etario
@@ -77,6 +79,10 @@ Data8 <- Raw1 %>%
                             .default = Estado)) %>%
   arrange(Cantidad)
 
+# Causas judiciales
+Data9 <- Raw2 %>%
+  mutate(Año = as.character(Año))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 
@@ -89,3 +95,5 @@ write_json(toJSON(Data6), path = paste0(dir, "/json/femicidios_lugar_del_hecho.j
 write_json(toJSON(Data7), path = paste0(dir, "/json/femicidios_medio_utilizado.json"))
 
 write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json"))
+
+write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.json"))

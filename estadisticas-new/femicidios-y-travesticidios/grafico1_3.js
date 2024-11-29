@@ -30,8 +30,6 @@ function iniciar1_3() {
             // Procesar los datos filtrados
             const { categories1_3, values1_3 } = procesarDatos1_3(datosFiltrados1_3);
 
-            console.log(datosFiltrados1_3);
-
             // Crear y renderizar el gráfico
             window.chart1_3 = crearGrafico1_3(categories1_3, values1_3);
             window.chart1_3.render();

@@ -105,3 +105,23 @@
     font-weight: bold;
     font-family: 'Barlow', sans-serif;
 }
+
+/* Contenedor de íconos de mujeres */
+.mujeres-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-top: 2rem;
+  }
+
+.mujeres-icon {
+    width: 4rem;
+    height: 4rem;
+    transition: filter 0.3s;
+    filter: grayscale(100%);
+}
+
+.mujeres-icon.filled {
+      filter: invert(19%) sepia(99%) saturate(3077%) hue-rotate(263deg) brightness(77%) contrast(119%);
+      border-bottom: 3px solid black;
+  }
