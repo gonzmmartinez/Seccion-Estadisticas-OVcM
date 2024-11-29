@@ -69,7 +69,7 @@ function crearGrafico1_4(categories, values) {
     return new ApexCharts(document.querySelector("#grafico1_4"), {
         chart: {
             type: 'bar',
-            height: 250,
+            height: '80%',
             toolbar: {
               show: true
             }

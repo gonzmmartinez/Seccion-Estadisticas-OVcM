@@ -69,7 +69,7 @@ function crearGrafico1_5(categories, values) {
   return new ApexCharts(document.querySelector("#grafico1_5"), {
       chart: {
           type: 'donut',
-          height: 250,
+          height: '80%',
           toolbar: {
             show: true
           }
