@@ -56,9 +56,10 @@
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
             <button class="indicadorButton" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">Evolución de la cantidad total de femicidios y muertes violentas</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de femicidios a nivel provincial</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Mapa de femicidios</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y muertes violentas</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel provincial</button>
+            <button class="indicadorButton" onclick="showChart('chart5')">Tasa de femicidios a nivel nacional</button>
         </nav>
 
         <br>
@@ -164,14 +165,45 @@
                             </p>
                         </div>
                         <div class="line"></div>
-                        <div id="grafico1_8" style="width: 80%"></div>
+                        <div id="grafico1_8" style="width: 65%"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="chart2" class="chartContent">
-            <p>Prueba 2.</p>
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Mapa de femicidios</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Casos en la Provincia de Salta en un tiempo determinado</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico2" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                </p>
+            </div>
+        
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Distrito:
+                </p>
+                <select id="Anio1" onchange="filtrarFemicidiosPorAnio()">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
         </div>
 
         <div id="chart3" class="chartContent">
@@ -180,6 +212,10 @@
 
         <div id="chart4" class="chartContent">
             <p>Prueba 4.</p>
+        </div>
+
+        <div id="chart5" class="chartContent">
+            <p>Prueba 5.</p>
         </div>
     </div>
 

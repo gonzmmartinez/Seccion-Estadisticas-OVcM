@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Coroplético - Provincia de Salta</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+    <style>
+        #main {
+            width: 750px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        // Cargar el archivo GeoJSON de Salta usando fetch
+        fetch('./datos/departamentos-salta.json')
+            .then(response => response.json())
+            .then(saltaJson => {
+                // Registrar el mapa de Salta con el GeoJSON
+                echarts.registerMap('Salta', { geoJSON: saltaJson });
+
+                // Configuración del gráfico
+                option = {
+                    width: '55%',  // Define un ancho fijo o proporcional
+                    height: '100%',  // Ajusta la altura
+                    title: {
+                        text: 'Población por Departamento - Salta',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{b}: {c}' // {b} es el nombre del departamento, {c} es el valor
+                    },
+                    visualMap: {
+                        min: 5000,
+                        max: 600000,
+                        left: 'right',
+                        text: ['Mayor', 'Menor'],
+                        calculable: true,
+                        inRange: {
+                            color: ['#e0f3f8', '#4575b4', '#d73027']
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Población',
+                            type: 'map',
+                            map: 'Salta', // El nombre registrado
+                            roam: true,
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            },
+                            data: [
+                                { name: 'CAPITAL', value: 600000 },
+                                { name: 'ANTA', value: 90000 },
+                                { name: 'CACHI', value: 8000 },
+                                { name: 'CERRILLOS', value: 25000 },
+                                { name: 'CHICOANA', value: 20000 },
+                                // Agrega más departamentos y sus valores aquí
+                            ]
+                        }
+                    ]
+                };
+
+                // Establecer la configuración del gráfico
+                myChart.setOption(option);
+            })
+            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    </script>
+</body>
+</html>

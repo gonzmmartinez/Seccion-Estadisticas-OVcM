@@ -93,7 +93,7 @@
     display: grid; /* Usamos Grid para una disposición de filas y columnas */
     grid-template-columns: 25% 20% 100%; /* Ajusta las proporciones de las columnas */
     align-items: center; /* Alinea verticalmente los elementos en el centro */
-    width: auto;
+    width: 750px;
     height: 350px
 }
 
