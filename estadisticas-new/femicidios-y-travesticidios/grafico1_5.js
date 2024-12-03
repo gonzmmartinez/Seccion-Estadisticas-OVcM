@@ -14,7 +14,7 @@ function procesarDatos1_5(data) {
     });
 
     return { categories1_5, values1_5 };
-}
+};
 
 // INICIALIZACIÓN
 function iniciar1_5() {
@@ -37,7 +37,7 @@ function iniciar1_5() {
         .catch(error1 => {
             document.getElementById("grafico1_5").textContent = `Error: ${error1.message}`;
         });
-}
+};
 
 // FILTRAR DATOS
 function filtrarPorAnio(data, year) {
@@ -62,7 +62,7 @@ function actualizarGrafico1_5() {
       .catch(error => {
           document.getElementById("grafico1_5").textContent = `Error: ${error.message}`;
       });
-}
+};
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico1_5(categories, values) {
@@ -78,15 +78,13 @@ function crearGrafico1_5(categories, values) {
       labels: categories, // Las etiquetas para cada segmento
       title: {},
       colors: ["#e3753d", "#45488d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#e3474b"],
-      dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
-      },
       tooltip: {
-        enabled: true,
-        followCursor: true,
+        y: {
+          formatter: function(value, opts) {
+                return value + "  (" + Math.round(opts.globals.seriesPercent[opts.seriesIndex] * 10) / 10 + "%)"
+          },
+          title: (seriesName) => seriesName
+        },
       },
       legend: {
         show: true,
@@ -102,7 +100,7 @@ function crearGrafico1_5(categories, values) {
         enabled: true,
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.5rem',
           fontWeight: 'bold',
           color: 'white'
         },

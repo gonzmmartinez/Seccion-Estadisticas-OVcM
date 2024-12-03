@@ -17,7 +17,6 @@ function filtrarFemicidiosPorAnio(data, year) {
 // Función principal para inicializar el gráfico
 function iniciar2() {
     const chartDom = document.getElementById('grafico2');
-    chartDom.style.height = "30rem";
     const myChart = echarts.init(chartDom, null, {renderer: 'svg'});
 
     // Paso 1: Cargar los datos del archivo JSON
@@ -52,7 +51,6 @@ function iniciar2() {
 // Función para actualizar el gráfico
 function actualizarGrafico2() {
     const chartDom = document.getElementById('grafico2');
-    chartDom.style.height = "30rem";
     const myChart = echarts.init(chartDom, null, {renderer: 'svg'});
 
     cargarDatos(archivo2)
@@ -77,8 +75,6 @@ function actualizarGrafico2() {
 // Función para crear las opciones del gráfico
 function crearGrafico2(data) {
     return {
-        height: '90%',
-        width: '70%',
         tooltip: {
             trigger: 'item',
             formatter: '{b}: {c} femicidios' // {b} es el nombre del departamento, {c} es el valor
@@ -93,7 +89,8 @@ function crearGrafico2(data) {
         visualMap: {
             min: 0,
             max: 5, // Ajusta este valor según los datos
-            left: 'left',
+            left: 'center',
+            orient: 'horizontal',
             text: ['Casos'],
             calculable: true,
             inRange: {

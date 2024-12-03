@@ -100,6 +100,12 @@ Data10 <- Departamentos %>%
   left_join(select(Data10, ID, Cantidad), by="ID") %>%
   replace(is.na(.), 0)
 
+# Femicidios caratulados
+Data11 <- Raw0 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año) %>%
+  summarise(Cantidad = n())
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 
@@ -116,3 +122,5 @@ write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json
 write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.json"))
 
 write_json(toJSON(Data10), path=paste0(dir, "/json/femicidios_localidad.json"))
+
+write_json(toJSON(Data11), path=paste0(dir, "/json/femicidios_cantidad.json"))

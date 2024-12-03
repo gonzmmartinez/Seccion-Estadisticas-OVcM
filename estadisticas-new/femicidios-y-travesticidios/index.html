@@ -29,11 +29,11 @@
 
         <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
         <ul>
-            <li><a href="#"><img src="../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
-            <li><a href="#"><img src="../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
-            <li><a href="#"><img src="../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
-            <li><a href="#"><img src="../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
-            <li><a href="#"><img src="../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
+            <li><a href="../femicidios-y-travesticidios/"><img src="../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
+            <li><a href="../denuncias-por-violencia-de-genero/"><img src="../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
+            <li><a href="../educacion-y-mercado-de-trabajo/"><img src="../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
+            <li><a href="../salud-y-libertad-reproductiva/"><img src="../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
+            <li><a href="../participacion-en-la-toma-de-decisiones/"><img src="../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
         </ul>
     </div>
 
@@ -94,7 +94,10 @@
             <div id="divGrande">
                 <!-- MAPA -->
                 <div id="divSub1">
-                    <p>Mapa</p>
+                    <span id="totalFemicidios"></span>
+                    <p style="width: 50%; text-align: center; font-size: 1.5rem;">
+                        <strong>Femicidios caratulados provisoriamente</strong>
+                    </p>
                 </div>
 
                 <!-- DIBUJITO -->
@@ -146,7 +149,7 @@
                         <strong>Por vínculo con la persona que ejerció la agresión</strong>
                     </p>
 
-                    <div id="grafico1_7" style="width: 60%;"></div>
+                    <div id="grafico1_7" style="width: 90%;"></div>
                 </div>
 
                 <div id="divSub8">
@@ -166,7 +169,7 @@
                             </p>
                         </div>
                         <div class="line"></div>
-                        <div id="grafico1_8" style="width: 65%"></div>
+                        <div id="grafico1_8"></div>
                     </div>
                 </div>
             </div>
@@ -183,7 +186,7 @@
             </div>
         
             <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 700px; margin: 0 auto;"></div> 
+            <div id="grafico2"></div> 
         
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
@@ -224,6 +227,7 @@
     <script src="../script.js"></script>
 
     <!-- Gráficos -->
+    <script type="text/javascript" src="./grafico1_2.js"></script>
     <script type="text/javascript" src="./grafico1_3.js"></script>
     <script type="text/javascript" src="./grafico1_4.js"></script>
     <script type="text/javascript" src="./grafico1_5.js"></script>

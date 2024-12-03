@@ -10,8 +10,11 @@
 #divSub1 {
     display:flex;
     align-items: center;
-    flex-direction: column;
-    height: 350px;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 25px;
+    height: auto;
+    padding: 3% 0;
     grid-area: 1 / 1 / 2 / 3;
     background-color: #ededed;
     border-radius: 10px;
@@ -97,14 +100,35 @@
     height: 350px
 }
 
+#grafico1_8 {
+    width: 65%;
+}
+
 /* Estilo para los elementos dentro del Grid */
 .grid-container .item {
     text-align: center;
     align-self: center;
 }
 
-/* Estilo para el número principal */
+/* Estilo para el número principal de muertes violentas */
 #totalMuertes {
+    background-color: #ff5733;
+    padding: 25px;
+    border-radius: 100%;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif;
+}
+
+/* Estilo para el número principal de femicidios */
+#totalFemicidios {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    width: 4rem;
+    height: 4rem;
     background-color: #ff5733;
     padding: 25px;
     border-radius: 100%;
@@ -132,4 +156,86 @@
 .mujeres-icon.filled {
       filter: invert(19%) sepia(99%) saturate(3077%) hue-rotate(263deg) brightness(77%) contrast(119%);
       border-bottom: 3px solid black;
-  }
+}
+
+#grafico2 {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+
+
+/* ###################################### */
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 780px) {
+    #divGrande {
+        display: flex; /* Cambia el contenedor a Flexbox */
+        flex-direction: column; /* Organiza los elementos en una sola columna */
+        gap: 10px; /* Espacio entre los elementos */
+        margin-top: 2rem; /* Conserva el margen superior */
+    }
+
+    #divSub1 {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        background-color: #ededed;
+        border-radius: 10px;
+    }
+
+    #divSub5 {
+        height: 275px;
+    }
+
+    #divSub7 {
+        width: 100%;
+        height: 275px;
+    }
+
+    #divSub8 {
+        height: 400px;
+        width: 100%;
+        justify-content: start;
+        row-gap: 40px;
+    }
+
+    #totalMuertes {
+        font-size: 2.5rem;
+    }
+
+    .mujeres-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        transition: filter 0.3s;
+        filter: grayscale(100%);
+    }
+
+    .grid-container {
+        display: grid; /* Usamos Grid */
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: 1fr 1fr 5fr; /* Tres filas con altura automática */
+        align-items: center; /* Alinea los elementos verticalmente */
+        justify-items: center; /* Alinea horizontalmente los elementos en el centro */
+        width: 100%;
+        height: 10rem
+    }
+
+    .line {
+        width: 2px; /* Grosor de la línea vertical */
+        background-color: #ff5733; /* Color específico */
+        height: 50px; /* Altura completa para que ocupe todo el espacio disponible */
+        margin: 0 auto; /* Centra la línea horizontalmente */
+    }
+
+    #grafico1_8 {
+        width: 100%;
+    }
+
+    #grafico2 {
+        width: 100%;
+        height: 450px;
+    }
+}

@@ -85,8 +85,12 @@ function crearGrafico1_7(categories, values) {
         }
       },
       tooltip: {
-        enabled: true,
-        followCursor: true,
+        y: {
+          formatter: function(value, opts) {
+                return value + "  (" + Math.round(opts.globals.seriesPercent[opts.seriesIndex] * 10) / 10 + "%)"
+          },
+          title: (seriesName) => seriesName
+        },
       },
       legend: {
         show: true,
@@ -102,7 +106,7 @@ function crearGrafico1_7(categories, values) {
         enabled: true,
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.5rem',
           fontWeight: 'bold',
           color: 'white'
         },

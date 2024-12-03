@@ -265,7 +265,7 @@ select {
 
 /* ###################################### */
 /* PARA DISPOSITIVOS MÓVILES */
-@media (max-width: 480px) {
+@media (max-width: 780px) {
     /* Barra lateral en móviles */
     /* Estilo del contenido principal */
     #mainContent {
@@ -286,7 +286,7 @@ select {
     }
 
     /* Estilo del contenido del gráfico */
-    .chartContent {
+    .chartContent.active {
         background-color: #fafafa;
         width: 95%;
         height: auto;
@@ -391,6 +391,11 @@ select {
     /* Estilo para la sección de botones */
     .buttonSection {
         flex-direction: column;
+    }
+
+    /* Estilo para el container de indicadores en dispositivos móviles */
+    .indicador-container {
+        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
     }
 }
 

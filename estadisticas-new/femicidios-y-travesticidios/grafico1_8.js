@@ -95,11 +95,16 @@ function crearGrafico1_8(categories, values) {
         }
       },
       tooltip: {
-        enabled: true,
-        followCursor: true,
+        y: {
+          formatter: function(value, opts) {
+                return value + "  (" + Math.round(opts.globals.seriesPercent[opts.seriesIndex] * 10) / 10 + "%)"
+          },
+          title: (seriesName) => seriesName
+        },
       },
       legend: {
         show: true,
+        fontSize: '10px',
         formatter: function(seriesName, opts) {
           // Recortar texto de la leyenda a 30 caracteres y unir las líneas con un salto de línea
           const lineas = cortarTexto(seriesName, 30);
@@ -118,7 +123,7 @@ function crearGrafico1_8(categories, values) {
         enabled: true,
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.5rem',
           fontWeight: 'bold',
           color: 'white'
         },
