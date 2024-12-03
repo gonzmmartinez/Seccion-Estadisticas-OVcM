@@ -10,6 +10,7 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
 </head>
 
 <body>
@@ -175,14 +176,14 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Mapa de femicidios</strong></span>
+                    <span style="font-size:20px"><strong>Femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Casos en la Provincia de Salta en un tiempo determinado</i></span>
+                    <span style="font-size:15px"><i>Por departamento</i></span>
                 </p>
             </div>
         
             <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 100%;"></div> 
+            <div id="grafico2" style="width: 700px; margin: 0 auto;"></div> 
         
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
@@ -194,9 +195,9 @@
             <!-- Listas desplegables -->
             <div class="selectContainer">
                 <p>
-                    Distrito:
+                    Año:
                 </p>
-                <select id="Anio1" onchange="filtrarFemicidiosPorAnio()">
+                <select id="Anio2" onchange="actualizarGrafico2()">
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
                     <option value="2022">2022</option>
@@ -229,5 +230,6 @@
     <script type="text/javascript" src="./grafico1_6.js"></script>
     <script type="text/javascript" src="./grafico1_7.js"></script>
     <script type="text/javascript" src="./grafico1_8.js"></script>
+    <script type="text/javascript" src="./grafico2.js"></script>
 </body>
 </html>

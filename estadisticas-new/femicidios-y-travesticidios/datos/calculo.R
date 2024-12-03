@@ -83,6 +83,23 @@ Data8 <- Raw1 %>%
 Data9 <- Raw2 %>%
   mutate(Año = as.character(Año))
 
+# Localidad
+Departamentos <- data.frame(Localidad = rep(c("Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoana", "General Güemes",
+                                          "General José de San Martín", "Guachipas", "Iruya", "La Caldera", "La Candelaria",
+                                          "La Poma", "La Viña", "Los Andes", "Metán", "Molinos", "Orán", "Rivadavia",
+                                          "Rosario de la Frontera", "Rosario de Lerma", "San Carlos", "Santa Victoria"), 5)) %>%
+  mutate(Año = rep(c("2020", "2021", "2022", "2023", "2024"), each=23)) %>%
+  mutate(ID = paste0(str_sub(Año, 3), "-", Localidad))
+Data10 <- Raw0 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Localidad) %>%
+  summarise(Cantidad = n()) %>%
+  ungroup %>%
+  mutate(ID = paste0(str_sub(Año, 3), "-", Localidad))
+Data10 <- Departamentos %>%
+  left_join(select(Data10, ID, Cantidad), by="ID") %>%
+  replace(is.na(.), 0)
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 
@@ -97,3 +114,5 @@ write_json(toJSON(Data7), path = paste0(dir, "/json/femicidios_medio_utilizado.j
 write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json"))
 
 write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.json"))
+
+write_json(toJSON(Data10), path=paste0(dir, "/json/femicidios_localidad.json"))
