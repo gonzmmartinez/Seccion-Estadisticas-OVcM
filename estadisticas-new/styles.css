@@ -33,6 +33,10 @@ body {
     width: 100px;  /* Tamaño del ícono dentro del botón */
     height: 100px; /* Mantiene el ícono proporcional */
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    transition: transform 1s ease;
+}
+.logoIcon:hover {
+    transform: scale(1.2);
 }
 
 /* Estilo para el texto dentro del botón */
@@ -133,7 +137,9 @@ body {
 .titleIcon {
     width: auto; /* Ajusta el ancho automáticamente */
     height: 3em; /* El ícono tendrá la misma altura que la línea del texto */
-    filter: invert(100%)
+    background-color: black;
+    padding: 1%;
+    border-radius: 100%;
 }
 
 /* Estilo para la sección de botones */
@@ -165,8 +171,7 @@ body {
     width: 100%; /* Mantiene el botón con el ancho completo de su contenedor */
     height: 175px; /* Asegura que el botón sea cuadrado (igual en alto y ancho) */
     padding: 15px;
-    background-color: #3A1D51;
-    color: white;
+    background-color: #fafafa;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -175,10 +180,12 @@ body {
     border-radius: 5px; /* Bordes redondeados de 5px */
     transition: background-color 0.3s ease;
     box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+    filter: drop-shadow(0em 0em 5px rgba(125, 125, 125, 0.5))
 }
 
 .buttonLink:hover {
-    background-color: #4A2B6A;
+    background-color: #3A1D51;
+    filter: drop-shadow(0em 0em 5px rgba(58, 29, 81, 0.5))
 }
 
 /* Estilo para el ícono */
@@ -187,15 +194,22 @@ body {
     height: 80px; /* Mantiene el ícono proporcional */
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
     margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+    filter: invert(80%)
+}
+.buttonLink:hover .buttonIcon {
+    filter: invert(0%)
 }
 
 /* Estilo para el texto dentro del botón */
 .buttonText {
     font-size: 16px; /* Ajuste del tamaño del texto */
-    color: white;
+    color: black;
     font-family: 'Barlow', sans-serif;
     margin-bottom: 10px; /* Margen de 5px abajo del texto */;
     text-align: center;
+}
+.buttonLink:hover .buttonText {
+    color: white
 }
 
 /* INDICADORES */

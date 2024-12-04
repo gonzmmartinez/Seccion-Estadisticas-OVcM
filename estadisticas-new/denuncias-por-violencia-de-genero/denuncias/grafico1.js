@@ -87,8 +87,9 @@ function crearGrafico1(categories, values, groups) {
         },
         dataLabels: {
           enabledOnSeries: [0],
+          offsetX: 5,
           style: {
-            fontSize: '12px',
+            fontSize: '0.5rem',
             fontWeight: 'normal',
           }
         },

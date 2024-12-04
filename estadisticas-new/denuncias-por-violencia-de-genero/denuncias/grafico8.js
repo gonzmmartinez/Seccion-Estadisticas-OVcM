@@ -138,6 +138,7 @@ function crearGrafico8(categories_M, values_M, categories_V, values_V) {
         },
         dataLabels: {
           enabled: true,
+          offsetY: 7.5,
           formatter: function (value) {
             if (Math.abs(value) >= 2) {
                 return Math.abs(Math.round(value * 10) / 10) + '%';
@@ -147,7 +148,7 @@ function crearGrafico8(categories_M, values_M, categories_V, values_V) {
           },
           dropShadow: false,
           style: {
-            fontSize: '15px',
+            fontSize: '0.5rem',
             fontWeight: 'bold',
             color: 'white'
           },

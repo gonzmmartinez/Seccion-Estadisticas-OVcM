@@ -98,7 +98,7 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
             data: values_V
         }],
         title: {},
-        colors: ["#45488d", "#e3753d", "#a9a226", "#e3474b", "#e3753d", "#e3a22e", "#2b768a", "#1468b1", "#45488d"],
+        colors: ["#45488d", "#e3753d"],
         yaxis: {
             title: {
                 text: "Rango etario"
@@ -138,6 +138,7 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
         },
         dataLabels: {
           enabled: true,
+          offsetY: 7.5,
           formatter: function (value) {
             if (Math.abs(value) >= 2) {
                 return Math.abs(Math.round(value * 10) / 10) + '%';
@@ -147,7 +148,7 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
           },
           dropShadow: false,
           style: {
-            fontSize: '15px',
+            fontSize: '0.5rem',
             fontWeight: 'bold',
             color: 'white'
           },

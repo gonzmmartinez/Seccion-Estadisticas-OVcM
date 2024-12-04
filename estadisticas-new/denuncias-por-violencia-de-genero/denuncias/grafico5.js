@@ -16,6 +16,26 @@ function procesarDatos5(data) {
     return { categories5, values5 };
 }
 
+// COLORES
+// Función para asignar colores
+function assignColors5(categories5) {
+  return categories5.map(category => {
+    switch (category) {
+      case "Mujeres":
+        return "#e3753d";
+      case "Varones":
+        return "#45488d";
+      default:
+        return "#CCCCCC"; // Gris por defecto
+    }
+  });
+}
+
+// FILTRAR DATOS
+function filtrarPorAnio(data, year) {
+  return data.filter(item => item.Año === year);
+}
+
 // INICIALIZACIÓN
 function iniciar5() {
   cargarDatos(archivo5) // Cargar los datos del JSON
@@ -39,11 +59,6 @@ function iniciar5() {
         });
 }
 
-// FILTRAR DATOS
-function filtrarPorAnio(data, year) {
-  return data.filter(item => item.Año === year);
-}
-
 function actualizarGrafico5() {
   cargarDatos(archivo5)
       .then(data5 => {
@@ -56,8 +71,15 @@ function actualizarGrafico5() {
           // Procesar datos
           const { categories5, values5 } = procesarDatos5(datosFiltrados5);
 
+          // Cambiar colores
+          const colors5 = assignColors5(categories5);
+
           // Actualizar las series y categorías con animación
-          window.chart5.updateOptions({ series: values5, labels: categories5});
+          window.chart5.updateOptions({
+            series: values5,
+            labels: categories5,
+            colors: colors5
+          });
       })
       .catch(error => {
           document.getElementById("grafico5").textContent = `Error: ${error.message}`;
@@ -66,10 +88,13 @@ function actualizarGrafico5() {
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico5(categories, values) {
+  // Asignar colores según las categorías
+  const colors = assignColors5(categories);
+
   return new ApexCharts(document.querySelector("#grafico5"), {
       chart: {
           type: 'donut',
-          height: 350,
+          height: '350px',
           toolbar: {
             show: true
           }
@@ -77,13 +102,7 @@ function crearGrafico5(categories, values) {
       series: values, // Los valores para el gráfico (arreglo de números)
       labels: categories, // Las etiquetas para cada segmento
       title: {},
-      colors: ["#e3753d", "#45488d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#e3474b"],
-      dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
-      },
+      colors: colors,
       tooltip: {
         enabled: true,
         followCursor: true,
@@ -95,6 +114,7 @@ function crearGrafico5(categories, values) {
       },
       legend: {
         show: true,
+        fontSize: '7.5rem',
         formatter: function(seriesName, opts) {
           return [seriesName + " - " + Math.round(opts.w.globals.series[opts.seriesIndex] * 10) / 10 + '%']
       }
@@ -117,7 +137,7 @@ function crearGrafico5(categories, values) {
         },
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.8rem',
           fontWeight: 'bold',
           color: 'white'
         },

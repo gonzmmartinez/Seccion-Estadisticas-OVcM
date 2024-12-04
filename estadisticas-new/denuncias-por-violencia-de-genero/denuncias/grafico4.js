@@ -80,7 +80,7 @@ function crearGrafico4(categories, values) {
             data: values
         }],
         title: {},
-        colors: ["#a9a226", "#e3474b", "#e3753d", "#e3a22e", "#2b768a", "#1468b1", "#45488d"],
+        colors: ["#e3474b"],
         yaxis: {
             title: {
                 text: "Vínculo con la persona que ejerció la agresión"
@@ -108,6 +108,7 @@ function crearGrafico4(categories, values) {
         },
         dataLabels: {
           enabled: true,
+          offsetY: 7.5,
           formatter: function (val) {
             if (val >= 5) {
               return Math.round(val * 10) / 10 + "%"
@@ -117,7 +118,7 @@ function crearGrafico4(categories, values) {
           },
           dropShadow: false,
           style: {
-            fontSize: '15px',
+            fontSize: '0.8rem',
             fontWeight: 'bold',
             color: 'white'
           },

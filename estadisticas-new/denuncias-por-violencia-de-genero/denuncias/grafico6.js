@@ -56,8 +56,15 @@ function actualizarGrafico6() {
           // Procesar datos
           const { categories6, values6 } = procesarDatos6(datosFiltrados6);
 
+          // Cambiar colores
+          const colors6 = assignColors5(categories6);
+
           // Actualizar las series y categorías con animación
-          window.chart6.updateOptions({ series: values6, labels: categories6});
+          window.chart6.updateOptions({
+            series: values6,
+            labels: categories6,
+            colors: colors6
+          });
       })
       .catch(error => {
           document.getElementById("grafico6").textContent = `Error: ${error.message}`;
@@ -66,10 +73,13 @@ function actualizarGrafico6() {
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico6(categories, values) {
+  // Cambiar colores
+  const colors = assignColors5(categories);
+
   return new ApexCharts(document.querySelector("#grafico6"), {
       chart: {
           type: 'donut',
-          height: 350,
+          height: '350px',
           toolbar: {
             show: true
           }
@@ -77,13 +87,7 @@ function crearGrafico6(categories, values) {
       series: values, // Los valores para el gráfico (arreglo de números)
       labels: categories, // Las etiquetas para cada segmento
       title: {},
-      colors: ["#45488d", "#e3753d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#e3474b"],
-      dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
-      },
+      colors: colors,
       tooltip: {
         enabled: true,
         followCursor: true,
@@ -95,9 +99,10 @@ function crearGrafico6(categories, values) {
       },
       legend: {
         show: true,
+        fontSize: '7.5rem',
         formatter: function(seriesName, opts) {
           return [seriesName + " - " + Math.round(opts.w.globals.series[opts.seriesIndex] * 10) / 10 + '%']
-      }
+        }
       },
       plotOptions: {
         pie: {
@@ -117,7 +122,7 @@ function crearGrafico6(categories, values) {
         },
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.8rem',
           fontWeight: 'bold',
           color: 'white'
         },

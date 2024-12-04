@@ -16,6 +16,38 @@ function procesarDatos2(data) {
     return { categories2, values2 };
 }
 
+// FILTRAR DATOS
+function filtrarPorAnio(data, year) {
+  return data.filter(item => item.Año === year);
+}
+
+// COLORES
+// Función para asignar colores
+function assignColors2(categories2) {
+  return categories2.map(category => {
+    switch (category) {
+      case "Doméstica":
+        return "#e3474b"; // Rojo anaranjado
+      case "Otras":
+        return "#dbdbdb"; // Verde claro
+      case "Laboral":
+        return "#e3a22e"; // Azul
+      case "Acoso callejero":
+        return "#1468b1"; // Rosa fuerte
+      case "Institucional":
+        return "#2b768a"; // Amarillo
+      case "Mediática":
+        return "#45488d"; // Turquesa
+      case "Política":
+        return "#e3753d"; // Borgoña
+      case "Obstétrica":
+        return "#a9a226"; // Púrpura
+      default:
+        return "#CCCCCC"; // Gris por defecto
+    }
+  });
+}
+
 // INICIALIZACIÓN
 function iniciar2() {
   cargarDatos(archivo2) // Cargar los datos del JSON
@@ -39,11 +71,6 @@ function iniciar2() {
         });
 }
 
-// FILTRAR DATOS
-function filtrarPorAnio(data, year) {
-  return data.filter(item => item.Año === year);
-}
-
 function actualizarGrafico2() {
   cargarDatos(archivo2)
       .then(data2 => {
@@ -56,8 +83,14 @@ function actualizarGrafico2() {
           // Procesar datos
           const { categories2, values2 } = procesarDatos2(datosFiltrados2);
 
+          // Cambiar colores
+          const colors2 = assignColors2(categories2);
+
           // Actualizar las series y categorías con animación
-          window.chart2.updateOptions({ series: values2, labels: categories2});
+          window.chart2.updateOptions({
+            series: values2,
+            labels: categories2,
+            colors: colors2});
       })
       .catch(error => {
           document.getElementById("grafico2").textContent = `Error: ${error.message}`;
@@ -66,10 +99,13 @@ function actualizarGrafico2() {
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico2(categories, values) {
+  // Asignar colores según las categorías
+  const colors = assignColors2(categories);
+
   return new ApexCharts(document.querySelector("#grafico2"), {
       chart: {
           type: 'donut',
-          height: 350,
+          height: '350px',
           toolbar: {
             show: true
           }
@@ -77,13 +113,7 @@ function crearGrafico2(categories, values) {
       series: values, // Los valores para el gráfico (arreglo de números)
       labels: categories, // Las etiquetas para cada segmento
       title: {},
-      colors: ["#e3474b", "#e3753d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#45488d"],
-      dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
-      },
+      colors: colors,
       tooltip: {
         enabled: true,
         followCursor: true,
@@ -91,10 +121,11 @@ function crearGrafico2(categories, values) {
           formatter: function(val) {
             return Math.round(val * 10) / 10 + '%';
           }
-      },
+        },
       },
       legend: {
         show: true,
+        fontSize: '7.5rem',
         formatter: function(seriesName, opts) {
           return [seriesName + " - " + Math.round(opts.w.globals.series[opts.seriesIndex] * 10) / 10 + '%']
       }
@@ -108,6 +139,11 @@ function crearGrafico2(categories, values) {
       },
       dataLabels: {
         enabled: true,
+        style: {
+          fontSize: '0.8rem',
+          fontWeight: 'bold',
+          color: 'white'
+        },
         formatter: function (val) {
           if (val >= 5) {
             return Math.round(val * 10) / 10 + "%"
@@ -116,11 +152,6 @@ function crearGrafico2(categories, values) {
           }
         },
         dropShadow: false,
-        style: {
-          fontSize: '15px',
-          fontWeight: 'bold',
-          color: 'white'
-        },
       }
   });
 }

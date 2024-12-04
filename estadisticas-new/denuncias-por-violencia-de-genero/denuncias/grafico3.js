@@ -16,6 +16,34 @@ function procesarDatos3(data) {
     return { categories3, values3 };
 }
 
+// FILTRAR DATOS
+function filtrarPorAnio(data, year) {
+  return data.filter(item => item.Año === year);
+}
+
+// COLORES
+// Función para asignar colores
+function assignColors3(categories3) {
+  return categories3.map(category => {
+    switch (category) {
+      case "Psicológica":
+        return "#2b768a"; 
+      case "Otros":
+        return "#dbdbdb";
+      case "Física":
+        return "#e3474b"; 
+      case "Simbólica":
+        return "#1468b1"; 
+      case "Económica/Patrimonial":
+        return "#a9a226";
+      case "Sexual":
+        return "#e3753d";
+      default:
+        return "#CCCCCC"; // Gris por defecto
+    }
+  });
+}
+
 // INICIALIZACIÓN
 function iniciar3() {
   cargarDatos(archivo3) // Cargar los datos del JSON
@@ -39,11 +67,6 @@ function iniciar3() {
         });
 }
 
-// FILTRAR DATOS
-function filtrarPorAnio(data, year) {
-  return data.filter(item => item.Año === year);
-}
-
 function actualizarGrafico3() {
   cargarDatos(archivo3)
       .then(data3 => {
@@ -56,6 +79,9 @@ function actualizarGrafico3() {
           // Procesar datos
           const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
+          // Cambiar colores
+          const colors3 = assignColors3(categories3);
+
           // Actualizar las series y categorías con animación
           window.chart3.updateOptions({ series: values3, labels: categories3});
       })
@@ -66,10 +92,13 @@ function actualizarGrafico3() {
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico3(categories, values) {
+  // Asignar colores según las categorías
+  const colors = assignColors3(categories);
+
   return new ApexCharts(document.querySelector("#grafico3"), {
       chart: {
           type: 'donut',
-          height: 350,
+          height: '350px',
           toolbar: {
             show: true
           }
@@ -77,13 +106,7 @@ function crearGrafico3(categories, values) {
       series: values, // Los valores para el gráfico (arreglo de números)
       labels: categories, // Las etiquetas para cada segmento
       title: {},
-      colors: ["#e3474b", "#e3753d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#45488d"],
-      dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
-      },
+      colors: colors,
       tooltip: {
         enabled: true,
         followCursor: true,
@@ -95,6 +118,7 @@ function crearGrafico3(categories, values) {
       },
       legend: {
         show: true,
+        fontSize: '7.5rem',
         formatter: function(seriesName, opts) {
           return [seriesName + " - " + Math.round(opts.w.globals.series[opts.seriesIndex] * 10) / 10 + '%']
       }
@@ -117,7 +141,7 @@ function crearGrafico3(categories, values) {
         },
         dropShadow: false,
         style: {
-          fontSize: '15px',
+          fontSize: '0.8rem',
           fontWeight: 'bold',
           color: 'white'
         },
