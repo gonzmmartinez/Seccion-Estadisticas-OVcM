@@ -1,5 +1,5 @@
 // Datos
-const archivo1 = "datos/json/femicidios_causas_judiciales.json";
+const archivo1 = "../datos/json/femicidios_causas_judiciales.json";
 
 // FUNCION PARA INICIALIZAR TODOS LOS OTROS GRAFICOS
 function iniciar1() {

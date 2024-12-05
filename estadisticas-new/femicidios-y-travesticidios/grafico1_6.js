@@ -1,5 +1,5 @@
 // Datos
-const archivo1_6 = "datos/json/femicidios_lugar_del_hecho.json";
+const archivo1_6 = "../datos/json/femicidios_lugar_del_hecho.json";
 
 // PROCESAMIENTO
 function procesarDatos1_6(data) {

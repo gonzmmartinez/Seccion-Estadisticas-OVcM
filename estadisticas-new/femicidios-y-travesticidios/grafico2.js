@@ -1,5 +1,5 @@
 // Datos
-const archivo2 = "datos/json/femicidios_localidad.json";
+const archivo2 = "../datos/json/femicidios_localidad.json";
 
 // PROCESAMIENTO
 function procesarDatos2(data) {
@@ -32,7 +32,7 @@ function iniciar2() {
             const datosProcesados2 = procesarDatos2(datosFiltrados2);
 
             // Paso 4: Cargar el archivo GeoJSON de Salta
-            return fetch('./datos/departamentos-salta.json')
+            return fetch('../datos/departamentos-salta.json')
                 .then(response => response.json())
                 .then(saltaJson => {
                     // Registrar el mapa de Salta

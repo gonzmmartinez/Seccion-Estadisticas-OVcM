@@ -1,5 +1,5 @@
 // Datos
-const archivo1 = "datos/json/denuncias_ovfg_ingresadas.json";
+const archivo1 = "../../datos/json/denuncias_ovfg_ingresadas.json";
 
 // 3. Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {

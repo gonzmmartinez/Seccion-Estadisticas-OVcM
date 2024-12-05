@@ -1,5 +1,5 @@
 // Datos
-const archivo4 = "datos/json/femicidios_tasa_nacional.json";
+const archivo4 = "../datos/json/femicidios_tasa_nacional.json";
 
 // PROCESAMIENTO
 function procesarDatos4(data) {
@@ -32,7 +32,7 @@ function iniciar4() {
             const datosProcesados4 = procesarDatos4(datosFiltrados4);
 
             // Paso 4: Cargar el archivo GeoJSON de Argentina
-            return fetch('./datos/provincias_argentina.geojson')
+            return fetch('../datos/provincias_argentina.geojson')
                 .then(response => response.json())
                 .then(argentinaJson => {
                     // Registrar el mapa de Argentina
@@ -86,13 +86,13 @@ function crearGrafico4(data) {
         },
         visualMap: {
             min: 0,
-            max: 5, // Ajusta este valor según los datos
+            max: 2.5, // Ajusta este valor según los datos
             left: 'center',
             orient: 'horizontal',
             text: ['Casos'],
             calculable: true,
             inRange: {
-                color: ['#ffffff', '#E85C0D', "#C7253E", '#821131']
+                color: ['#ffffff', '#C68FE6', "#6C48C5", '#1230AE']
             }
         },
         series: [

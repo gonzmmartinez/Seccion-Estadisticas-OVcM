@@ -1,5 +1,5 @@
 // Datos
-const archivo3 = "datos/json/denuncias_ovfg_tipos.json";
+const archivo3 = "../../datos/json/denuncias_ovfg_tipos.json";
 
 // PROCESAMIENTO
 function procesarDatos3(data) {

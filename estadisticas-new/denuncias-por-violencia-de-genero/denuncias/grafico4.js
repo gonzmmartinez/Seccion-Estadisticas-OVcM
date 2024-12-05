@@ -1,5 +1,5 @@
 // Datos
-const archivo4 = "datos/json/denuncias_ovfg_vinculo.json";
+const archivo4 = "../../datos/json/denuncias_ovfg_vinculo.json";
 
 // PROCESAMIENTO
 function procesarDatos4(data) {
@@ -14,7 +14,7 @@ function procesarDatos4(data) {
     });
 
     return { categories4, values4 };
-}
+};
 
 // INICIALIZACIÓN
 function iniciar4() {
@@ -37,12 +37,12 @@ function iniciar4() {
         .catch(error1 => {
             document.getElementById("grafico4").textContent = `Error: ${error1.message}`;
         });
-}
+};
 
 // FILTRAR DATOS
 function filtrarPorAnio(data, year) {
   return data.filter(item => item.Año === year);
-}
+};
 
 function actualizarGrafico4() {
   cargarDatos(archivo4)
@@ -62,7 +62,7 @@ function actualizarGrafico4() {
       .catch(error => {
           document.getElementById("grafico4").textContent = `Error: ${error.message}`;
       });
-}
+};
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico4(categories, values) {
