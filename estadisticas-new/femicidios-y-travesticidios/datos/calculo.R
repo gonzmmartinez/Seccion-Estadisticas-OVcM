@@ -23,6 +23,8 @@ Raw1 <- read_sheet(ss = planilla, sheet = "CAUSAS TOTALES" )
 
 Raw2 <- read_sheet(ss = planilla, sheet = "CAUSAS JUDICIALES" )
 
+Raw3 <- read_sheet(ss = planilla, sheet = "Tasa_nacional" )
+
 ######### TRANSFORMAR DATOS #########
 
 # Rango etario
@@ -106,6 +108,18 @@ Data11 <- Raw0 %>%
   group_by(Año) %>%
   summarise(Cantidad = n())
 
+# Evolucion
+Data12 <- Raw0 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año) %>%
+  summarise(Cantidad = n()) %>%
+  arrange(Año)
+
+# Tasa nacional
+Data13 <- Raw3 %>%
+  filter(Año >= 2020) %>%
+  mutate(Año = as.character(Año))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 
@@ -124,3 +138,7 @@ write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.j
 write_json(toJSON(Data10), path=paste0(dir, "/json/femicidios_localidad.json"))
 
 write_json(toJSON(Data11), path=paste0(dir, "/json/femicidios_cantidad.json"))
+
+write_json(toJSON(Data12), path=paste0(dir, "/json/femicidios_evolucion.json"))
+
+write_json(toJSON(Data13), path=paste0(dir, "/json/femicidios_tasa_nacional.json"))

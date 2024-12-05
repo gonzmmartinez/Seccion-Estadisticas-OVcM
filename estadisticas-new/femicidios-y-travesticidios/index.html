@@ -61,8 +61,7 @@
             <button class="indicadorButton" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Mapa de femicidios</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y muertes violentas</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel provincial</button>
-            <button class="indicadorButton" onclick="showChart('chart5')">Tasa de femicidios a nivel nacional</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
         </nav>
 
         <br>
@@ -187,7 +186,7 @@
             </div>
         
             <!-- Canvas para el chart -->
-            <div id="grafico2"></div> 
+            <div id="grafico2" class="graficoMapa"></div> 
         
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
@@ -212,15 +211,62 @@
         </div>
 
         <div id="chart3" class="chartContent">
-            <p>Prueba 3.</p>
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por año</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>NOTA</strong>: Únicamente se contabilizan los femicidios caratulados.
+
+                    <br>
+
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                </p>
+            </div>
         </div>
 
         <div id="chart4" class="chartContent">
-            <p>Prueba 4.</p>
-        </div>
-
-        <div id="chart5" class="chartContent">
-            <p>Prueba 5.</p>
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Tasa de femicidios en la Rep. Argentina</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por provincia, por año</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico4" class="graficoMapa"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                </p>
+            </div>
+        
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio4" onchange="actualizarGrafico4()">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -236,5 +282,7 @@
     <script type="text/javascript" src="./grafico1_7.js"></script>
     <script type="text/javascript" src="./grafico1_8.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
 </body>
 </html>

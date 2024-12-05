@@ -80,7 +80,7 @@ function crearGrafico1_6(categories, values) {
             data: values
         }],
         title: {},
-        colors: ["#a9a226", "#e3474b", "#e3753d", "#e3a22e", "#2b768a", "#1468b1", "#45488d"],
+        colors: ["#e3474b", "#e3474b", "#e3753d", "#e3a22e", "#2b768a", "#1468b1", "#45488d"],
         yaxis: {
             title: {
                 text: "Cantidad"

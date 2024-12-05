@@ -164,7 +164,7 @@
       border-bottom: 3px solid black;
 }
 
-#grafico2 {
+.graficoMapa {
     width: 100%;
     height: 600px;
     margin: 0 auto;

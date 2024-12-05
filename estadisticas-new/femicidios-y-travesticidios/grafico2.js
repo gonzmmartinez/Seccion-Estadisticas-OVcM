@@ -60,8 +60,6 @@ function actualizarGrafico2() {
         const anioSeleccionado2 = document.getElementById("Anio2").value;
         const datosFiltrados2 = filtrarFemicidiosPorAnio(parsedData2, anioSeleccionado2);
 
-        console.log(anioSeleccionado2);
-
         const nuevosDatosProcesados2 = procesarDatos2(datosFiltrados2);
 
         myChart.setOption({
