@@ -154,4 +154,4 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
           },
         }
     });
-  }
+}

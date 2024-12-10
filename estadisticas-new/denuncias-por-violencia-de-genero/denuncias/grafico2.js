@@ -51,20 +51,20 @@ function assignColors2(categories2) {
 // INICIALIZACIÓN
 function iniciar2() {
   cargarDatos(archivo2) // Cargar los datos del JSON
-        .then(data2 => {
-            // Parsear los datos
-            const parsedData2 = parsearDatos(data2);
+      .then(data2 => {
+          // Parsear los datos
+          const parsedData2 = parsearDatos(data2);
 
-            // Filtrar por el distrito seleccionado
-            const anioSeleccionado2 = "TODOS";
-            const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
+          // Filtrar por el distrito seleccionado
+          const anioSeleccionado2 = "TODOS";
+          const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
 
-            // Procesar los datos filtrados
-            const { categories2, values2 } = procesarDatos2(datosFiltrados2);
+          // Procesar los datos filtrados
+          const { categories2, values2 } = procesarDatos2(datosFiltrados2);
 
-            // Crear y renderizar el gráfico
-            window.chart2 = crearGrafico2(categories2, values2);
-            window.chart2.render();
+          // Crear y renderizar el gráfico
+          window.chart2 = crearGrafico2(categories2, values2);
+          window.chart2.render();
         })
         .catch(error1 => {
             document.getElementById("grafico2").textContent = `Error: ${error1.message}`;
