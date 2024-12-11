@@ -3,35 +3,39 @@ const archivo3 = "../../datos/json/denuncias_911_violencia_accion.json";
 
 // PROCESAMIENTO
 function procesarDatos3(data) {
-    // Crear los arrays para las categorías y los valores
     const categories3 = [];
-    const values3a = [0, 0, 0]; // Para "Violencia de género"
-    const values3b = [0, 0, 0]; // Para "Violencia familiar en curso"
-    const values3c = [0, 0, 0]; // Para "Violencia familiar histórica"
+    const values3a = [0, 0, 0];
+    const values3b = [0, 0, 0];
+    const values3c = [0, 0, 0];
 
-    // Obtener categorías únicas de Accion
+    if (!data || !Array.isArray(data)) {
+        return { categories3, values3a, values3b, values3c }; // Arrays vacíos para evitar errores
+    }
+
     const accionesUnicas = Array.from(new Set(data.map(item => item.Accion)));
     categories3.push(...accionesUnicas);
 
-    // Acciones disponibles
-    const acciones = ["Llamadas", "Intervenciones", "Intervenciones SAMEC"];
-
-    // Procesar los datos
+    // Procesar los datos con validaciones
     data.forEach(item => {
-        const accionIndex = acciones.indexOf(item.Accion); // Índice de la acción
-        if (accionIndex === -1) return; // Ignorar acciones desconocidas
+        if (!item.Accion || !item.Tipo || typeof item.Cantidad !== 'number') {
+            console.warn("Elemento inválido en datos:", item);
+            return;
+        }
+
+        const accionIndex = accionesUnicas.indexOf(item.Accion);
+        if (accionIndex === -1) return;
 
         if (item.Tipo === "Violencia de género") {
-            values3a[accionIndex] += item.Cantidad || 0;
+            values3a[accionIndex] += item.Cantidad;
         } else if (item.Tipo === "Violencia familiar en curso") {
-            values3b[accionIndex] += item.Cantidad || 0;
+            values3b[accionIndex] += item.Cantidad;
         } else if (item.Tipo === "Violencia familiar histórica") {
-            values3c[accionIndex] += item.Cantidad || 0;
+            values3c[accionIndex] += item.Cantidad;
         }
     });
 
     return { categories3, values3a, values3b, values3c };
-};
+}
 
 // FILTRAR DATOS
 function filtrarPorAnio(data, year) {
@@ -62,28 +66,31 @@ function iniciar3() {
 };
 
 function actualizarGrafico3() {
-  cargarDatos(archivo3)
-      .then(data3 => {
-        // Parsear los datos
-        const parsedData3 = parsearDatos(data3);
+    cargarDatos(archivo3)
+        .then(data3 => {
+            const parsedData3 = parsearDatos(data3);
 
-        // Filtrar por el distrito seleccionado
-        const anioSeleccionado3 = document.getElementById("Anio3").value;
-        const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
+            // Obtener el año seleccionado
+            const anioSeleccionado3 = document.getElementById("Anio3").value;
 
-        // Procesar los datos filtrados
-        const { categories3, values3a, values3b, values3c } = procesarDatos3(datosFiltrados3);
+            // Filtrar y procesar los datos
+            const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
+            const { categories3, values3a, values3b, values3c } = procesarDatos3(datosFiltrados3);
 
-        // Actualizar las series y categorías con animación
-        window.chart3.updateOptions({
-            series: [{data: values3a}, {data: values3b}, {data: values3c}, ],
-            xaxis: { categories: categories3 }
+            // Actualizar directamente las opciones
+            window.chart3.updateSeries(
+                [
+                    {data: values3a},
+                    {data: values3b},
+                    {data: values3c}
+                ]
+            )
+        })
+        .catch(error => {
+            document.getElementById("grafico3").textContent = `Error en actualizarGrafico3: ${error.message}`;
         });
-      })
-      .catch(error => {
-          document.getElementById("grafico3").textContent = `Error: ${error.message}`;
-      });
-};
+}
+
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico3(categories, valuesa, valuesb, valuesc) {
@@ -115,11 +122,11 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
         },
         tooltip: {
             enabled: true,
-            followCursor: true,
+            followCursor: true
         },
         legend: {
             position: "top",
             horizontalAlign: 'left',
         }
-    });
+    })
 };

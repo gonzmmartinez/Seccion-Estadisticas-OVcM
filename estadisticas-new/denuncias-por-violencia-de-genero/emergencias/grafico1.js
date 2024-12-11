@@ -58,6 +58,9 @@ function crearGrafico1(categories, values) {
           style: {
             fontSize: '1.25rem',
             fontWeight: 'normal',
+          },
+          formatter: function(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
           }
         },
         plotOptions : {
@@ -70,7 +73,12 @@ function crearGrafico1(categories, values) {
         tooltip: {
           enabled: true,
           enabledOnSeries: [0],
-          followCursor: true
+          followCursor: true,
+          y: {
+            formatter: function(value) {
+              return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+          }
         },
         legend: {
           show: false
