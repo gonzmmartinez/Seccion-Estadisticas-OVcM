@@ -76,9 +76,10 @@ function actualizarGrafico5() {
 
           // Actualizar las series y categorías con animación
           window.chart5.updateOptions({
-            series: values5,
-            labels: categories5,
-            colors: colors5
+            ...window.chart5.w.config, // Copia las opciones actuales
+            series: [...values5],
+            labels: [...categories5],
+            colors: [...colors5]
           });
       })
       .catch(error => {

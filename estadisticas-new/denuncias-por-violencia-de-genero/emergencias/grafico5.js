@@ -64,7 +64,10 @@ function actualizarGrafico5() {
         const series5  = procesarDatos5(datosFiltrados5);
 
         // Actualizar las series y categorías con animación
-        window.chart5.updateSeries(series5)
+        window.chart5.updateOptions({
+            ...window.chart5.w.config, // Copia las opciones actuales
+            series: [...series5]
+        })
       })
       .catch(error => {
           document.getElementById("grafico5").textContent = `Error: ${error.message}`;

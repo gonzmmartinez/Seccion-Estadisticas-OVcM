@@ -78,13 +78,14 @@ function actualizarGrafico3() {
             const { categories3, values3a, values3b, values3c } = procesarDatos3(datosFiltrados3);
 
             // Actualizar directamente las opciones
-            window.chart3.updateSeries(
-                [
-                    {data: values3a},
-                    {data: values3b},
-                    {data: values3c}
+            window.chart3.updateOptions({
+                ...window.chart3.w.config, // Copia las opciones actuales
+                series: [
+                    {data: [...values3a]},
+                    {data: [...values3b]},
+                    {data: [...values3c]}
                 ]
-            )
+            })
         })
         .catch(error => {
             document.getElementById("grafico3").textContent = `Error en actualizarGrafico3: ${error.message}`;
@@ -122,11 +123,25 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
         },
         tooltip: {
             enabled: true,
-            followCursor: true
+            followCursor: true,
+            y: {
+                formatter: function(value) {
+                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                }
+            }
         },
         legend: {
             position: "top",
             horizontalAlign: 'left',
+        },
+        dataLabels: {
+            enabled: true,
+            style: {
+                fontSize: '0.75rem'
+            },
+            formatter: function(value) {
+                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            }
         }
     })
 };

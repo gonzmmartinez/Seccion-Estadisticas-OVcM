@@ -237,6 +237,16 @@ body {
     color: white;
 }
 
+.indicadorButton.active {
+    background-color: #51c33b;
+}
+
+.indicadorButton.active:hover {
+    background-color:#3A1D51;
+    color: white;
+}
+
+
 
 /* CONTENEDOR DEL DROPDOWN */
 .selectContainer {

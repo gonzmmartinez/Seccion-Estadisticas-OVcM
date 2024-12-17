@@ -88,9 +88,10 @@ function actualizarGrafico2() {
 
           // Actualizar las series y categorías con animación
           window.chart2.updateOptions({
-            series: values2,
-            labels: categories2,
-            colors: colors2});
+            ...window.chart2.w.config, // Copia las opciones actuales
+            series: [...values2],
+            labels: [...categories2],
+            colors: [...colors2]});
       })
       .catch(error => {
           document.getElementById("grafico2").textContent = `Error: ${error.message}`;

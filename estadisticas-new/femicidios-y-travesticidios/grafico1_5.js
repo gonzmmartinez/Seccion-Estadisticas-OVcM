@@ -57,7 +57,11 @@ function actualizarGrafico1_5() {
           const { categories1_5, values1_5 } = procesarDatos1_5(datosFiltrados1_5);
 
           // Actualizar las series y categorías con animación
-          window.chart1_5.updateOptions({ series: values1_5, labels: categories1_5});
+          window.chart1_5.updateOptions({
+            ...window.chart1_5.w.config, // Copia las opciones actuales
+            series: [...values1_5],
+            labels: [...categories1_5]
+          });
       })
       .catch(error => {
           document.getElementById("grafico1_5").textContent = `Error: ${error.message}`;

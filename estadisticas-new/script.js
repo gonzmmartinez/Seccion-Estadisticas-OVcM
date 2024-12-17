@@ -1,3 +1,4 @@
+// ESTADO INICIAL DE LA BARRA LATERAL
 document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
@@ -19,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// FUNCIÓN PARA EL BOTÓN DE ABRIR LA BARRA LATERAL
-
+// BOTÓN DE ABRIR LA BARRA LATERAL
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
@@ -44,7 +44,6 @@ function toggleSidebar() {
 }
 
 // FUNCIÓN PARA CAMBIAR DE GRÁFICOS
-
 function showChart(chartId) {
     // Ocultar todos los gráficos
     document.querySelectorAll(".chartContent").forEach(chart => {
@@ -63,6 +62,17 @@ function showChart(chartId) {
         }
     });
 
+    // Actualizar los botones (quitar 'active' de todos y añadirlo al botón clicado)
+    document.querySelectorAll(".indicadorButton").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    // Añadir 'active' al botón que llamó a la función
+    const activeButton = document.querySelector(`button[onclick="showChart('${chartId}')"]`);
+    if (activeButton) {
+        activeButton.classList.add("active");
+    }
+
     // Extraer el número del id y generar la función dinamicamente
     const chartNumber = chartId.replace('chart', '');  // Extraemos el número del id (por ejemplo '1' de 'chart1')
     const initFunction = `iniciar${chartNumber}`;  // Crear el nombre de la función (por ejemplo 'iniciar1')
@@ -74,6 +84,7 @@ function showChart(chartId) {
 }
 
 // FUNCIÓN SOBRE LOS GRÁFICOS
+
 // Función para hacer el fetch
 function cargarDatos(archivo) {
     return fetch(archivo) // Ruta al archivo JSON

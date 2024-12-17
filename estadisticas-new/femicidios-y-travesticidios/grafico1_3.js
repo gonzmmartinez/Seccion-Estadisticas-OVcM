@@ -57,7 +57,11 @@ function actualizarGrafico1_3() {
           const { categories1_3, values1_3 } = procesarDatos1_3(datosFiltrados1_3);
 
           // Actualizar las series y categorías con animación
-          window.chart1_3.updateOptions({ series: [{data: values1_3}], xaxis: { categories: categories1_3}});
+            window.chart1_3.updateOptions({
+                ...window.chart1_3.w.config, // Copia las opciones actuales
+                series: [{ name: 'Cantidad', data: [...values1_3] }], // Nueva referencia para data
+                xaxis: { categories: [...categories1_3] } // Nueva referencia para categorías
+            });
       })
       .catch(error => {
           document.getElementById("grafico1_3").textContent = `Error: ${error.message}`;

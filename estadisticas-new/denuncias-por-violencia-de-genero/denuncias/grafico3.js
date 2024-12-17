@@ -83,7 +83,12 @@ function actualizarGrafico3() {
           const colors3 = assignColors3(categories3);
 
           // Actualizar las series y categorías con animación
-          window.chart3.updateOptions({ series: values3, labels: categories3});
+          window.chart3.updateOptions({
+            ...window.chart3.w.config, // Copia las opciones actuales
+            series: [...values3],
+            labels: [...categories3],
+            colors: [...colors3]
+          });
       })
       .catch(error => {
           document.getElementById("grafico3").textContent = `Error: ${error.message}`;

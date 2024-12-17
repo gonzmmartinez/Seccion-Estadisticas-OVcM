@@ -58,8 +58,9 @@ function actualizarGrafico2() {
 
         // Actualizar las series y categorías con animación
         window.chart2.updateOptions({
-            series: [{data: values2}],
-            xaxis: { categories: categories2,
+            ...window.chart2.w.config, // Copia las opciones actuales
+            series: [{data: [...values2]}],
+            xaxis: { categories: [...categories2],
                     labels: {
                         formatter: function(value) {
                             if (value == null) {

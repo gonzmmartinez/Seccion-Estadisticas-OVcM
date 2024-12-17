@@ -70,7 +70,9 @@ function actualizarGrafico7() {
           const { categories_M_7, values_M_7, categories_V_7, values_V_7 } = procesarDatos7(datosFiltrados7);
 
           // Actualizar las series y categorías con animación
-          window.chart7.updateOptions({ series: [{data: values_M_7}, {data:values_V_7}]});
+          window.chart7.updateOptions({
+            ...window.chart7.w.config, // Copia las opciones actuales
+            series: [{data: [...values_M_7]}, {data: [...values_V_7]}]});
       })
       .catch(error => {
           document.getElementById("grafico7").textContent = `Error: ${error.message}`;

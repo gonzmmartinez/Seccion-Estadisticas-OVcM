@@ -114,8 +114,10 @@ function actualizarGrafico1() {
           const { categories1, values1 } = procesarDatos1(datosParseados1);
 
           // Actualizar las series y categorías con animación
-          window.chart1.updateSeries([{ data: values1 }, { data: values1 }], true); // Animación en la actualización
-          window.chart1.updateOptions({ xaxis: { categories: categories1 } }, true); // Animación en opciones
+          window.chart1.updateOptions({
+            ...window.chart1.w.config, // Copia las opciones actuales
+            series: [{ data: [...values1] }, { data: [...values1] }],
+            xaxis: { categories: [...categories1] } }, true); // Animación en opciones
       })
       .catch(error => {
           document.getElementById("grafico1").textContent = `Error: ${error.message}`;

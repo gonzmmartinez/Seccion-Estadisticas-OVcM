@@ -61,9 +61,10 @@ function actualizarGrafico6() {
 
           // Actualizar las series y categorías con animación
           window.chart6.updateOptions({
-            series: values6,
-            labels: categories6,
-            colors: colors6
+            ...window.chart6.w.config, // Copia las opciones actuales
+            series: [...values6],
+            labels: [...categories6],
+            colors: [...colors6]
           });
       })
       .catch(error => {

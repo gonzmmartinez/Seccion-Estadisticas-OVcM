@@ -70,7 +70,10 @@ function actualizarGrafico8() {
           const { categories_M_8, values_M_8, categories_V_8, values_V_8 } = procesarDatos8(datosFiltrados8);
 
           // Actualizar las series y categorías con animación
-          window.chart8.updateOptions({ series: [{data: values_M_8}, {data:values_V_8}]});
+          window.chart8.updateOptions({
+            ...window.chart8.w.config, // Copia las opciones actuales
+            series: [{data: [...values_M_8]}, {data:[...values_V_8]}]
+        });
       })
       .catch(error => {
           document.getElementById("grafico8").textContent = `Error: ${error.message}`;

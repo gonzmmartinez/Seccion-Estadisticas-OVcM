@@ -64,7 +64,10 @@ function actualizarGrafico4() {
         const series4  = procesarDatos4(datosFiltrados4);
 
         // Actualizar las series y categorías con animación
-        window.chart4.updateSeries(series4)
+        window.chart4.updateOptions({
+            ...window.chart4.w.config, // Copia las opciones actuales
+            series: [...series4]
+        })
       })
       .catch(error => {
           document.getElementById("grafico4").textContent = `Error: ${error.message}`;

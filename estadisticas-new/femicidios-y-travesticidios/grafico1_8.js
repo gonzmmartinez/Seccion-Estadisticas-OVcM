@@ -62,7 +62,11 @@ function actualizarGrafico1_8() {
           const { categories1_8, values1_8 } = procesarDatos1_8(datosFiltrados1_8);
 
           // Actualizar las series y categorías con animación
-          window.chart1_8.updateOptions({ series: values1_8, labels: categories1_8});
+          window.chart1_8.updateOptions({
+            ...window.chart1_8.w.config, // Copia las opciones actuales
+            series: [...values1_8],
+            labels: [...categories1_8]
+          });
 
           // Calcular total
           const total = values1_8.reduce((a, b) => a + b, 0);

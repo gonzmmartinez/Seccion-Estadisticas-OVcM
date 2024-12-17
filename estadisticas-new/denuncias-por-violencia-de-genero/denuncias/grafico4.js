@@ -57,7 +57,11 @@ function actualizarGrafico4() {
           const { categories4, values4 } = procesarDatos4(datosFiltrados4);
 
           // Actualizar las series y categorías con animación
-          window.chart4.updateOptions({ series: [{data: values4}], xaxis: { categories: categories4}});
+          window.chart4.updateOptions({
+            ...window.chart4.w.config, // Copia las opciones actuales
+            series: [{data: [...values4]}],
+            xaxis: { categories: [...categories4]}
+          });
       })
       .catch(error => {
           document.getElementById("grafico4").textContent = `Error: ${error.message}`;
