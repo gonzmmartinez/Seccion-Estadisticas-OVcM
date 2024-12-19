@@ -57,7 +57,7 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Mapa de femicidios</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y muertes violentas</button>
             <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
@@ -74,14 +74,14 @@
                     <br>
                     <span style="font-size:15px"><i>Provincia de Salta</i></span>
                     <br>
-                    <span style="font-size:12px"><i>Última actualización: noviembre de 2024</i></span>
+                    <span style="font-size:12px"><i>Última actualización: 19/12/2024</i></span>
                 </p>
 
                 <div class="selectContainer">
                     <p>
                         Año:
                     </p>
-                    <select id="Anio1" onchange="actualizarGraficos()">
+                    <select id="Anio1" style="font-size: 1.25rem;" onchange="actualizarGraficos()">
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>

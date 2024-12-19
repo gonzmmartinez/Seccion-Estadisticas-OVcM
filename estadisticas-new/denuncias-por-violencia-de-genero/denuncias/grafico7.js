@@ -41,8 +41,6 @@ function iniciar7() {
             // Procesar los datos filtrados
             const { categories_M_7, values_M_7, categories_V_7, values_V_7 } = procesarDatos7(datosFiltrados7);
 
-            console.log(datosFiltrados7);
-
             // Crear y renderizar el gráfico
             window.chart7 = crearGrafico7(categories_M_7, values_M_7, categories_V_7, values_V_7);
             window.chart7.render();
@@ -79,7 +77,7 @@ function actualizarGrafico7() {
       });
 }
 
-// 5. Función para configurar y renderizar el gráfico
+// Configurar las opciones
 function crearGrafico7(categories_M, values_M, categories_V, values_V) {
     return new ApexCharts(document.querySelector("#grafico7"), {
         chart: {
@@ -129,6 +127,7 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
             followCursor: true,
             y: {
             formatter: function(value) {
+                console.log(value)
                 return Math.abs(Math.round(value * 10) / 10) + '%';
                 }
             },
