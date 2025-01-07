@@ -31,7 +31,7 @@
             <li><a href="../femicidios-y-travesticidios/"><img src="../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
             <li><a href="../denuncias-por-violencia-de-genero/"><img src="../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
             <li><a href="../educacion-y-mercado-de-trabajo/"><img src="../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
-            <li><a href="../salud-y-libertad-reproductiva/"><img src="../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
+            <li><a href="../salud-y-libertad-no-reproductiva/"><img src="../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
             <li><a href="../participacion-en-la-toma-de-decisiones/"><img src="../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
         </ul>
     </div>
@@ -101,12 +101,13 @@
                         <option value="2021">2021</option>
                     </select>
                 </div>
-    
+
                 <div class="selectContainer">
                     <p>
                         Departamento:
                     </p>
                     <select id="Depto1" onchange="actualizarGrafico1()">
+                        <option value="TODOS">TODOS</option>
                         <option value="Anta">Anta</option>
                         <option value="Cachi">Cachi</option>
                         <option value="Cafayate">Cafayate</option>
@@ -134,11 +135,48 @@
                 </div>
             </div>
         </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart2" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Docentes en actividad en la Provincia</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por género y departamento</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico2" style="width: 100%;"></div>
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio2" onchange="actualizarGrafico2()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="../script.js"></script>
 
     <!-- Gráficos -->
     <script type="text/javascript" src="./grafico1.js"></script>
+    <script type="text/javascript" src="./grafico2.js"></script>
 </body>
 </html>

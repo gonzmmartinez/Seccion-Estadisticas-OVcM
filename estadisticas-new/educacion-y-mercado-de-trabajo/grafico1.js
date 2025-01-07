@@ -48,7 +48,7 @@ function iniciar1() {
               const datosFiltrados1_1 = filtrarPorAnio(parsedData1, anioSeleccionado1);
 
               // Filtrar por el departamento seleccionado
-              const deptoSeleccionado1 = "Capital";
+              const deptoSeleccionado1 = "TODOS";
               const datosFiltrados1_2 = filtrarPorDepartamento(datosFiltrados1_1, deptoSeleccionado1);
   
               // Procesar los datos filtrados
