@@ -143,6 +143,147 @@
             </div>
         </div>
 
+        <!-- Sección de gráficos -->
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Interrupciones Voluntarias del Embarazo</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por semanas de gestación</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio3" onchange="actualizarGrafico3()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart4" class="chartContent active">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Interrupciones Legales del Embarazo</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por mes</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico4" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio4" onchange="actualizarGrafico4()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart5" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Interrupciones Legales del Embarazo</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por edad de la persona gestante</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico5" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio5" onchange="actualizarGrafico5()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart6" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Interrupciones Legales del Embarazo</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por semanas de gestación</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico6" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio6" onchange="actualizarGrafico6()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="../../script.js"></script>
@@ -150,5 +291,9 @@
     <!-- Gráficos -->
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
+    <script type="text/javascript" src="./grafico5.js"></script>
+    <script type="text/javascript" src="./grafico6.js"></script>
 </body>
 </html>

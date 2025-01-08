@@ -1,19 +1,19 @@
 // Datos
-const archivo2 = "../../datos/json/salud_ive_edad.json";
+const archivo3 = "../../datos/json/salud_ive_semanas.json";
 
 // PROCESAMIENTO
-function procesarDatos2(data) {
+function procesarDatos3(data) {
     // Crear los arrays para las categorías y los valores de las barras
-    const categories2 = [];
-    const values2 = [];
+    const categories3 = [];
+    const values3 = [];
 
     // Procesar los datos de cada entrada
     data.forEach(item => {
-        categories2.push(item.Rango_etario_pg);
-        values2.push(item.Cantidad);            
+        categories3.push(item.Semanas);
+        values3.push(item.Cantidad);            
     });
 
-    return { categories2, values2 };
+    return { categories3, values3 };
 };
 
 // FILTRAR DATOS
@@ -22,56 +22,56 @@ function filtrarPorAnio(data, year) {
 };
 
 // INICIALIZACIÓN
-function iniciar2() {
-  cargarDatos(archivo2) // Cargar los datos del JSON
-        .then(data2 => {
+function iniciar3() {
+  cargarDatos(archivo3) // Cargar los datos del JSON
+        .then(data3 => {
             // Parsear los datos
-            const parsedData2 = parsearDatos(data2);
+            const parsedData3 = parsearDatos(data3);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado2 = "2023";
-            const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
+            const anioSeleccionado3 = "2023";
+            const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
             // Procesar los datos filtrados
-            const { categories2, values2 } = procesarDatos2(datosFiltrados2);
+            const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
             // Crear y renderizar el gráfico
-            window.chart2 = crearGrafico2(categories2, values2);
-            window.chart2.render();
+            window.chart3 = crearGrafico3(categories3, values3);
+            window.chart3.render();
         })
         .catch(error1 => {
-            document.getElementById("grafico2").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico3").textContent = `Error: ${error1.message}`;
         });
 };
 
-function actualizarGrafico2() {
-  cargarDatos(archivo2)
-      .then(data2 => {
-        const parsedData2 = parsearDatos(data2);
+function actualizarGrafico3() {
+  cargarDatos(archivo3)
+      .then(data3 => {
+        const parsedData3 = parsearDatos(data3);
 
         // Filtrar por el distrito seleccionado
-        const anioSeleccionado2 = document.getElementById("Anio2").value;
-        const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
+        const anioSeleccionado3 = document.getElementById("Anio3").value;
+        const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
         // Procesar datos
-        const { categories2, values2 } = procesarDatos2(datosFiltrados2);
+        const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
         // Actualizar las series y categorías con animación
-        window.chart2.updateOptions({
-            ...window.chart2.w.config, // Copia las opciones actuales
-            series: [{data: [...values2]}],
-            xaxis: { categories: [...categories2]
+        window.chart3.updateOptions({
+            ...window.chart3.w.config, // Copia las opciones actuales
+            series: [{data: [...values3]}],
+            xaxis: { categories: [...categories3]
             }
         });
       })
       .catch(error => {
-          document.getElementById("grafico2").textContent = `Error: ${error.message}`;
+          document.getElementById("grafico3").textContent = `Error: ${error.message}`;
       });
 };
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico2(categories, values) {
-    return new ApexCharts(document.querySelector("#grafico2"), {
+function crearGrafico3(categories, values) {
+    return new ApexCharts(document.querySelector("#grafico3"), {
         chart: {
             type: 'bar',
             height: '350px',
@@ -85,7 +85,7 @@ function crearGrafico2(categories, values) {
             data: values
         }],
         title: {},
-        colors: ["#a9a226", "#e3a22e", "#a9a226", "#e3474b", "#1468b1", "#45488d"],
+        colors: ["#a9a226", "#e3a22e", "#a9a226", "#e3474b", "#45488d"],
         yaxis: {
             title: {
                 text: "Cantidad"
@@ -93,7 +93,7 @@ function crearGrafico2(categories, values) {
         },
         xaxis: {
             title: {
-                text: "Rango etario"
+                text: "Semanas de gestación"
             },
             categories: categories
         },

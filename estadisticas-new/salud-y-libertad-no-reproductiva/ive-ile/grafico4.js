@@ -1,19 +1,19 @@
 // Datos
-const archivo1 = "../../datos/json/salud_ive.json";
+const archivo4 = "../../datos/json/salud_ile.json";
 
 // PROCESAMIENTO
-function procesarDatos1(data) {
+function procesarDatos4(data) {
     // Crear los arrays para las categorías y los valores de las barras
-    const categories1 = [];
-    const values1 = [];
+    const categories4 = [];
+    const values4 = [];
 
     // Procesar los datos de cada entrada
     data.forEach(item => {
-        categories1.push(item.Mes);
-        values1.push(item.Cantidad);            
+        categories4.push(item.Mes);
+        values4.push(item.Cantidad);            
     });
 
-    return { categories1, values1 };
+    return { categories4, values4 };
 };
 
 // FILTRAR DATOS
@@ -22,45 +22,45 @@ function filtrarPorAnio(data, year) {
 };
 
 // INICIALIZACIÓN
-function iniciar1() {
-  cargarDatos(archivo1) // Cargar los datos del JSON
-        .then(data1 => {
+function iniciar4() {
+  cargarDatos(archivo4) // Cargar los datos del JSON
+        .then(data4 => {
             // Parsear los datos
-            const parsedData1 = parsearDatos(data1);
+            const parsedData4 = parsearDatos(data4);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado1 = "2023";
-            const datosFiltrados1 = filtrarPorAnio(parsedData1, anioSeleccionado1);
+            const anioSeleccionado4 = "2023";
+            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
 
             // Procesar los datos filtrados
-            const { categories1, values1 } = procesarDatos1(datosFiltrados1);
+            const { categories4, values4 } = procesarDatos4(datosFiltrados4);
 
             // Crear y renderizar el gráfico
-            window.chart1 = crearGrafico1(categories1, values1);
-            window.chart1.render();
+            window.chart4 = crearGrafico4(categories4, values4);
+            window.chart4.render();
         })
         .catch(error1 => {
-            document.getElementById("grafico1").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico4").textContent = `Error: ${error1.message}`;
         });
 };
 
-function actualizarGrafico1() {
-  cargarDatos(archivo1)
-      .then(data1 => {
-        const parsedData1 = parsearDatos(data1);
+function actualizarGrafico4() {
+  cargarDatos(archivo4)
+      .then(data4 => {
+        const parsedData4 = parsearDatos(data4);
 
         // Filtrar por el distrito seleccionado
-        const anioSeleccionado1 = document.getElementById("Anio1").value;
-        const datosFiltrados1 = filtrarPorAnio(parsedData1, anioSeleccionado1);
+        const anioSeleccionado4 = document.getElementById("Anio4").value;
+        const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
 
         // Procesar datos
-        const { categories1, values1 } = procesarDatos1(datosFiltrados1);
+        const { categories4, values4 } = procesarDatos4(datosFiltrados4);
 
         // Actualizar las series y categorías con animación
-        window.chart1.updateOptions({
-            ...window.chart1.w.config, // Copia las opciones actuales
-            series: [{data: [...values1]}],
-            xaxis: { categories: [...categories1],
+        window.chart4.updateOptions({
+            ...window.chart4.w.config, // Copia las opciones actuales
+            series: [{data: [...values4]}],
+            xaxis: { categories: [...categories4],
                     labels: {
                         formatter: function(value) {
                             if (value == null) {
@@ -73,13 +73,13 @@ function actualizarGrafico1() {
         });
       })
       .catch(error => {
-          document.getElementById("grafico1").textContent = `Error: ${error.message}`;
+          document.getElementById("grafico4").textContent = `Error: ${error.message}`;
       });
 };
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico1(categories, values) {
-    return new ApexCharts(document.querySelector("#grafico1"), {
+function crearGrafico4(categories, values) {
+    return new ApexCharts(document.querySelector("#grafico4"), {
         chart: {
             type: 'bar',
             height: '350px',
@@ -93,7 +93,7 @@ function crearGrafico1(categories, values) {
             data: values
         }],
         title: {},
-        colors: ["#a9a226", "#a9a226", "#e3474b", "#e3753d", "#e3a22e", "#1468b1", "#45488d"],
+        colors: ["#e3a22e", "#a9a226", "#e3474b", "#e3753d", "#e3a22e", "#1468b1", "#45488d"],
         yaxis: {
             title: {
                 text: "Cantidad"

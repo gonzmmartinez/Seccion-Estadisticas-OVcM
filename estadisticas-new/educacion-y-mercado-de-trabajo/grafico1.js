@@ -140,17 +140,17 @@ function crearGrafico1(categories_M, values_M, categories_V, values_V) {
             }
         },
         dataLabels: {
-          enabled: true,
-          offsetY: 7.5,
-          dropShadow: false,
-          style: {
+            enabled: true,
+            offsetY: 7.5,
+            dropShadow: false,
+            style: {
             fontSize: '1rem',
             fontWeight: 'bold',
             color: 'white'
-          },
-          formatter: function(value) {
-            return Math.abs(Math.round(value * 10) / 10) + '%'
-        }
+            },
+            formatter: function(value) {
+                return Math.abs(Math.round(value * 10) / 10) + '%'
+            }
         },
         legend: {
             position: 'top'
