@@ -1,4 +1,16 @@
 /* Estilos generales */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --grey-color: #8c8c8c;
+    --mid-light-grey-color: #c4c4c4;
+    --light-grey-color: #fafafa;
+    --accent-color: #51c33b;
+    --main-color: #3A1D51;
+}
+
 body {
     margin: 0;
     font-family: 'Barlow', sans-serif;
@@ -83,6 +95,7 @@ body {
     padding-left: 10px;
     font-family: 'Barlow', sans-serif;
     font-size: 14px;
+    transition-duration: 0.5s;
 }
 
 #sidebar ul li a:hover {
@@ -142,6 +155,30 @@ body {
     border-radius: 100%;
 }
 
+.subtitleText {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    color: var(--grey-color)
+}
+
+.notasContent h3 {
+    color: var(--main-color);
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--mid-light-grey-color);
+}
+
+.notasContent p {
+    padding: 0px 50px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.notasContent ul {
+    padding: 0px 50px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 /* Estilo para la sección de botones */
 .buttonSection {
     display: flex;
@@ -178,7 +215,7 @@ body {
     font-family: 'Barlow', sans-serif;
     text-align: center;
     border-radius: 5px; /* Bordes redondeados de 5px */
-    transition: background-color 0.3s ease;
+    transition: 0.5s ease;
     box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
     filter: drop-shadow(0em 0em 5px rgba(125, 125, 125, 0.5))
 }
@@ -238,7 +275,7 @@ body {
 }
 
 .indicadorButton.active {
-    background-color: #51c33b;
+    background-color: var(--accent-color);
 }
 
 .indicadorButton.active:hover {
@@ -468,4 +505,31 @@ ul.breadcrumb li a:hover {
 ul.breadcrumb .active {
     color: black;
     font-weight: bold;
+}
+
+/* ###################################### */
+/* Back to top button */
+
+#botonTop {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: var(--light-grey-color); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px; /* Some padding */
+    border-radius: 100%; /* Rounded corners */
+    transition-duration: 0.5s;
+}
+  
+#botonTop:hover {
+    background-color: var(--accent-color); /* Add a dark-grey background on hover */
+}
+
+.topIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 2em; /* El ícono tendrá la misma altura que la línea del texto */
 }

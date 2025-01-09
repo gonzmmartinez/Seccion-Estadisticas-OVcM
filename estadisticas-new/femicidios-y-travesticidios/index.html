@@ -11,6 +11,7 @@
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -53,7 +54,11 @@
             <h1 class="pageTitle">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</h1>
         </div>
 
-        <p style="text-align: center">Indicadores:</p>
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
@@ -267,7 +272,57 @@
                 </select>
             </div>
         </div>
+
+        <br>
+        <hr>
+
+        <div class="notasContent">
+            <h2>FICHA TÉCNICA</h2>
+
+            <p>
+                El OVcM recopila y configura estadísticas a partir de diversas fuentes provenientes tanto de la información que puede obtenerse del Ministerio Publico Fiscal, Poder Judicial, y cualquier órgano que pudiera brindar información relevante mediante datos oficiales.
+                <br>
+                Asimismo, se advierte la incorporación de noticias periodísticas como fuentes secundarias.
+            </p>
+
+            <h3>Definiciones</h3>
+            <p>
+                <ul>
+                    <li><strong>Femicidio</strong>: se sigue el concepto que brinda el Registro Nacional de Femicidios de la Justicia Argentina (RNFJA) que proviene de la “ Declaración sobre el Femicidio” aprobada por la Cuarta Reunión del Comité de Expertas/os (CEVI), año 2008, disponiendo que es: “La muerte violenta de mujeres por razones de género, ya sea que tenga lugar dentro de la familia, unidad doméstica o en cualquier otra relación interpersonal; en la comunidad, por parte de cualquier persona, o que sea perpetrada o tolerada por el Estado y sus agentes, por acción u omisión”.
+                    
+                    <br><br>
+
+                    El Registro de OVCM incluye muertes violentas, femicidios, travesticidio y transfemicidio Incluye:
+                    <ol>
+                        <li>Casos no judicializados que encuadran en esa definición.</li>
+                        <li>Casos judiciales que tramitan con imputación por homicidios agravados</li>
+                        <ol type="a">
+                            <li>Art. 80 inciso 1º Código Penal (cuando se matare a la ascendiente, descendiente, cónyuge, ex cónyuge, persona con quien mantiene o ha mantenido una relación de pareja, mediare o no convivencia)</li>
+                            <li>Art. 80 Inciso 11 del Código Penal (cuando un hombre matare a una mujer y mediare violencia de género)</li>
+                            <li>Art. 80 inciso 4º CP (cuando un hombre matare a una mujer por odio de género, orientación sexual, identidad o expresión de género), y las causas con condena firme bajo esas calificaciones legales.</li>
+                            <li>Art. 80 inciso 12 CP (cuando se matare con el propósito de causar sufrimiento a la persona con quién se tiene o mantenía una relación de pareja)</li>
+                        </ol>
+                    </ol>
+                    </li>
+                    
+                    <br>
+                    <li><strong>Muertes violentas</strong>: aquellas causas investigadas y/o con condenas firmes por homicidio que inicialmente estaban relacionadas con la violencia de género.</li>
+                    
+                    <br>
+                    <li><strong>Muertes dudosas</strong>: aquellas causas en que el Ministerio Público Fiscal investiga el deceso de una mujer, si se relaciona con suicidio o en las que no está claro si se produjeron en un contexto violento.</li>
+                </ul>
+            </p>
+
+            <h3>Metodología</h3>
+            <p>
+                Metodología planteada en el <a href="https://ovcmsalta.gob.ar/publicaciones-e-investigaciones/informes-anuales/informe-2020/" target="_blank">Informe OVcM (33:2020)</a>
+            </p>
+        </div>
     </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
 
     <script src="./script.js"></script>
     <script src="../script.js"></script>
