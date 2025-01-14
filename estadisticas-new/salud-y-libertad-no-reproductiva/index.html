@@ -9,6 +9,7 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,10 +47,16 @@
         </nav>
         
         <div class="titleContainer">
+            <img src="../svg/icono_04.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">SALUD Y LIBERTAD -NO- REPRODUCTIVA</h1>
         </div>
 
-        <p>Este es el contenido principal de la página.</p>
+        <br>
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
 
         <!-- Botones -->
         <div class="buttonSection">
@@ -73,6 +80,10 @@
             </a>
         </div>
     </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
 
     <script src="../script.js"></script>
 </body>

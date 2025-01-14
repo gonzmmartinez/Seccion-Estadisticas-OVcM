@@ -9,6 +9,7 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,28 +47,44 @@
         </nav>
         
         <div class="titleContainer">
+            <img src="../svg/icono_02.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">DENUNCIAS POR VIOLENCIA DE GÉNERO</h1>
         </div>
 
-        <p>Este es el contenido principal de la página.</p>
+        <br>
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
 
         <!-- Botones -->
         <div class="buttonSection">
             <a class="buttonDiv" href="./denuncias/">
                 <button class="buttonLink">
-                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Icono 1" class="buttonIcon">
+                    <img src="../svg/icono_02.svg" alt="Icono 1" class="buttonIcon">
                     <span class="buttonText">DENUNCIAS REGISTRADAS POR LA OVFG</span>
                 </button>
             </a>
             <a class="buttonDiv" href="./emergencias/">
                 <button class="buttonLink">
-                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_2.svg" alt="Icono 2" class="buttonIcon">
+                    <img src="../svg/icono_02.svg" alt="Icono 2" class="buttonIcon">
                     <span class="buttonText">REQUERIMIENTOS AL S.E. 911</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./denuncias-sud/">
+                <button class="buttonLink">
+                    <img src="../svg/icono_02.svg" alt="Icono 2" class="buttonIcon">
+                    <span class="buttonText">DENUNCIAS REGISTRADAS EN EL SISTEMA ÚNICO DE DENUNCIAS</span>
                 </button>
             </a>
             </div>
         </div>
     </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
 
     <script src="../script.js"></script>
 </body>

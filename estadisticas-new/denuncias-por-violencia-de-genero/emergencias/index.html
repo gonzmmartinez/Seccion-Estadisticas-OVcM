@@ -9,6 +9,7 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -43,17 +44,19 @@
             <ul class="breadcrumb">
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../../">Estadísticas</a></li>
-                <li><a href="../../denuncias-por-violencia-de-genero/">Emergencias por violencia de género</a></li>
-                <li class="active">Emergencias</li>
+                <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
+                <li class="active">Requerimientos al Sistema de Emergencias 911</li>
             </ul> 
         </nav>
         
         <div class="titleContainer">
-            <img src="../../svg/icono_01.svg" alt="Ícono" class="titleIcon">
-            <h1 class="pageTitle">EMERGENCIAS POR VIOLENCIA DE GÉNERO REGISTRADAS POR LA OVFG</h1>
+            <img src="../../svg/icono_02.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">EMERGENCIAS POR VIOLENCIA DE GÉNERO</h1>
         </div>
 
-        <br>
+        <div class="subtitleText">
+            <h2>REQUERIMIENTOS AL SISTEMA DE EMERGENCIAS 911</h2>
+        </div>
 
         <hr>
 
@@ -239,7 +242,55 @@
                 </select>
             </div>
         </div>
+
+        <br>
+        <hr>
+
+        <div class="notasContent">
+            <h2>FICHA TÉCNICA</h2>
+
+            <h3>Institución o entidad que genera el registro</h3>
+            <p>
+                <ul>
+                    <li>Ministerio de Seguridad y Justicia</li>
+                </ul>
+            </p>
+
+            <h3>¿Qué se registra?</h3>
+            <p>
+                Llamadas al SE 911 e intervenciones que se efectúan por motivos de violencia familiar y de género.
+            </p>
+
+            <h3>¿Qué funciones cumple el Sistema de Emergencias 911?</h3>
+            <p>
+                Coordina respuestas a emergencias a través de una central operativa.
+            </p>
+
+            <h3>¿Qué definiciones se utilizan en el registro?</h3>
+            <p>
+                <ul>
+                    <li><strong>Llamadas</strong>: comunicaciones telefónicas al sistema de emergencia 911 por situación de violencia familiar o de género.</li>
+                    <br>
+                    <li><strong>Intervenciones</strong>:  desplazamiento y actuaciones de agencias policiales por situación de violencia familiar o de género.</li>
+                    <br>
+                    <li><strong>Intervenciones conjuntas con agencia SAMEC</strong>: desplazamiento y actuaciones de agencias por situación de violencia familiar o de género con el Sistema de Atención Médica para Emergencias y Catástrofes (SAMEC)</li>
+                    <br>
+                    <li><strong>Abuso sexual</strong>: es una agresión que atenta contra la libertad sexual de las personas y su derecho a elegir las actividades sexuales que quiere realizar.</li>
+                    <br>
+                    <li><strong>Violencia familiar en curso</strong>: hechos enmarcados en la ley provincial Nº 7.403. Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del domicilio de residencia que ocurra en el momento de la comunicación. También contempla: abandono de persona, exclusión del hogar, agresión a menores, robo entre familiares, amenazas entre familiares, entre otras.</li>
+                    <br>
+                    <li><strong>Violencia familiar histórica</strong>: hechos enmarcados en la ley provincial Nº 7.403. Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del domicilio de residencia cuando la/el damnificada/o se comunica a posterior de ocurrido el hecho. También contempla: abandono de persona, exclusión del hogar, agresión a menores, robo entre familiares, amenazas entre familiares, entre otras.</li>
+                    <br>
+                    <li><strong>Violencia de género</strong>: hechos enmarcados en la ley provincial Nº 7.888. Violencia física, psicológica y/o verbal hacia mujeres y personas de la diversidad sexual basada en una relación desigual de poder dentro o fuera del domicilio. Los hechos pueden ocurrir en el momento de la comunicación o previamente.</li>
+                </ul>
+            </p>
+        </div>
+
     </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
 
     <script src="../../script.js"></script>
 
