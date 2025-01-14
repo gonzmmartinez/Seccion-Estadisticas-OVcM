@@ -26,7 +26,7 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
-    transition: transform 0.3s ease;
+    transition: 0.1s;
     z-index: 1;
 }
 
@@ -45,7 +45,7 @@ body {
     width: 100px;  /* Tamaño del ícono dentro del botón */
     height: 100px; /* Mantiene el ícono proporcional */
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
-    transition: transform 1s ease;
+    transition: transform 0.5s ease;
 }
 .logoIcon:hover {
     transform: scale(1.2);
@@ -71,7 +71,7 @@ body {
     color: #fafafa;
     cursor: pointer;
     z-index: 2;
-    transition: left 0.3s ease;
+    transition: left 0.1s;
 }
 
 /* Enlaces dentro de la barra lateral */
@@ -95,7 +95,7 @@ body {
     padding-left: 10px;
     font-family: 'Barlow', sans-serif;
     font-size: 14px;
-    transition-duration: 0.5s;
+    transition-duration: 0.1s;
 }
 
 #sidebar ul li a:hover {
@@ -110,9 +110,62 @@ body {
     object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
 }
 
-/* Estilo para ocultar la barra lateral */
-#sidebar.hidden {
-    transform: translateX(-100%);
+/* Estilo para la barra lateral en estado colapsado */
+#sidebar.collapsed {
+    display: block;
+    width: 5%; /* Ancho reducido */
+    padding: 0px; /* Ajusta el padding para el estado colapsado */
+    align-content: center;
+    transition: 0.1s
+}
+
+/* Oculta el texto pero deja visibles los íconos */
+#sidebar.collapsed ul li a p,
+#sidebar.collapsed .sidebarDiv,
+#sidebar.collapsed .logoIcon,
+#sidebar.collapsed hr,
+#sidebar.collapsed h2,
+#sidebar.collapsed .logoText {
+    display: none;
+}
+
+/* Centra los íconos en el estado colapsado */
+#sidebar.collapsed ul li a {
+    justify-content: center;
+    padding: 10px;
+    margin: 20px 5px;
+    position: relative
+}
+
+/* Ajusta los íconos en el estado colapsado */
+#sidebar.collapsed .sidebarIcon {
+    margin-right: 0; /* Elimina el espacio entre el ícono y el texto */
+}
+
+/* Tooltip básico (invisible por defecto) */
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    left: 115%;
+    top: auto;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* Mostrar el tooltip cuando el enlace tiene hover y la barra está colapsada */
+#sidebar.collapsed ul li a:hover .tooltip {
+    visibility: visible;
+    opacity: 0.95;
+}
+
+/* Eliminar el tooltip si la barra está expandida */
+#sidebar:not(.collapsed) .tooltip {
+    visibility: hidden;
+    opacity: 0;
 }
 
 /* Ajuste del contenido principal cuando la barra lateral está oculta */
