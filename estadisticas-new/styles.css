@@ -376,13 +376,53 @@ select {
     border-radius: 10px;
 }
 
+/* Logo que aparece cuando la barra está colapsada */
+#collapsedLogo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    top: 0%; /* Espaciado desde la parte superior */
+    left: 50%; /* Punto de referencia horizontal */
+    transform: translateX(-50%); /* Centra el elemento horizontalmente */
+    z-index: 101;
+    opacity: 1; /* Visible por defecto */
+    transition: opacity 0.5s ease; /* Transición de opacidad */
+}
+
+/* Oculta el logo con una transición */
+#collapsedLogo.hidden {
+    opacity: 0; /* Cambia la opacidad a 0 */
+    pointer-events: none; /* Evita interacciones cuando está invisible */
+    transition: opacity 0s ease; /* Transición suave de opacidad */
+}
+
+#collapsedLogo img {
+    width: 3.5rem; /* Tamaño del logo */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Estilo para el texto del logo colapsado */
+.collapsedText {
+    font-size: 1rem; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+}
+
+.notasContent img {
+    width: 50%
+}
+
 /* ###################################### */
 /* PARA DISPOSITIVOS MÓVILES */
 @media (max-width: 780px) {
     /* Barra lateral en móviles */
     /* Estilo del contenido principal */
     #mainContent {
-        margin-top: 3vh;
+        margin-top: 15%;
         margin-left: 5%;
         margin-right: 5%;
         padding: 0;
@@ -410,20 +450,21 @@ select {
         border-radius: 10px;
     }
 
-    /* Estilo para ocultar la barra lateral */
-    #sidebar.hidden {
-        transform: translateY(-100%);
+    /* Barra lateral colapsada */
+    #sidebar.collapsed {
+        transform: translateY(-85%); /* Deja visible el 5% superior */
+        width: 100%;
     }
 
-    /* Estilo de la barra lateral */
     #sidebar {
-        width: 100%;
-        height: auto;
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Ajusta la altura al contenido */
         background-color: #3A1D51;
         color: white;
         position: fixed;
-        padding: 0;
-        transition: transform 0.3s ease;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease, height 0.3s ease;
         z-index: 100;
     }
 
@@ -484,7 +525,7 @@ select {
     /* Estilo inicial del botón para mostrar/ocultar la barra lateral */
     #toggleSidebar {
         position: fixed;
-        top: 2vh;
+        top: 1.25%;
         left: 5%; /* Posición inicial con la barra visible */
         font-size: 24px;
         background: none;
@@ -504,11 +545,25 @@ select {
     /* Estilo para la sección de botones */
     .buttonSection {
         flex-direction: column;
+        margin: auto;
+        width: 75%;
     }
 
     /* Estilo para el container de indicadores en dispositivos móviles */
     .indicador-container {
         grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    }
+
+    #collapsedLogo {
+        top: 0%; /* Ajusta la posición al lado del botón */
+    }
+
+    .notasContent img {
+        width: 100%
+    }
+
+    .notasContent p {
+        padding: 0px 30px
     }
 }
 

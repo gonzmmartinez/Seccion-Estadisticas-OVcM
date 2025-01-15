@@ -3,20 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
     const toggleButton = document.getElementById('toggleSidebar');
+    const collapsedLogo = document.getElementById('collapsedLogo');
 
     // Verifica si estamos en un dispositivo móvil
     const isMobile = window.innerWidth <= 800;
 
     // Estado inicial de la barra según el dispositivo
     if (isMobile) {
-        sidebar.classList.add('collapsed'); // Oculta la barra en móviles
-        toggleButton.style.color = '#3A1D51'; // Color del botón cuando la barra está oculta
-        mainContent.classList.add('expanded'); // Expande el contenido principal
-        toggleButton.style.left = '5%'; // Ajusta la posición del botón
+        sidebar.classList.add('collapsed'); // Oculta parcialmente la barra en móviles
+        toggleButton.style.color = '#fafafa'; // Color del botón cuando la barra está oculta
+        collapsedLogo.classList.remove('hidden'); // Muestra el logo colapsado
     } else {
         sidebar.classList.remove('collapsed'); // Muestra la barra en escritorio
-        mainContent.classList.remove('expanded'); // Restaura el margen del contenido principal
-        toggleButton.style.left = '15%'; // Ajusta la posición del botón
+        mainContent.classList.remove('expanded'); // Restaura el contenido principal
+        collapsedLogo.classList.add('hidden'); // Oculta el logo colapsado
     }
 });
 
@@ -25,19 +25,20 @@ function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
     const toggleButton = document.getElementById('toggleSidebar');
+    const collapsedLogo = document.getElementById('collapsedLogo');
 
     // Alterna la visibilidad de la barra lateral
     sidebar.classList.toggle('collapsed');
     mainContent.classList.toggle('expanded');
-
-    // Verifica si estamos en un dispositivo móvil
-    const isMobile = window.innerWidth <= 800;
+    collapsedLogo.classList.toggle('hidden');
 
     // Ajusta la posición y color del botón según el estado de la barra lateral
-    if (sidebar.classList.contains('collapsed')) {
-        toggleButton.style.left = isMobile ? '5%' : '1.25%'; // Posición según el dispositivo
+    const isMobile = window.innerWidth <= 800;
+
+    if (isMobile) {
+        toggleButton.style.color = '#fafafa';
     } else {
-        toggleButton.style.left = isMobile ? '5%' : '15%'; // Posición según el dispositivo
+        toggleButton.style.left = sidebar.classList.contains('collapsed') ? '1.25%' : '15%';
     }
 }
 
