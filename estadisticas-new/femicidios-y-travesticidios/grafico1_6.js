@@ -75,7 +75,7 @@ function crearGrafico1_6(categories, values) {
             type: 'bar',
             height: '80%',
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: [{

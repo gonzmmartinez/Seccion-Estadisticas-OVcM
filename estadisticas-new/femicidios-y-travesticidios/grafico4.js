@@ -78,11 +78,7 @@ function crearGrafico4(data) {
             formatter: '{b}: {c}' // {b} es el nombre del departamento, {c} es el valor
         },
         toolbox: {
-            feature: {
-                saveAsImage: {
-                    type: 'svg'
-                }
-            }
+            show: false
         },
         visualMap: {
             min: 0,

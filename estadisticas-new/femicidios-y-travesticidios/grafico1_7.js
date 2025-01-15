@@ -75,7 +75,7 @@ function crearGrafico1_7(categories, values) {
           type: 'donut',
           height: '80%',
           toolbar: {
-            show: true
+            show: false
           }
       },
       series: values, // Los valores para el gráfico (arreglo de números)

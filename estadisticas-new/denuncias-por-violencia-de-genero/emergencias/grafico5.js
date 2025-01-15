@@ -81,7 +81,7 @@ function crearGrafico5(series) {
             type: 'heatmap',
             height: '500px',
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: series,

@@ -139,3 +139,23 @@ function topFunction() {
     }
     return false;
   });
+
+// FUNCIÓN PARA GUARDAR EL DIV COMO PNG
+function guardarActivoComoPNG() {
+    // Buscamos el div con la clase 'chartContent' y la clase 'active'
+    const chartActivo = document.querySelector('.chartContent.active');
+    
+    // Verificamos si existe un div activo
+    if (chartActivo) {
+        // Usamos html2canvas para capturar el contenido del div activo
+        html2canvas(chartActivo, {scale: 3}).then((canvas) => {
+            // Creamos un enlace para descargar la imagen
+            const enlace = document.createElement('a');
+            enlace.download = 'grafico_ovcm.png';
+            enlace.href = canvas.toDataURL(); // Convertimos el canvas a una imagen en formato PNG
+            enlace.click(); // Simulamos un click en el enlace para descargar
+        });
+    } else {
+        alert('No hay gráfico activo.');
+    }
+}

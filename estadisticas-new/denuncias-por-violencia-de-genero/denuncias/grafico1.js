@@ -44,7 +44,7 @@ function crearGrafico1(categories, values, groups) {
             type: 'bar', // Tipo de gráfico: barras
             height: 350,
             toolbar: {
-              show: true
+              show: false
             }
         },
         stroke: {

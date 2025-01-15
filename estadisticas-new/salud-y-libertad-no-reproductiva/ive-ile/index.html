@@ -9,7 +9,8 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -188,7 +189,7 @@
         </div>
 
         <!-- Sección de gráficos -->
-        <div id="chart4" class="chartContent active">
+        <div id="chart4" class="chartContent">
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
@@ -292,6 +293,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Botón para guardar el gráfico activo como PNG -->
+        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
+            <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
+            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
+        </button>
 
         <br>
         <hr>

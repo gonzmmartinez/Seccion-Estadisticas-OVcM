@@ -9,7 +9,8 @@
 
     <!-- Scripts -->
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -73,6 +74,7 @@
         <nav class="indicador-container">
             <button class="indicadorButton active" onclick="showChart('chart1')">Por departamento</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Tipo de parto</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Por edades agrupadas</button>
         </nav>
 
         <br>
@@ -147,6 +149,47 @@
             </div>
         </div>
 
+        <!-- Sección de gráficos -->
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Cesáreas y partos en la Provincia</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por edades agrupadas</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio3" onchange="actualizarGrafico3()">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para guardar el gráfico activo como PNG -->
+        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
+            <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
+            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
+        </button>
+
         <br>
         <hr>
 
@@ -183,5 +226,6 @@
     <!-- Gráficos -->
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
 </body>
 </html>

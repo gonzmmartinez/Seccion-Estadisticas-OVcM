@@ -84,7 +84,7 @@ function crearGrafico2(categories, values) {
             type: 'line',
             height: '350px',
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: [{

@@ -85,7 +85,7 @@ function crearGrafico7(categories_M, values_M, categories_V, values_V) {
             stacked: true,
             height: 500,
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: [{

@@ -373,7 +373,12 @@ select {
     flex-direction: column;
     margin: auto;
     padding: 2%;
+    padding-bottom: 5%;
     border-radius: 10px;
+    background-image: url('./svg/logo_ovcm.svg'); /* Ruta de tu logo */
+    background-position: bottom left; /* Ubica el logo en la esquina inferior izquierda */
+    background-repeat: no-repeat; /* No repite la imagen */
+    background-size: 15rem auto; /* Tamaño del logo, ajusta según tus necesidades */
 }
 
 /* Logo que aparece cuando la barra está colapsada */
@@ -406,7 +411,7 @@ select {
 
 /* Estilo para el texto del logo colapsado */
 .collapsedText {
-    font-size: 1rem; /* Ajuste del tamaño del texto */
+    font-size: 0.75rem; /* Ajuste del tamaño del texto */
     color: white;
     font-family: 'Barlow', sans-serif;
     text-align: center;
@@ -448,6 +453,7 @@ select {
         margin: auto;
         padding: 2%;
         border-radius: 10px;
+        background-size: 7.5rem auto; /* Tamaño del logo, ajusta según tus necesidades */
     }
 
     /* Barra lateral colapsada */
@@ -565,6 +571,11 @@ select {
     .notasContent p {
         padding: 0px 30px
     }
+
+    #guardarBtn {
+        display: flex;
+        justify-self: center;
+    }
 }
 
 /* ###################################### */
@@ -640,4 +651,30 @@ ul.breadcrumb .active {
 .topIcon {
     width: auto; /* Ajusta el ancho automáticamente */
     height: 2em; /* El ícono tendrá la misma altura que la línea del texto */
+}
+
+#guardarBtn {
+    display: flex;
+    justify-self: center;
+    margin-top: 10px;
+    bottom: 10px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: var(--light-grey-color); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    transition-duration: 0.5s;
+    font-family: 'Barlow', sans-serif;
+}
+  
+#guardarBtn:hover {
+    background-color: var(--accent-color); /* Add a dark-grey background on hover */
+}
+
+.descargarIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 1em; /* El ícono tendrá la misma altura que la línea del texto */
 }

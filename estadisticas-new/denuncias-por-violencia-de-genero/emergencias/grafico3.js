@@ -100,7 +100,7 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
             type: 'bar',
             height: '350px',
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: [

@@ -98,7 +98,7 @@ function crearGrafico1(categories_M, values_M, categories_V, values_V) {
             stackType: '100%',
             height: 350,
             toolbar: {
-              show: true
+              show: false
             }
         },
         series: [{

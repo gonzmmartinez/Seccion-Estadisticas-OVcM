@@ -97,7 +97,7 @@ function crearGrafico5(categories, values) {
           type: 'donut',
           height: '350px',
           toolbar: {
-            show: true
+            show: false
           }
       },
       series: values, // Los valores para el gráfico (arreglo de números)
