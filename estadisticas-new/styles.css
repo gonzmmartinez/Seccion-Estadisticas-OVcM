@@ -1,6 +1,9 @@
 /* Estilos generales */
 html {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 :root {
@@ -13,6 +16,8 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: 'Barlow', sans-serif;
     font-size: 16px;
     display: flex;
@@ -365,20 +370,18 @@ select {
 }
 
 .chartContent.active {
-    display: block;
+    display: block; /* Temporalmente cambia a block para depurar */
     background-color: #fafafa;
     width: 70%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+    min-height: 200px;
     margin: auto;
     padding: 2%;
     padding-bottom: 5%;
     border-radius: 10px;
-    background-image: url('./svg/logo_ovcm.svg'); /* Ruta de tu logo */
-    background-position: bottom left; /* Ubica el logo en la esquina inferior izquierda */
-    background-repeat: no-repeat; /* No repite la imagen */
-    background-size: 15rem auto; /* Tamaño del logo, ajusta según tus necesidades */
+    background-image: url('./svg/logo_ovcm.svg');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 15rem 3rem;
 }
 
 /* Logo que aparece cuando la barra está colapsada */
@@ -415,6 +418,13 @@ select {
     color: white;
     font-family: 'Barlow', sans-serif;
     text-align: center;
+}
+
+/* Oculta el logo con una transición */
+#collapsedText.hidden {
+    opacity: 0; /* Cambia la opacidad a 0 */
+    pointer-events: none; /* Evita interacciones cuando está invisible */
+    transition: opacity 0s ease; /* Transición suave de opacidad */
 }
 
 .notasContent img {

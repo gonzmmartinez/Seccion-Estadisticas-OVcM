@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('mainContent');
     const toggleButton = document.getElementById('toggleSidebar');
     const collapsedLogo = document.getElementById('collapsedLogo');
+    const collapsedText = document.getElementById('collapsedText');
 
     // Verifica si estamos en un dispositivo móvil
     const isMobile = window.innerWidth <= 800;
@@ -13,10 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.add('collapsed'); // Oculta parcialmente la barra en móviles
         toggleButton.style.color = '#fafafa'; // Color del botón cuando la barra está oculta
         collapsedLogo.classList.remove('hidden'); // Muestra el logo colapsado
+        collapsedText.classList.remove('hidden');
     } else {
         sidebar.classList.remove('collapsed'); // Muestra la barra en escritorio
         mainContent.classList.remove('expanded'); // Restaura el contenido principal
         collapsedLogo.classList.add('hidden'); // Oculta el logo colapsado
+        collapsedText.classList.add('hidden');
     }
 });
 
@@ -26,19 +29,25 @@ function toggleSidebar() {
     const mainContent = document.getElementById('mainContent');
     const toggleButton = document.getElementById('toggleSidebar');
     const collapsedLogo = document.getElementById('collapsedLogo');
+    const collapsedText = document.getElementById('collapsedText');
 
     // Alterna la visibilidad de la barra lateral
     sidebar.classList.toggle('collapsed');
     mainContent.classList.toggle('expanded');
-    collapsedLogo.classList.toggle('hidden');
 
     // Ajusta la posición y color del botón según el estado de la barra lateral
     const isMobile = window.innerWidth <= 800;
 
     if (isMobile) {
         toggleButton.style.color = '#fafafa';
+        // Muestra u oculta collapsedLogo y collapsedText solo en dispositivos móviles
+        collapsedLogo.classList.toggle('hidden');
+        collapsedText.classList.toggle('hidden');
     } else {
         toggleButton.style.left = sidebar.classList.contains('collapsed') ? '1.25%' : '15%';
+        // Asegúrate de que collapsedLogo y collapsedText siempre estén ocultos en escritorio
+        collapsedLogo.classList.add('hidden');
+        collapsedText.classList.add('hidden');
     }
 }
 
@@ -142,18 +151,47 @@ function topFunction() {
 
 // FUNCIÓN PARA GUARDAR EL DIV COMO PNG
 function guardarActivoComoPNG() {
-    // Buscamos el div con la clase 'chartContent' y la clase 'active'
     const chartActivo = document.querySelector('.chartContent.active');
-    
-    // Verificamos si existe un div activo
+
     if (chartActivo) {
+        // Tratamos los elementos SVG antes de capturarlos con html2canvas
+        var svgElements = chartActivo.querySelectorAll('svg');
+        svgElements.forEach(function(item) {
+            // Establecer explícitamente los atributos width y height del SVG
+            item.setAttribute("width", item.getBoundingClientRect().width);
+            item.setAttribute("height", item.getBoundingClientRect().height);
+            
+            // Limpiar cualquier estilo previo de width y height
+            item.style.width = null;
+            item.style.height = null;
+        });
+
         // Usamos html2canvas para capturar el contenido del div activo
-        html2canvas(chartActivo, {scale: 3}).then((canvas) => {
+        html2canvas(chartActivo, {
+            scale: 3, // Aumenta la escala para una mejor calidad
+            allowTaint: true, // Permite capturar imágenes externas
+            useCORS: true, // Soporta CORS
+            backgroundColor: null, // Asegura que se capturen los fondos como están
+            logging: true, // Habilita el log para depuración
+            x: 0, // Posición en el eje X para la captura
+            y: 0, // Posición en el eje Y para la captura
+            width: chartActivo.offsetWidth, // El ancho del div a capturar
+            height: chartActivo.offsetHeight // El alto del div a capturar
+        }).then((canvas) => {
             // Creamos un enlace para descargar la imagen
             const enlace = document.createElement('a');
             enlace.download = 'grafico_ovcm.png';
-            enlace.href = canvas.toDataURL(); // Convertimos el canvas a una imagen en formato PNG
-            enlace.click(); // Simulamos un click en el enlace para descargar
+            
+            // Convertimos el canvas a una imagen en formato PNG
+            enlace.href = canvas.toDataURL('image/png');
+
+            // Aseguramos que el navegador permita la descarga
+            document.body.appendChild(enlace);  // Añadimos el enlace al DOM temporalmente
+            enlace.click(); // Simulamos el click
+            document.body.removeChild(enlace);  // Eliminamos el enlace después de hacer clic
+        }).catch((error) => {
+            console.error('Error al capturar el gráfico:', error);
+            alert('Hubo un problema al guardar el gráfico.');
         });
     } else {
         alert('No hay gráfico activo.');
