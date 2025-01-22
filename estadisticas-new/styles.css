@@ -11,7 +11,9 @@ html {
     --mid-light-grey-color: #c4c4c4;
     --light-grey-color: #fafafa;
     --accent-color: #51c33b;
+    --accent-color-dark: #398829;
     --main-color: #3A1D51;
+    --main-color-light: #5a2d7d;
 }
 
 body {
@@ -108,6 +110,11 @@ body {
     font-family: 'Barlow', sans-serif;
 }
 
+#sidebar ul li a.active {
+    background-color: var(--main-color-light);
+    border-radius: 5px;
+}
+
 .sidebarIcon {
     width: 30px;  /* Tamaño del ícono dentro del botón */
     height: 30px; /* Mantiene el ícono proporcional */
@@ -175,7 +182,8 @@ body {
 
 /* Ajuste del contenido principal cuando la barra lateral está oculta */
 #mainContent.expanded {
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-right: 5%;
     width: 100%;
 }
 
@@ -217,6 +225,10 @@ body {
     font-family: 'Barlow', sans-serif;
     font-size: 20px;
     color: var(--grey-color)
+}
+
+.notasContent {
+    padding-bottom: 10%;
 }
 
 .notasContent h3 {
