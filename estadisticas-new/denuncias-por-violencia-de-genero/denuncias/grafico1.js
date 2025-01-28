@@ -164,5 +164,5 @@ function actualizarGrafico1() {
       });
 }
 
-// 8. Llamar la función principal al cargar la página
+// Llamar la función principal al cargar la página
 window.addEventListener("load", iniciar1);
