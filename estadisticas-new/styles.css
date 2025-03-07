@@ -476,6 +476,7 @@ select {
         padding: 2%;
         border-radius: 10px;
         background-size: 7.5rem auto; /* Tamaño del logo, ajusta según tus necesidades */
+        overflow-x: scroll;
     }
 
     /* Barra lateral colapsada */
