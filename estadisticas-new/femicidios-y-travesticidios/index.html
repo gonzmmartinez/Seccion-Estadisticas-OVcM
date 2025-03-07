@@ -13,6 +13,9 @@
     <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
     <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
+    
 </head>
 
 <body>
@@ -91,6 +94,16 @@
             <h1 class="pageTitle">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</h1>
         </div>
 
+        <br>
+
+        <div style="display: flex; justify-content: center;">
+            <button class="indicadorButton" onclick="showChart('chart5')" style="padding: 15px 25px; font-size: 1.125rem; font-weight: bold;">
+                VER REGISTRO COMPLETO
+            </button>
+        </div>
+
+        <br>
+
         <hr>
 
         <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
@@ -116,7 +129,7 @@
                     <br>
                     <span style="font-size:15px"><i>Provincia de Salta</i></span>
                     <br>
-                    <span style="font-size:12px"><i>Última actualización: 19/12/2024</i></span>
+                    <span style="font-size:12px"><i>Última actualización: 07/03/2025</i></span>
                 </p>
 
                 <div class="selectContainer">
@@ -124,8 +137,8 @@
                         Año:
                     </p>
                     <select id="Anio1" style="font-size: 1.25rem;" onchange="actualizarGraficos()">
-                        <option value="2024">2024</option>
                         <option value="2025">2025</option>
+                        <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
@@ -312,6 +325,94 @@
             </div>
         </div>
 
+        <div id="chart5" class="chartContent" style="width: 90%;">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: center;">
+                <p>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas caratuladas como femicidio, transfemicidio y crímenes de odio en etapa de investigación penal</strong></span>
+                    <br>
+                    <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
+                    <br>
+                    <span style="font-size:0.75rem"><i>Última actualización: 07/03/2025</i></span>
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio5" onchange="actualizarGrafico5()">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico5">
+                <table id="tablaFemicidios" class="hover cell-border">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Iniciales</th>
+                            <th>Edad</th>
+                            <th>Hijos/as</th>
+                            <th>Medio utilizado</th>
+                            <th>Vínculo</th>
+                            <th>Lugar del hecho</th>
+                            <th>Departamento</th>
+                            <th>Carátula</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <!-- Titulo del gráfico -->
+            <div style="text-align: center;">
+                <p>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas de muertes violentas y/o dudosas de mujeres cis, trans</strong></span>
+                    <br>
+                    <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico6">
+                <table id="tablaMuertes" class="hover cell-border">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Iniciales</th>
+                            <th>Edad</th>
+                            <th>Hijos/as</th>
+                            <th>Lugar del hecho</th>
+                            <th>Departamento</th>
+                            <th>Carátula</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Elaboración propia a partir del registro de casos del OVcM y el Registro del Poder Judicial.
+                </p>
+            </div>
+        </div>
+
         <!-- Botón para guardar el gráfico activo como PNG -->
         <button id="guardarBtn" onclick="guardarActivoComoPNG()">
             <img src="../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
@@ -384,5 +485,7 @@
     <script type="text/javascript" src="./grafico2.js"></script>
     <script type="text/javascript" src="./grafico3.js"></script>
     <script type="text/javascript" src="./grafico4.js"></script>
+    <script type="text/javascript" src="./grafico5.js"></script>
+    <script type="text/javascript" src="./grafico6.js"></script>
 </body>
 </html>
