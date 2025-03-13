@@ -45,7 +45,11 @@ Data1 <- Raw %>%
             Subocupados = sum(PONDERA[ESTADO == 1 & INTENSI ==1 & PP03J==1]) + sum(PONDERA[ESTADO == 1 & INTENSI ==1 & PP03J %in% c(2,9)]),
             Tasa_Actividad = round(PEA/Poblacion * 100, 1)) %>%
   ungroup %>%
-  mutate(CH04 = ifelse(CH04 == "1", "Varones", "Mujeres"))
+  mutate(CH04 = ifelse(CH04 == "1", "Varones", "Mujeres"),
+         TRIMESTRE = str_sub(TRIMESTRE, 1,1)) %>%
+  rename(Año = "ANO4", Trimestre = "TRIMESTRE", Género = "CH04") %>%
+  select(Año, Trimestre, Género, Tasa_Actividad) %>%
+  mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3,4)))
 
 ######### ESCRIBIR DATOS #########
-# write_json(toJSON(Data1), path = paste0(dir, "/json/educacion_matriculas.json"))
+write_json(toJSON(Data1), path = paste0(dir, "/json/trabajo_actividad.json"))

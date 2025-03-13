@@ -101,7 +101,7 @@
         <nav class="indicador-container">
             <button class="indicadorButton active" onclick="showChart('chart1')">Matriculas educativas por género</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Docentes en actividad por género</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de analfabetismo por género</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de actividad laboral</button>
         </nav>
 
         <br>
@@ -210,6 +210,28 @@
             </div>
         </div>
 
+        <!-- Sección de gráficos -->
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de actividad laboral</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por género. Por trimestre. Provincia de Salta.</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y Censos (EPH-INDEC).
+                </p>
+            </div>
+        </div>
+
         <!-- Botón para guardar el gráfico activo como PNG -->
         <button id="guardarBtn" onclick="guardarActivoComoPNG()">
             <img src="../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
@@ -225,14 +247,21 @@
             <h3>Institución o entidad que genera el registro</h3>
             <p>
                 <ul>
-                    <li>Instituto Nacional de Estadística y Censos (INDEC)</li>
+                    <li>Encuesta Permanente de Hogares (EPH). Instituto Nacional de Estadística y Censos (INDEC)</li>
                     <li>Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaria de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.</li>
                 </ul>
             </p>
 
+            <h3>Definiciones utilizadas en el registro</h3>
+            <ul>
+                <li>La <strong>tasa de actividad</strong> mide la proporción de la población económicamente activa (PEA) sobre la población total de referencia. La PEA incluye a quienes tienen empleo y a quienes buscan activamente uno. Según la Encuesta Permanente de Hogares (EPH), se consideran dentro de este grupo tanto las personas que trabajan a cambio de una remuneración en dinero o en especie como aquellas que colaboran sin pago en negocios familiares.</li>
+                <li>La <strong>tasa de desocupación</strong> representa el porcentaje de personas que no tienen empleo pero lo buscan activamente dentro de la población económicamente activa. Por otro lado, la tasa de subocupación mide la proporción de quienes trabajan menos de 35 horas semanales por razones involuntarias y están disponibles para trabajar más.</li>
+                <li>La <strong>inactividad</strong> se refiere a la situación de las personas que no forman parte de la población económicamente activa, es decir, que no trabajan ni buscan empleo de manera activa. Dentro de esta categoría se incluyen a estudiantes, jubilados, personas dedicadas a tareas del hogar y aquellas que, por diversas razones, no participan en el mercado laboral.</li>
+            </ul>
+
             <h3>¿Qué se registra?</h3>
             <p>
-                Datos relacionados a la educación de las personas por sexo.
+                Datos relacionados a la educación y al mercado de trabajo de las personas por sexo.
             </p>
 
             <h3>Notas</h3>
@@ -252,5 +281,6 @@
     <!-- Gráficos -->
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
 </body>
 </html>
