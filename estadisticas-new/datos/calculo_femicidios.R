@@ -12,6 +12,8 @@ library(readr)
 library(googlesheets4)
 library(janitor)
 
+# Pruéba
+
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
