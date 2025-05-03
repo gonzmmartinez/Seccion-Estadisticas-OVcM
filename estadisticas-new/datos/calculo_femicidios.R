@@ -12,7 +12,7 @@ library(readr)
 library(googlesheets4)
 library(janitor)
 
-# Pruéba
+# PruÃ©ba
 
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
@@ -33,103 +33,103 @@ Raw4 <- read_sheet(ss = planilla, sheet = "MUERTES")
 
 # Rango etario
 Data3 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Rango_etario) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Rango_etario) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
-  mutate(Ord_rango_etario = case_when(Rango_etario == "Menos de 18 años" ~ 1,
-                                      Rango_etario == "18-29 años" ~ 2,
-                                      Rango_etario == "30-39 años" ~ 3,
-                                      Rango_etario == "40-49 años" ~ 4,
-                                      Rango_etario == "50 años o más" ~ 5,
+  mutate(Ord_rango_etario = case_when(Rango_etario == "Menos de 18 aÃ±os" ~ 1,
+                                      Rango_etario == "18-29 aÃ±os" ~ 2,
+                                      Rango_etario == "30-39 aÃ±os" ~ 3,
+                                      Rango_etario == "40-49 aÃ±os" ~ 4,
+                                      Rango_etario == "50 aÃ±os o mÃ¡s" ~ 5,
                                       Rango_etario == "Sin dato" ~ 6,)) %>%
   arrange(Ord_rango_etario)
 
 # V?nculo
 Data4 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Vinculo) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Vinculo) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
   arrange(desc(Cantidad))
 
 # Hijas/os de las victimas
 Data5 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Hijos) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Hijos) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
   arrange(Hijos)
 
 # Lugar del hecho
 Data6 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Lugar_del_hecho) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Lugar_del_hecho) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
   arrange(Lugar_del_hecho)
 
 # Medio utilizado
 Data7 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Medio_utilizado) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Medio_utilizado) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
   arrange(Medio_utilizado)
 
 # Causas totales
 Data8 <- Raw1 %>%
-  mutate(Año = as.character(Año)) %>%
-  mutate(Estado = case_when(Estado == "Caratulado" ~ "Tienen la carátula provisoria de femicidio",
-                            Estado == "En etapa de investigación" ~ "Se encuentran en etapa de investigación",
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  mutate(Estado = case_when(Estado == "Caratulado" ~ "Tienen la carÃ¡tula provisoria de femicidio",
+                            Estado == "En etapa de investigaciÃ³n" ~ "Se encuentran en etapa de investigaciÃ³n",
                             .default = Estado)) %>%
   arrange(Cantidad)
 
 # Causas judiciales
 Data9 <- Raw2 %>%
-  mutate(Año = as.character(Año))
+  mutate(AÃ±o = as.character(AÃ±o))
 
 # Localidad
-Departamentos <- data.frame(Localidad = rep(c("Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoana", "General Güemes",
-                                          "General José de San Martín", "Guachipas", "Iruya", "La Caldera", "La Candelaria",
-                                          "La Poma", "La Viña", "Los Andes", "Metán", "Molinos", "Orán", "Rivadavia",
+Departamentos <- data.frame(Localidad = rep(c("Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoana", "General GÃ¼emes",
+                                          "General JosÃ© de San MartÃ­n", "Guachipas", "Iruya", "La Caldera", "La Candelaria",
+                                          "La Poma", "La ViÃ±a", "Los Andes", "MetÃ¡n", "Molinos", "OrÃ¡n", "Rivadavia",
                                           "Rosario de la Frontera", "Rosario de Lerma", "San Carlos", "Santa Victoria"), 6)) %>%
-  mutate(Año = rep(c("2020", "2021", "2022", "2023", "2024", "2025"), each=23)) %>%
-  mutate(ID = paste0(str_sub(Año, 3), "-", Localidad))
+  mutate(AÃ±o = rep(c("2020", "2021", "2022", "2023", "2024", "2025"), each=23)) %>%
+  mutate(ID = paste0(str_sub(AÃ±o, 3), "-", Localidad))
 Data10 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Localidad) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Localidad) %>%
   summarise(Cantidad = n()) %>%
   ungroup %>%
-  mutate(ID = paste0(str_sub(Año, 3), "-", Localidad))
+  mutate(ID = paste0(str_sub(AÃ±o, 3), "-", Localidad))
 Data10 <- Departamentos %>%
   left_join(select(Data10, ID, Cantidad), by="ID") %>%
   replace(is.na(.), 0)
 
 # Femicidios caratulados
 Data11 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o) %>%
   summarise(Cantidad = n())
 
 # Evolucion
 Data12 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o) %>%
   summarise(Cantidad = n()) %>%
-  arrange(Año)
+  arrange(AÃ±o)
 
 # Tasa nacional
 Data13 <- Raw3 %>%
-  filter(Año >= 2020) %>%
-  mutate(Año = as.character(Año))
+  filter(AÃ±o >= 2020) %>%
+  mutate(AÃ±o = as.character(AÃ±o))
 
 # Registro completo
 Data14 <- Raw0 %>%
   mutate(Fecha = as.Date(Fecha, format="%Y-%m-%d")) %>%
-  mutate(Año = as.character(Año)) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
   arrange(Fecha) %>%
-  group_by(Año) %>%
+  group_by(AÃ±o) %>%
   mutate(Numero = row_number()) %>%
   ungroup %>%
   mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m"))
@@ -137,9 +137,9 @@ Data14 <- Raw0 %>%
 # Registro completo
 Data15 <- Raw4 %>%
   mutate(Fecha = as.Date(Fecha, format="%Y-%m-%d")) %>%
-  mutate(Año = as.character(Año)) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
   arrange(Fecha) %>%
-  group_by(Año) %>%
+  group_by(AÃ±o) %>%
   mutate(Numero = row_number()) %>%
   ungroup %>%
   mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m"))
