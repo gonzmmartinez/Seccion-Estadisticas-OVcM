@@ -106,6 +106,7 @@
             <button class="indicadorButton active" onclick="showChart('chart1')">Denuncias registradas por tipo de denuncia</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Evolución de la cantidad de denuncias</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Por boca de denuncia</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de denuncias por departamento</button>
         </nav>
 
         <br>
@@ -211,6 +212,39 @@
             </div>
         </div>
 
+        <div id="chart4" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Tasa de denuncias registradas al Sistema Único de Denuncias</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Denuncias por cada 100 habitantes, por departamento</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico4" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.
+                    <br>
+                    <strong>NOTA</strong>: El SUD entró en vigencia en el mes de noviembre de 2023.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio4" onchange="actualizarGrafico4()">
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+        </div>
+
         <!-- Botón para guardar el gráfico activo como PNG -->
         <button id="guardarBtn" onclick="guardarActivoComoPNG()">
             <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
@@ -243,5 +277,6 @@
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
     <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
 </body>
 </html>
