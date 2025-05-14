@@ -28,7 +28,7 @@ function cargarTablaMuertes(year) {
                     { data: "Hijos" },
                     { data: "Lugar_del_hecho" },
                     { data: "Localidad" },
-                    { data: "Caratula" }
+                    { data: "Fuente" }
                 ],
                 responsive: true,
                 pageLength: 20,
