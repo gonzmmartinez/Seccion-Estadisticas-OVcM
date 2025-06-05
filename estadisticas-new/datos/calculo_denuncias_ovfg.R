@@ -184,7 +184,6 @@ Data8 <- Data8 %>%
   mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
   arrange(desc(Rango_etario))
 
-
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_ovfg_ingresadas.json"))
 
